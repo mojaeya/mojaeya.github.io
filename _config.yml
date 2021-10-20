@@ -45,8 +45,7 @@ nav:
     - { JavaScript: '/blog/categories/#JavaScript' }
     - { Node.js: '/blog/categories/#Node.js' }
     - { MySQL: '/blog/categories/#MySQL' }
-    - { Baekjoon: '/blog/categories/#Baekjoon' }
-    - { Algorithm Study: '/blog/categories/#Algorithm Study' }
+    - { Algorithm: '/blog/categories/#Algorithm' }
     - { AWS: '/blog/categories/#AWS' }
     - { Git: '/blog/categories/#Git' }
     - { etc: '/blog/categories/#etc' }
