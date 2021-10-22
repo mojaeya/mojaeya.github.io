@@ -59,8 +59,8 @@ html {
 }
 
 body {
-  color: $black;
-  background-color: rgba($theme-color, 0.1);
+  color: $black;  // 게시글 글씨 색
+  background-color: rgba($theme-color, 0.1);    // 게시글 배경 색
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }

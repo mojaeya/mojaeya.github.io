@@ -1,0 +1,58 @@
+I"�<h2 id="문제">문제</h2>
+<p>“OOXXOXXOOO”와 같은 OX퀴즈의 결과가 있다. O는 문제를 맞은 것이고, X는 문제를 틀린 것이다. <br />
+문제를 맞은 경우 그 문제의 점수는 그 문제까지 연속된 O의 개수가 된다. 예를 들어, 10번 문제의 점수는 3이 된다. <br />
+“OOXXOXXOOO”의 점수는 1+2+0+0+1+0+0+1+2+3 = 10점이다. <br />
+OX퀴즈의 결과가 주어졌을 때, 점수를 구하는 프로그램을 작성하시오.</p>
+<h2 id="입력">입력</h2>
+<p>첫째 줄에 테스트 케이스의 개수가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있고,  <br />
+길이가 0보다 크고 80보다 작은 문자열이 주어진다. 문자열은 O와 X만으로 이루어져 있다.</p>
+
+<h2 id="출력">출력</h2>
+<p>각 테스트 케이스마다 점수를 출력한다.</p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">){</span>
+    <span class="nx">input</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;=</span><span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+       <span class="kd">let</span> <span class="nx">score</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">// 점수</span>
+       <span class="kd">let</span> <span class="nx">plus</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1">// O이 연속될 때 플러스 점수</span>
+       <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>  <span class="c1">// OX퀴즈 결과값</span>
+      
+       <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">j</span><span class="o">&lt;</span><span class="nx">result</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+         <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">O</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 맞았을 경우(O)</span>
+           <span class="nx">score</span> <span class="o">+=</span> <span class="mi">1</span> <span class="o">+</span> <span class="nx">plus</span> 
+           <span class="nx">plus</span><span class="o">++</span>
+         <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">result</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">X</span><span class="dl">'</span><span class="p">){</span> <span class="c1">// 틀렸을 경우(X)</span>
+           <span class="nx">plus</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">// 플러스 점수 초기화</span>
+         <span class="p">}</span>
+       <span class="p">}</span>
+
+       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">score</span><span class="p">)</span>
+    <span class="p">}</span>
+
+  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href="https://laycoder.tistory.com/183">https://laycoder.tistory.com/183</a></p>
+</blockquote>
+:ET
