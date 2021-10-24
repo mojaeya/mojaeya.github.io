@@ -1,0 +1,63 @@
+I"y<h2 id="문제">문제</h2>
+<p>세 개의 자연수 A, B, C가 주어질 때 A × B × C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오.
+예를 들어 A = 150, B = 266, C = 427 이라면 A × B × C = 150 × 266 × 427 = 17037300 이 되고, <br />
+계산한 결과 17037300 에는 0이 3번, 1이 1번, 3이 2번, 7이 2번 쓰였다.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫째 줄에 A, 둘째 줄에 B, 셋째 줄에 C가 주어진다. A, B, C는 모두 100보다 크거나 같고, 1,000보다 작은 자연수이다.</p>
+
+<h2 id="출력">출력</h2>
+<p>첫째 줄에는 A × B × C의 결과에 0 이 몇 번 쓰였는지 출력한다. 마찬가지로 둘째 줄부터 열 번째 줄까지 A × B × C의 결과에 1부터 9까지의 숫자가 각각 몇 번 쓰였는지 차례로 한 줄에 하나씩 출력한다.</p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">){</span>
+    <span class="nx">input</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">num</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nx">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nx">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="c1">// 문자열숫자끼리 곱하면 숫자형으로 자동 형변환</span>
+    <span class="kd">let</span> <span class="nx">strNum</span> <span class="o">=</span> <span class="p">(</span><span class="nx">num</span> <span class="o">+</span> <span class="dl">''</span><span class="p">)</span> <span class="c1">// 숫자형 결과값을 문자열로 변환 (split을 사용하기 위해) </span>
+                            <span class="c1">// String() 써도 된다.</span>
+    
+<span class="c1">// 문자열을 0~9까지의 문자로 split했을 때 나오는 배열요소 수 -1</span>
+<span class="c1">// ex) 17037300 을 0 으로 split하면 ['17','373','','']</span>
+<span class="c1">//     여기다가 1을 빼주면 총 split한 횟수 = 해당 문자의 개수</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;=</span><span class="mi">9</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">strNum</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="nx">i</span> <span class="o">+</span> <span class="dl">''</span><span class="p">).</span><span class="nx">length</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+    
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+<h2 id="comment">Comment</h2>
+<ul>
+  <li><strong>숫자형을 문자열로 변환 후 배열로 만들기 (split 이용)</strong> <br />
+숫자형은 split을 사용할 수 없기 때문에 숫자 + ‘’ 해서 문자로 변환해주고 split(‘‘)을 사용하여 배열로 만들어준다.</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">numberToString</span><span class="p">(</span><span class="nx">n</span><span class="p">)</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="dl">''</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="dl">''</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">numberToString</span><span class="p">(</span><span class="mi">202</span><span class="p">)</span> <span class="c1">// ['2', '0', '2']</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

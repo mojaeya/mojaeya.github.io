@@ -1,0 +1,60 @@
+I"{<h2 id="문제">문제</h2>
+<p>첫째 줄에는 별 1개, 둘째 줄에는 별 2개, N번째 줄에는 별 N개를 찍는 문제</p>
+
+<p>하지만, 오른쪽을 기준으로 정렬한 별(예제 참고)을 출력하시오.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫째 줄에 N(1 ≤ N ≤ 100)이 주어진다.</p>
+
+<h2 id="출력">출력</h2>
+<p>첫째 줄부터 N번째 줄까지 차례대로 별을 출력한다.
+<img width="8%" src="https://user-images.githubusercontent.com/76654131/138585047-77c0c77e-3862-4e28-85f4-6d24fc2f0bee.png" /></p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+ 
+<span class="kd">let</span> <span class="nx">input</span>
+<span class="nx">result</span> <span class="o">=</span> <span class="dl">''</span>
+ 
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">){</span>
+    <span class="nx">input</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+    <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+      <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;=</span><span class="nx">input</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+          <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">j</span><span class="o">&lt;=</span><span class="nx">input</span><span class="o">-</span><span class="nx">i</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">){</span>
+              <span class="nx">result</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span>
+          <span class="p">}</span>
+          <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">k</span><span class="o">&lt;=</span><span class="nx">i</span><span class="p">;</span> <span class="nx">k</span><span class="o">++</span><span class="p">){</span>
+              <span class="nx">result</span> <span class="o">+=</span> <span class="dl">'</span><span class="s1">*</span><span class="dl">'</span>
+          <span class="p">}</span>
+          <span class="nx">result</span> <span class="o">+=</span> <span class="dl">'</span><span class="se">\n</span><span class="dl">'</span>
+      <span class="p">}</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+ 
+      <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+  <span class="p">})</span>
+
+</code></pre></div></div>
+<h2 id="comment">Comment</h2>
+<p>기존에 순서대로 증가는 별 문제는 쉽게 풀었는데, 이 문제는 공백을 생각해야 해서 조금 당황했었다.</p>
+
+<p>별 문제는 전체적인 틀을 잡아놓고 풀면 쉽게 풀리는것 같다.</p>
+
+<p>첫번째 for문(i)은 전체 줄의 수를 생각하고 만들고,  나머지 2,3번째  for문(j, k)은 각 줄마다의 값을 생각하고 만들면 수월하다.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

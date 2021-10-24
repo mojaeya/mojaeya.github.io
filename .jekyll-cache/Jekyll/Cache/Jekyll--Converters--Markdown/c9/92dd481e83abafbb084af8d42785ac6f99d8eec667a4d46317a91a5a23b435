@@ -1,0 +1,86 @@
+I"6#<h2 id="문제">문제</h2>
+<p>시험 점수를 입력받아 90 ~ 100점은 A, 80 ~ 89점은 B, 70 ~ 79점은 C, 60 ~ 69점은 D, 나머지 점수는 F를 출력하는 프로그램을 작성하시오.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫째 줄에 시험 점수가 주어진다. 시험 점수는 0보다 크거나 같고, 100보다 작거나 같은 정수이다.</p>
+
+<h2 id="출력">출력</h2>
+<p>시험 성적을 출력한다.</p>
+
+<h2 id="code-1">CODE 1</h2>
+<ul>
+  <li>if문 풀이</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">readline</span><span class="dl">"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+ 
+<span class="kd">let</span> <span class="nx">score</span> 
+ 
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">score</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+    <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">score</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">D</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">F</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="nx">Colored</span> <span class="nx">by</span> <span class="nx">Color</span> <span class="nx">Scripter</span>
+</code></pre></div></div>
+<h2 id="code-2">CODE 2</h2>
+<ul>
+  <li>switch문 풀이</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">readline</span><span class="dl">"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+ 
+<span class="kd">let</span> <span class="nx">score</span> 
+ 
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">score</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+    <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+  <span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nb">parseInt</span><span class="p">(</span><span class="nx">score</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="k">case</span> <span class="mi">9</span><span class="p">:</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">);</span> <span class="k">break</span>
+        <span class="k">case</span> <span class="mi">8</span><span class="p">:</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">B</span><span class="dl">"</span><span class="p">);</span> <span class="k">break</span>
+        <span class="k">case</span> <span class="mi">7</span><span class="p">:</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">C</span><span class="dl">"</span><span class="p">);</span> <span class="k">break</span>
+        <span class="k">case</span> <span class="mi">6</span><span class="p">:</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">D</span><span class="dl">"</span><span class="p">);</span> <span class="k">break</span>
+        <span class="k">default</span><span class="p">:</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">F</span><span class="dl">"</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
+  <span class="p">});</span>
+
+</code></pre></div></div>
+
+<h2 id="comment">Comment</h2>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

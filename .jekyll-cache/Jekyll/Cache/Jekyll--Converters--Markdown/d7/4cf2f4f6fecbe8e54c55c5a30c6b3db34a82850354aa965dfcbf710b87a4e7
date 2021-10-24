@@ -1,0 +1,87 @@
+I"�
+<h2 id="문제">문제</h2>
+<p align="center"><img width="40%" src="https://user-images.githubusercontent.com/76654131/138585590-17fffe13-5378-49a9-bc60-140cd959556d.png" /></p>
+<p>예를 들어, 좌표가 (12, 5)인 점 A는 x좌표와 y좌표가 모두 양수이므로 제1사분면에 속한다. 점 B는 x좌표가 음수이고 y좌표가 양수이므로 제2사분면에 속한다.</p>
+
+<p>점의 좌표를 입력받아 그 점이 어느 사분면에 속하는지 알아내는 프로그램을 작성하시오. 단, x좌표와 y좌표는 모두 양수나 음수라고 가정한다.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫 줄에는 정수 x가 주어진다. (−1000 ≤ x ≤ 1000; x ≠ 0) 다음 줄에는 정수 y가 주어진다. (−1000 ≤ y ≤ 1000; y ≠ 0)</p>
+
+<h2 id="출력">출력</h2>
+<p>점 (x, y)의 사분면 번호(1, 2, 3, 4 중 하나)를 출력한다.</p>
+
+<h2 id="code">CODE</h2>
+<ul>
+  <li>if문 풀이
+```javascript
+const readline = require(“readline”)
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+})</li>
+</ul>
+
+<p>let input = []</p>
+
+<p>rl.on(“line”, function(line) {
+    input.push(Number(line)) // 여러줄 입력할때
+})
+  .on(“close”, function(){
+    const x = input[0]
+    const y = input[1]</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if(x&gt;0 &amp;&amp; y&gt;0){
+    console.log(1)
+} else if(x&lt;0 &amp;&amp; y&gt;0){
+    console.log(2)
+} else if(x&lt;0 &amp;&amp; y&lt;0){
+    console.log(3)
+} else if(x&gt;0 &amp;&amp; y&lt;0){
+    console.log(4)
+} 
+process.exit();   })
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## Comment
+- 삼항연산자 풀이
+
+&lt;img width="40%" src="https://user-images.githubusercontent.com/76654131/138585643-a9b346b3-74df-461f-95e0-b03843d351c9.png"&gt;
+
+```javascript
+const readline = require("readline")
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+ 
+let input = []
+ 
+rl.on("line", function(line) {
+    input.push(Number(line)) 
+})
+  .on("close", function(){
+    const x = input[0]
+    const y = input[1]
+ 
+   if(x&gt;0) {
+       y&gt;0 ? console.log(1) : console.log(4)
+   } else if(x&lt;0) {
+       y&gt;0 ? console.log(2) : console.log(3)
+   }
+    process.exit();
+  })
+
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

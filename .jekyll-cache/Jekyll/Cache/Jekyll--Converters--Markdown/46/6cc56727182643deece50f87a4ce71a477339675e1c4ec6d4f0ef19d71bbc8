@@ -1,0 +1,63 @@
+I"8<h2 id="문제">문제</h2>
+<p>아래 예제와 같이 고양이를 출력하시오.</p>
+
+<p><img width="20%" src="https://user-images.githubusercontent.com/76654131/138587731-2da013ca-d849-46f7-a4eb-910389f7badb.png" /></p>
+
+<h2 id="code-1">CODE 1</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`\\    /\\
+ )  ( ')
+(  /  )
+ \\(__)|`</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="code-2">CODE 2</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="se">\\</span><span class="s2">    /</span><span class="se">\\\n</span><span class="s2"> )  ( ')</span><span class="se">\n</span><span class="s2">(  /  )</span><span class="se">\n</span><span class="s2"> </span><span class="se">\\</span><span class="s2">(__)|</span><span class="dl">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="comment">Comment</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span>
+          <span class="p">.</span>
+          <span class="p">.</span> 
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<p>이렇게 여러번 치는 방법도 있지만  여러 줄을 한꺼번에 출력해서 푸는게 간편하다.</p>
+
+<p>작은따옴표가 아닌 ` =&gt;  백틱(키보드 물결표시 밑에 있음)을 사용하면 여러 줄을 한번에 출력할 수 있다.</p>
+
+<p><mark style="background-color: #ffdce0"> 그런데 백틱을 사용할때, 백 슬래시( \ ) 를 하나만 입력하면 생략되기 때문에 두번 입력해줘야 정상 출력된다.</mark></p>
+
+<p>왜그럴까?</p>
+
+<p>위에서 사용한 백틱 사용법은 <mark style="background-color: #fff5b1">템플릿 리터럴(Template literals)</mark>이라는 <strong>ES6</strong>에서부터 새로 생긴 문자열 표기법이다. <br />
+기존에 작은따옴표, 큰따옴표로 전체를 묶는 대신 <mark style="background-color: #ffdce0">백틱 ( ` )</mark> 을 사용하여 묶는다. <br />
+템플릿 리터럴을 적용하면서 <mark style="background-color: #dcffe4">이스케이프 시퀀스</mark>를 적용하는 번거로움이 줄어들었다.</p>
+
+<p>다만 ‘백틱’으로 감싸는 것만으로는 온전히 표현 못하는 경우가 있어 알아두면 좋다.</p>
+
+<p>원래 기존 백틱을 사용하지 않은 일반적인 문자열에서는 줄바꿈을 표현하지 않았으며,
+사용하려면 <mark style="background-color: #dcffe4">이스케이프 시퀀스(Escape Sequence)</mark> 를 사용하여야 했다.</p>
+
+<p>출력문에서 백슬래시가 등장하는 순간 그 바로 다음 문자를 인식해 상황에 맞게 처리하는데, 
+이를 <mark style="background-color: #dcffe4">이스케이프 시퀀스(Escape Sequence)</mark>라고 한다.</p>
+
+<p><strong><mark style="background-color: #dcffe4">이스케이프 시퀀스(Escape Sequence)</mark></strong></p>
+
+<p><img width="30%" src="https://user-images.githubusercontent.com/76654131/138588066-b03b58b2-8053-4972-a18c-0a466e9b645b.png" /></p>
+
+<p><strong>ex)  “comment”: “안녕하세요. "식빵" 입니다.”</strong><br />
+큰따옴표를 이스케이프 시퀀스(")로 표현하지 않았다면, <br />
+식빵이라는 문자열 앞에 있는 큰따옴표에서 문자열이 모두 끝났다고 인식함.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

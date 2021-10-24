@@ -1,0 +1,99 @@
+I"Q*<h2 id="문제">문제</h2>
+<p>상근이는 매일 아침 알람을 듣고 일어난다. 알람을 듣고 바로 일어나면 다행이겠지만, 항상 조금만 더 자려는 마음 때문에 매일 학교를 지각하고 있다.</p>
+
+<p>상근이는 모든 방법을 동원해보았지만, 조금만 더 자려는 마음은 그 어떤 것도 없앨 수가 없었다.</p>
+
+<p>이런 상근이를 불쌍하게 보던, 창영이는 자신이 사용하는 방법을 추천해 주었다.</p>
+
+<p>바로 “45분 일찍 알람 설정하기”이다.</p>
+
+<p>이 방법은 단순하다. 원래 설정되어 있는 알람을 45분 앞서는 시간으로 바꾸는 것이다. 어차피 알람 소리를 들으면, 알람을 끄고 조금 더 잘 것이기 때문이다. 이 방법을 사용하면, 매일 아침 더 잤다는 기분을 느낄 수 있고, 학교도 지각하지 않게 된다.</p>
+
+<p>현재 상근이가 설정한 알람 시각이 주어졌을 때, 창영이의 방법을 사용한다면, 이를 언제로 고쳐야 하는지 구하는 프로그램을 작성하시오.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫째 줄에 두 정수 H와 M이 주어진다. (0 ≤ H ≤ 23, 0 ≤ M ≤ 59) 그리고 이것은 현재 상근이가 설정한 놓은 알람 시간 H시 M분을 의미한다.</p>
+
+<p>입력 시간은 24시간 표현을 사용한다. 24시간 표현에서 하루의 시작은 0:0(자정)이고, 끝은 23:59(다음날 자정 1분 전)이다. 시간을 나타낼 때, 불필요한 0은 사용하지 않는다.</p>
+
+<h2 id="출력">출력</h2>
+<p>첫째 줄에 상근이가 창영이의 방법을 사용할 때, 설정해야 하는 알람 시간을 출력한다. (입력과 같은 형태로 출력하면 된다.)</p>
+
+<h2 id="code-1">CODE 1</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">readline</span><span class="dl">"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+ 
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[]</span>
+ 
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">line</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">input</span> <span class="o">=</span> <span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">el</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">el</span><span class="p">))</span>
+    <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">close</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">hour</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="kd">let</span> <span class="nx">min</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1">// 24시간 표현에서 하루의 시작은 0:0(자정)이고, 끝은 23:59(다음날 자정 1분 전)</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">hour</span> <span class="o">==</span> <span class="mi">24</span><span class="p">)</span> <span class="nx">hour</span> <span class="o">=</span> <span class="mi">0</span> 
+    
+    <span class="c1">// 분으로만 계산 </span>
+    <span class="kd">const</span> <span class="nx">sumMin</span> <span class="o">=</span> <span class="p">(</span><span class="nx">hour</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">+</span> <span class="nx">min</span><span class="p">)</span> <span class="o">-</span> <span class="mi">45</span>
+ 
+    <span class="kd">const</span> <span class="nx">resHour</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">sumMin</span> <span class="o">/</span> <span class="mi">60</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">resMin</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">sumMin</span> <span class="o">%</span> <span class="mi">60</span><span class="p">)</span>
+ 
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">resHour</span><span class="p">}</span><span class="s2"> </span><span class="p">${</span><span class="nx">resMin</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+ 
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+  <span class="p">})</span>
+</code></pre></div></div>
+<h2 id="code-2">CODE 2</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">);</span>
+ 
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+  <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+  <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+ 
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[]</span>
+ 
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">line</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">input</span> <span class="o">=</span> <span class="nx">line</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">'</span><span class="s1"> </span><span class="dl">'</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="nx">el</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">el</span><span class="p">))</span>
+  <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">hour</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="kd">let</span> <span class="nx">min</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+  
+  <span class="k">if</span> <span class="p">(</span><span class="nx">min</span> <span class="o">-</span> <span class="mi">45</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">min</span> <span class="o">=</span> <span class="mi">60</span> <span class="o">+</span> <span class="p">(</span><span class="nx">min</span> <span class="o">-</span> <span class="mi">45</span><span class="p">)</span>
+    <span class="nx">hour</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1">// hour = hour - 1</span>
+ 
+  <span class="c1">// 0시로 입력된 경우    </span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">hour</span> <span class="o">===</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span> 
+      <span class="nx">hour</span> <span class="o">=</span> <span class="mi">23</span>
+    <span class="p">}</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">min</span> <span class="o">-=</span> <span class="mi">45</span> <span class="c1">// min = min - 45</span>
+  <span class="p">}</span>
+ 
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hour</span> <span class="o">+</span> <span class="dl">'</span><span class="s1"> </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">min</span><span class="p">)</span>
+ 
+  <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET
