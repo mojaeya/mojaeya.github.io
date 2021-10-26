@@ -59,6 +59,12 @@
       margin: 0;
       padding: 0;
     }
+    // index.html 홈페이지 첫화면 post-title 크기 조절
+    .post-title {    
+      color: $theme-color;
+      margin-top: 0;
+      font-size: 0.9rem;
+    }
     font-family: $font-sans;
   }
 }

@@ -6,16 +6,16 @@
   }
 
   @media (min-width: 38rem) {
-    font-size: .8rem;
+    font-size: 0.9rem; // 게시글 글자 크기 
 
-    h1 { font-size: 1.6rem; }        // 게시글 글자 크기
+    h1 { font-size: 1.6rem; }        
     h2 { 
       margin: 2em 0 1em 0;
-      font-size: 1.2rem; 
+      font-size: 1.3rem; 
     }
     h3{
       margin: 2em 0 1em 0;
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
     h4, h5, h6 {
       margin: 2em 0 1em 0;
@@ -26,6 +26,7 @@
   .post-title {
     color: $theme-color;
     margin-top: 0;
+    font-size: 1.9rem;
   }
 
   .post-date {
@@ -60,6 +61,7 @@
 }
 .related-posts h3 {
   margin-top: 0;
+  font-size: 1rem;  // post related posts 아래 목록 글자 크기
 }
 .related-posts li small {
   font-size: 75%;

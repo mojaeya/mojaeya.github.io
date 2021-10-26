@@ -40,14 +40,14 @@ nav:
     - '/blog/'
   Categories:           
     - '/'
-    - { TIL: '/blog/categories/#TIL' }
-    - { CS: '/blog/categories/#CS' }
-    - { JavaScript: '/blog/categories/#JavaScript' }
-    - { Node.js: '/blog/categories/#Node.js' }
-    - { MySQL: '/blog/categories/#MySQL' }
-    - { Algorithm: '/blog/categories/#Algorithm' }
-    - { AWS: '/blog/categories/#AWS' }
-    - { Git: '/blog/categories/#Git' }
+    - { TIL: '/blog/categories/#til' }
+    - { CS: '/blog/categories/#cs' }
+    - { JavaScript: '/blog/categories/#javascript' }
+    - { Node.js: '/blog/categories/#node.js' }
+    - { MySQL: '/blog/categories/#mysql' }
+    - { Algorithm: '/blog/categories/#algorithm' }
+    - { AWS: '/blog/categories/#aws' }
+    - { Git: '/blog/categories/#git' }
     - { etc: '/blog/categories/#etc' }
   About:          
     - '/about/'
