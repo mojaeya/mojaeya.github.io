@@ -10,6 +10,7 @@ logo: '/public/logo.png'
 gems:
   - jekyll-paginate
 markdown: kramdown
+highlighter: rouge
 kramdown:
   input: GFM
 excerpt_separator: "<!-- more -->"
@@ -25,7 +26,7 @@ version: 1.0.0
 # About/contact
 author:
   name: mojaeya
-  description: mojaeya(HoJae Kim)
+  description: mojaeya ( HoJae Kim )<br>"배움을 포기하는 순간 늙기 시작한다."
   gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
     #linkedin:  https://www.linkedin.com/in/lizhihao

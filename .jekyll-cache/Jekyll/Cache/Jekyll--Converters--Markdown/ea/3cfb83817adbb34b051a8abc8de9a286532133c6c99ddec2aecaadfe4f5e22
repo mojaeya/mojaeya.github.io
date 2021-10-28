@@ -1,0 +1,71 @@
+I"A<h2 id="문제">문제</h2>
+<p>지니레코드에서는 불세출의 가수 조영필의 라이브 동영상을 DVD로 만들어 판매하려 한다. <br />
+DVD에는 총 N개의 곡이 들어가는데, DVD에 녹화할 때에는 라이브에서의 순서가 그대로 유지되어야 한다. <br />
+순서가 바뀌는 것을 우리의 가수 조영필씨가 매우 싫어한다. <br />
+즉, 1번 노래와 5번 노래를 같은 DVD에 녹화하기 위해서는 1번과 5번 사이의 모든 노래도 같은 DVD에 녹화해야 한다. <br />
+또한 한 노래를 쪼개서 두 개의 DVD에 녹화하면 안된다. <br />
+지니레코드 입장에서는 이 DVD가 팔릴 것인지 확신할 수 없기 때문에 이 사업에 낭비되는 DVD를 가급적 줄이려고 한다. <br />
+고민 끝에 지니레코드는 M개의 DVD에 모든 동영상을 녹화하기로 하였다. <br />
+이 때 DVD의 크기(녹화 가능한 길이)를 최소로 하려고 한다. <br />
+그리고 M개의 DVD는 모두 같은 크기여야 제조원가가 적게 들기 때문에 꼭 같은 크기로 해야 한다.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫째 줄에 자연수 N(1≤N≤1,000), M(1≤M≤N)이 주어진다.
+다음 줄에는 조영필이 라이브에서 부른 순서대로 부른 곡의 길이가 분 단위로(자연수) 주어진다.
+부른 곡의 길이는 10,000분을 넘지 않는다고 가정하자.</p>
+
+<h2 id="출력">출력</h2>
+<p>첫 번째 줄부터 DVD의 최소 용량 크기를 출력하세요.</p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">M</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+ 
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">solution</span><span class="p">(</span><span class="nx">M</span><span class="p">,</span> <span class="nx">arr</span><span class="p">))</span>
+ 
+<span class="kd">function</span> <span class="nx">solution</span><span class="p">(</span><span class="nx">M</span><span class="p">,</span> <span class="nx">arr</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">lt</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">(...</span><span class="nx">arr</span><span class="p">)</span> <span class="c1">// 제일 큰 값</span>
+    <span class="kd">let</span> <span class="nx">rt</span> <span class="o">=</span> <span class="mi">45</span> <span class="c1">// 한 DVD에 저장할 수 있는 음악 크기</span>
+    <span class="kd">let</span> <span class="nx">result</span>
+ 
+    <span class="k">while</span> <span class="p">(</span><span class="nx">lt</span> <span class="o">&lt;=</span> <span class="nx">rt</span><span class="p">){</span>
+        <span class="kd">let</span> <span class="nx">mid</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">((</span><span class="nx">lt</span><span class="o">+</span><span class="nx">rt</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 이분검색과 동일</span>
+        <span class="c1">//console.log(`lt = ${lt}, mid = ${mid}, rt = ${rt}`)</span>
+        <span class="kd">let</span> <span class="nx">dvd</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1">// 1개 DVD로 녹화 시작</span>
+        <span class="kd">let</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1">// 1개 DVD에 저장되는 음악 크기 </span>
+ 
+        <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="k">of</span> <span class="nx">arr</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">sum</span><span class="o">+</span><span class="nx">x</span><span class="o">&gt;</span><span class="nx">mid</span><span class="p">){</span>
+                <span class="c1">//console.log("다음곡(",x,")분 =&gt; DVD 용량(",mid,")분짜리라 다음곡 짤려! DVD 갈고 갈게요~")</span>
+                <span class="nx">dvd</span><span class="o">++</span> <span class="c1">// DVD 추가 </span>
+                <span class="nx">sum</span> <span class="o">=</span> <span class="nx">x</span> <span class="c1">// 추가된 DVD로 다음곡 녹화 시작</span>
+            <span class="p">}</span><span class="k">else</span> <span class="p">{</span> 
+                <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">x</span>
+                <span class="c1">//console.log(x,"=&gt; sum :",sum)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="c1">//console.log("DVD 개수 :",dvd)</span>
+        <span class="c1">//console.log("=====================")</span>
+ 
+        <span class="k">if</span> <span class="p">(</span><span class="nx">dvd</span> <span class="o">&lt;=</span> <span class="nx">M</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">result</span> <span class="o">=</span> <span class="nx">mid</span> <span class="c1">// 3개 이하 DVD에 나눠 녹화할 때 DVD 1개의 최적 용량</span>
+            <span class="nx">rt</span> <span class="o">=</span> <span class="nx">mid</span><span class="o">-</span><span class="mi">1</span> <span class="c1">// 하지만 우리는 DVD 3개에 맞춰 최소용량을 구해야 하기 떄문에 rt를 낮춰 계속 탐색</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="nx">lt</span> <span class="o">=</span> <span class="nx">mid</span><span class="o">+</span><span class="mi">1</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">result</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="comment">Comment</h2>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

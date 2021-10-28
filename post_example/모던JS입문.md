@@ -2,7 +2,7 @@
 layout: post
 title: JavaScript - 객체의 기초
 category: JavaScript
-tags: [javascript, 모던JS입문-Study]
+tags: [javascript, 모던 JS 입문]
 comments: true
 ---
 

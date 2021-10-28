@@ -6,7 +6,7 @@
   }
 
   @media (min-width: 38rem) {
-    font-size: 0.9rem; // 게시글 글자 크기 
+    font-size: 0.85rem; // 게시글 글자 크기 
 
     h1 { font-size: 1.6rem; }        
     h2 { 
@@ -26,7 +26,7 @@
   .post-title {
     color: $theme-color;
     margin-top: 0;
-    font-size: 1.9rem;
+    font-size: 1.7rem; // 포스트 눌렀을때, 포스트 글자 크기 조절하고 싶으면 여기! 이거 없으면, 기본값은  h1임
   }
 
   .post-date {
