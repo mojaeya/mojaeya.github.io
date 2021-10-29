@@ -1,0 +1,74 @@
+I"~<p><br />
+처음 프로그래밍 언어를 접했을때, 배열의 첫번째는 0이라는 사실을 그냥 받아들이고 넘어갔었다. 
+왜 0부터 시작하는지에 대해 알아보자.</p>
+
+<h3 id="컴퓨터-과학자들이-즐겨-쓰는-관습">컴퓨터 과학자들이 즐겨 쓰는 관습</h3>
+
+<h3 id="half-open-interval--인덱스는-시작-수는-포함하고-마지막-수는-제외한다-zero-based-numbering--첫번째-인덱스는-0부터-시작한다"><font color="black"><center>"Half-open interval : 인덱스는 시작 수는 포함하고 마지막 수는 제외한다.<br /> Zero-based numbering : 첫번째 인덱스는 0부터 시작한다."</center></font></h3>
+
+<hr />
+
+<h3 id="그래서-왜-0부터-시작하냐고요">그래서 왜 0부터 시작하냐고요~</h3>
+
+<p>배열은 메모리에 순차적으로 공간을 차지한다. <br />
+그렇다면 주소값이 있어야 하는데 그 <strong>주소값은  맨처음에 위치</strong>한다. <br />
+<strong>주소값 = 배열이 저장된 메모리의 시작 위치이라고 생각하면 쉽다.</strong></p>
+
+<p><strong>주소값=시작</strong> 위치를 기준으로 몇 칸이나 떨어져 있는지에 따라 인덱스에 해당하는 값을 가져오는거다.</p>
+
+<p>그래서 첫번째 값은 주소값에서 1칸 떨어진게 아니고, 바로 그자리에서 가져오기 때문에 <strong>인덱스는 0부터 시작</strong>하는것이다.</p>
+
+<hr />
+
+<h3 id="더-쉽게-이해해보자">더 쉽게 이해해보자.</h3>
+
+<p><mark style="background-color: #dcffe4">(주소값 + 할당값의 바이트 크기 * 인덱스 수)</mark> 이 공식으로 배열의 위치를 참조해 값을 가져올 수 있다.</p>
+
+<ul>
+  <li>첫번째 값을 가져오려면 주소값이 1000이라면 4byte * 0 = 0 이므로 주소값이 1000에 접근해서 값을 가져오고</li>
+  <li>두번째 값을 가져오려면 주소값이 1000이니깐 4byte * 1 = 4 이므로 주소값이 1004에 접근해서 값을 가져온다.</li>
+</ul>
+
+<p>만약 인덱스가 1부터 시작한다면 첫번째 위치를 제대로 찾지 못할 수 있다. <br />
+0부터 시작해야 첫번째 위치=주소값이 이동하지 않고 정확히 찾을 수 있는것이다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// javascript</span>
+<span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="nx">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="c1">// [1, 2, 3, 4]</span>
+</code></pre></div></div>
+
+<p>이제 이 코드를 그냥 무식하게 받아들이는게 아니고 이유를 알고 보니 신선하네~</p>
+
+<hr />
+
+<h3 id="그-외-다른-이유들">그 외 다른 이유들</h3>
+<ul>
+  <li>메모리 주소는 0부터 시작한다.</li>
+  <li>인덱스가 1부터 시작하면 0이라는 공간을 낭비하게 되기 때문에.</li>
+  <li>컴퓨터가 계산하기 편하라고</li>
+  <li>다익스트라의 노트 =&gt; 난 이해를 못했다.</li>
+</ul>
+
+<p><br /></p>
+
+<p>생각해보면, <br />
+10진수도 0 ~ 9 <br />
+2진수도 0 ~ 1</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href="https://get6.github.io/others/2020/why-index-start-zero/">https://get6.github.io/others/2020/why-index-start-zero/</a> <br />
+<a href="https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=dssh87&amp;logNo=221363584443">https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&amp;blogId=dssh87&amp;logNo=221363584443 </a></p>
+</blockquote>
+:ET
