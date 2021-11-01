@@ -8,25 +8,26 @@
   @media (min-width: 38rem) {
     font-size: 0.85rem; // 게시글 글자 크기 
 
-    h1 { font-size: 1.6rem; }        
+    h1 { font-size: 1.5rem; }        
     h2 { 
       margin: 2em 0 1em 0;
       font-size: 1.3rem; 
+      color: #0086E5;
     }
     h3{
       margin: 2em 0 1em 0;
-      font-size: 1rem;
+      font-size: 1.1rem;
     }
     h4, h5, h6 {
       margin: 2em 0 1em 0;
-      font-size: 0.7rem;
+      font-size: 0.9rem;
     }
   }
 
   .post-title {
     color: $theme-color;
     margin-top: 0;
-    font-size: 1.7rem; // 포스트 눌렀을때, 포스트 글자 크기 조절하고 싶으면 여기! 이거 없으면, 기본값은  h1임
+    font-size: 1.7rem; // 포스트 눌렀을때, 포스트 제목 글자 크기 조절하고 싶으면 여기! 이거 없으면, 기본값은  h1임
   }
 
   .post-date {
@@ -47,6 +48,12 @@
   article {
     line-height: 1.4rem;
   }
+
+  // 포스트 하이퍼링크 임시 색상변경 ㅜㅜ [**title**] 이렇게 했을때만 색 변경하게 만듬
+  a strong {
+    color: #090;
+  }
+
 }
 
 /* Related posts */

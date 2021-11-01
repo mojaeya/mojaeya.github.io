@@ -185,11 +185,11 @@ let x = 5
 👋 const문으로 선언한 상수값은 수정 불가능하다고 변수 시간에 배웠는데, 상수 값이 객체나 배열인 경우는 수정 가능하다~
 
 
-### 객체의 메서드, 생성자 : [객체의 기초 포스팅 참조](https://mojaeya.github.io/basic-object)
+### 객체의 메서드, 생성자 : [객체의 기초 포스팅 참조 👈](https://mojaeya.github.io/basic-object)
 
 ---
 
-# <font color='black'> 배열 </font>
+# 배열 
 - 순서가 있는 컬렉션을 저장할 때 쓰는 자료구조인 '배열'
 
 ## 배열 선언

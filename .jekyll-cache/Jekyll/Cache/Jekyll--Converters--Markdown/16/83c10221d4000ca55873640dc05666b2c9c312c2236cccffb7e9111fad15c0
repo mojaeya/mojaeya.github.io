@@ -1,0 +1,106 @@
+I"�<p><br /></p>
+<blockquote>
+  <p><strong>Signed  : 부호를 가지는 값 ( 양수, 음수 구분 가능)</strong> <br />
+<br />
+<strong>UnSigned : 부호를 가지지 않는 값 ( Only 양수)</strong></p>
+</blockquote>
+
+<h4 id="-쉬운-이해를-위해-8비트를-기준으로-정리한다"><em>✓ 쉬운 이해를 위해 8비트를 기준으로 정리한다.</em></h4>
+<p><br />
+▶︎ <strong>Signed</strong>  : 음수표현을 위해 2의 보수 체계 사용, 부호 구별하는 <strong>MSB</strong>(Most Significant Bit) = 최상단 비트 필요</p>
+<ul>
+  <li>MSB: 0 =&gt; 양수 MSB: 1 =&gt; 음수
+<br /></li>
+</ul>
+
+<p>▶︎ <strong>UnSigned</strong> : 부호가 없기 때문에 음수 표현 x, 대신 양수를 2배만큼 표현 가능
+<br /></p>
+
+<blockquote>
+  <p><strong>8비트 경우 Signed : -128 ~ 127   /  UnSigned : 0 ~ 255</strong></p>
+</blockquote>
+
+<p><br /></p>
+
+<p>이해를 위해 예를 들어보자. <br />
+만약, (8비트)컴퓨터가 127이라는 수를 저장 한다면, 127을 이진수 변환하면 1111111</p>
+
+<ul>
+  <li>
+    <p><strong>Signed</strong> : 제일 앞 비트인 MSB를 하나 소비 <br />
+<img width="70%" src="https://user-images.githubusercontent.com/76654131/139401865-ed3dc939-3539-4b0b-8a5a-e11dee8d0f2b.png" /></p>
+  </li>
+  <li>
+    <p><strong>UnSigned</strong> <br />
+<img width="70%" alt="스크린샷 2021-10-29 오후 5 24 35" src="https://user-images.githubusercontent.com/76654131/139401900-50770750-39c9-448c-a5f2-b890c00c5f20.png" /></p>
+  </li>
+</ul>
+
+<p><br /></p>
+<h3 id="그럼--128을-저장하면">그럼 -128을 저장하면?</h3>
+<p>일단 먼저,<u>컴퓨터는 음수를 처리할 때 2의 보수법을 사용한다는것을 명심하자.</u></p>
+
+<h3 id="보수">보수?</h3>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>보수란, <span class="s1">'두 수의 합이 진법의 밑수(N)가 되게 하는 수'</span>를 말한다.
+
+예를 들어 10진수 4의 10의 보수는 6이고, 10진수 2의 10의 보수는 8이다.   
+보수는 컴퓨터에서 음의 정수를 표현하기 위해서 고안.   
+컴퓨터 내부에서는 사칙연산을 할 때 덧셈을 담당하는 가산기<span class="o">(</span>Adder<span class="o">)</span>만 이용하기 때문에 뺄셈은 덧셈으로 형식을 변환하여 계산해야 한다.   
+즉 컴퓨터 내부에서는 A - B를 계산할 때 B의 보수<span class="o">(</span><span class="nt">-B</span><span class="o">)</span>를 구한 다음 A + <span class="o">(</span><span class="nt">-B</span><span class="o">)</span>로 계산하는 것이다.
+ 
+▶ 1의 보수 : 각 자릿수의 값이 모두 1인 수에서 주어진 2진수를 빼면 1의 보수를 얻는다.
+​
+  Ex<span class="o">)</span> 2진수 1010의 1의 보수는 0101.
+​
+▶ 2의 보수 : 1의 보수에 1을 더한 값과 같다.​
+​
+  Ex<span class="o">)</span> 2진수 1010에 대한 2의 보수를 구하려면 2진수 1010에 대한 1의 보수 0101을 구한 다음 1을 더해 0110을 얻는다.
+</code></pre></div></div>
+
+<p>즉, 2의 보수법을 적용하려면 1의 보수법을 거쳐야 한다.</p>
+
+<p>첫째, 128을 이진수로 변환하면 =&gt; 10000000</p>
+
+<p>둘째, 1의 보수법을 거치면 =&gt; 01111111</p>
+
+<p>셋째, 1의 보수 01111111에 +1을 한다. 결과는 10000000</p>
+
+<p><br />
+난 똥멍청이라 맨 처음에 +1을 더한 저 결과를 바로 이해 못했다.</p>
+
+<p><img width="70%" alt="스크린샷 2021-10-29 오후 5 27 31" src="https://user-images.githubusercontent.com/76654131/139402353-1e76aa43-97b6-4a16-bb88-ae3f4f5a5fcf.png" /></p>
+
+<ul>
+  <li><strong>Signed</strong> : 제일 앞 비트인 MSB를 하나 소비 <br />
+<img width="70%" alt="스크린샷 2021-10-29 오후 5 49 06" src="https://user-images.githubusercontent.com/76654131/139405698-c4a5324b-8cbb-4496-815a-bae6974b5895.png" />
+<br /></li>
+</ul>
+
+<hr />
+
+<h2 id="이렇게-signed-와-unsigned는-메모리-저장-방식이-다르다">이렇게 Signed 와 UnSigned는 메모리 저장 방식이 다르다.</h2>
+<p>그래서 Signed에서 11111111이 십진수로 -1이지만 UnSigned에서는 십진수로 255가 되는 경우가 있는것이다.</p>
+
+<p>이래서 간혹 Signed와 UnSigned를 서로 연산할 때, Signed를  UnSigned쪽으로 바꿔서 연산하면<br />
+Signed의 음수부분이 바껴서 버그가 발생하기도 한단다.</p>
+
+<p><br />
+흠… 그럼 어떤걸 사용하는게 좋은거지?</p>
+
+<p><br />
+근데 Signed가 <strong><font color="red">음수</font></strong>일때 UnSigned으로 바꾸는 경우에만  메모리 저장 방식이 달라 값이 달라지는거지, <br />
+Signed가 <strong><font color="#1E90FF">양수</font></strong>이면 UnSigned로 동일한 값으로 잘 바뀐다.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href="https://m.blog.naver.com/kmc7468/220792205439">https://m.blog.naver.com/kmc7468/220792205439</a> <br />
+<a href="https://themangs.tistory.com/entry/Signed와-Unsigned의-차이">https://themangs.tistory.com/entry/Signed와-Unsigned의-차이</a> <br />
+<a href="https://ndb796.tistory.com/4">https://ndb796.tistory.com/4</a></p>
+</blockquote>
+:ET

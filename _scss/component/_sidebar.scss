@@ -23,7 +23,7 @@
   overflow-y: auto;
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
   font-size: .875rem; /* 15px */
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.6); // 사이드바 이미지 밑에 글 작성 글 색상
   @include transition(all .3s ease-in-out);
 
   @if $reverse-layout {

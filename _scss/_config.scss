@@ -20,7 +20,7 @@ $theme-color: #353535;
 $theme-color-dark: darken($theme-color, 10%);
 
 $post-date-color: #9a9a9a;
-$title-color: #0086E5;
+$title-color: $black; // #0086E5
 $masthead-title-small-color: $black;
 
 /* Layout */
