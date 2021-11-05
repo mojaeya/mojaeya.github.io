@@ -1,0 +1,41 @@
+I"�<p><br />
+채팅 api를 공부하면서, TCP와 UDP에 대해서 알아보기전에 TCP/IP를 먼저 알아야할 필요성을 느꼈다. <br />
+사실 개발 공부 초기에 TCP/IP 포스팅을 한적이 있는데 좀 부족해서 자세히 알아보자. <br />
+그리고 정보처리기사 필기를 딸 때, 무지성으로 외웠던 OSI 7계층도 간단히 알고 넘어가자.</p>
+
+<h2 id="osiopen-system-interconnection-7계층">OSI(Open System Interconnection) 7계층</h2>
+<ol>
+  <li>국제 표준화 기구인 ISO가 개발한 개방형 시스템 상호 연결 모델, 네트워크 프로토콜 디자인과 통신을 계층으로 나눠 설명한것이다.</li>
+  <li>개방형 시스템(Open System)이란 기반구조와 관계없이 시스템간의 통신을 제공하는 프로토콜의 집합이다.
+    <blockquote>
+      <p>프로토콜이란? <br />
+컴퓨터나 원거리 통신 장비 사이에서 메시지를 주고 받는 양식과 규칙의 체계. 즉, 통신 규약 및 약속</p>
+    </blockquote>
+  </li>
+  <li>계층구조를 가짐으로써 데이터자체의 흐름을 각 구간별로 데이터의 움직임을 알 수 있다.</li>
+</ol>
+
+<p align="center"><img width="90%" src="https://user-images.githubusercontent.com/76654131/140272136-13109656-1691-4cb7-8a62-4ad32c9d91d5.png" /></p>
+<p>이미지 출처 : https://naon.me/posts/til79</p>
+
+<ul>
+  <li>계층은 지날 때마다 헤더(Header)가 붙는데, 이것은 해당 계층의 기능과 관련된 제어 정보가 포함되어 있다.</li>
+  <li>제어 정보들은 모두 운영체제가 제공하는 프로토콜에 의해 송신 측에서는 하위 계층으로 지날 때마다 덧붙여서 추가 되고(Encapsulation), 수신 측에서는 상위 계층으로 지날 때마다 순차적으로 헤더 정보를 처리하고 제거된다.(Decapsulation)</li>
+</ul>
+
+<h2 id="tcpip-4계층">TCP/IP 4계층</h2>
+<ol>
+  <li></li>
+</ol>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET
