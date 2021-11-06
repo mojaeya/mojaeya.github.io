@@ -38,32 +38,32 @@
   }
 }
 
-// 모바일(h2 색상 바꾸려고 초보몽키는 코드 무지성 복사 참조)
-@media (max-width: 415px) {
-  #search-input{
-    width: 330px;
-  }
-  ul, ol{
-    -webkit-padding-start: 15px;
-  }
-  h1{
-    font-size: 1.5rem;
-  }
-  h2{
-    color: #0086E5 !important;
-  }
-  h2, h3{
-    font-size: 1.3rem;
-  }
+// // 모바일(h2 색상 바꾸려고 초보몽키는 코드 무지성 복사 참조)
+// @media (max-width: 415px) {
+//   #search-input{
+//     width: 330px;
+//   }
+//   ul, ol{
+//     -webkit-padding-start: 15px;
+//   }
+//   h1{
+//     font-size: 1.5rem;
+//   }
+//   h2{
+//     color: #0086E5 !important;
+//   }
+//   h2, h3{
+//     font-size: 1.3rem;
+//   }
 
-}
+// }
 
-#blog-title{
-  vertical-align: text-top;
-  font-size: 80%;
-  color : rgba(49, 49, 49, 0.82);
-}
+// #blog-title{
+//   vertical-align: text-top;
+//   font-size: 80%;
+//   color : rgba(49, 49, 49, 0.82);
+// }
 
-.nav-up {
-    top: -92px;
-}
+// .nav-up {
+//     top: -92px;
+// }
