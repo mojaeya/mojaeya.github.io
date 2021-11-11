@@ -1,0 +1,255 @@
+I">,<h2 id="ec2--elastic-compute-cloud-">EC2 ( Elastic Compute Cloud )</h2>
+
+<ul>
+  <li><strong>AWS에서 제공하는  확장 가능 컴퓨팅 용량</strong></li>
+</ul>
+
+<p>아마존닷컴의 클라우드 컴퓨팅 플랫폼 아마존 웹 서비스의 중앙부를 이루며,</p>
+
+<p>사용자가 가상 컴퓨터를 임대 받아 그 위에 자신만의 컴퓨터 애플리케이션들을 실행할 수 있게 한다. <br />
+<strong>( 메모리, 스토리지 등을 설정해 마치 컴퓨터를 구입하듯이 구입하여 서버로 사용한다 )</strong></p>
+
+<p>EC2는 사용자가 <strong><mark style="background-color: #fff5b1">아마존 머신 이미지(AMI)</mark></strong>로 부팅하여 아마존이 <strong><mark style="background-color: #fff5b1">"인스턴스"라 부르는 가상 머신</mark></strong>을, 원하는 소프트웨어를 포함하여 구성할 수 있게 하는 웹 서비스를 제공함으로써 스케일링이 가능한 애플리케이션 배치(deployment)를 장려한다. </p>
+
+<p>사용자는 필요하면 서버 인스턴스를 만들고 시작하고 종료할 수 있으며, <strong>실행 중인 서버에 대해 시간 당 지불</strong>하므로 <br />
+<strong>“일래스틱”(elastic, 탄력적인)</strong>이라는 용어를 사용하게 된다. </p>
+
+<h2 id="ec2의-기능">EC2의 기능</h2>
+
+<p>Amazon EC2는 다음의 기능을 제공한다.</p>
+
+<ul>
+  <li><strong>인스턴스</strong>: 가상 컴퓨팅 환경</li>
+  <li><strong>Amazon 머신 이미지(AMI)</strong>: 서버에 필요한 운영체제와 여러 소프트웨어들이 적절히 구성된 상태로 제공되는 템플릿으로 인스턴스를 쉽게 만들 수 있다.</li>
+  <li><strong>인스턴스 유형</strong>: 인스턴스를 위한 CPU, 메모리, 스토리지, 네트워킹 용량의 여러 가지 구성 제공</li>
+  <li><strong>키 페어</strong>를 사용하여 인스턴스 로그인 정보 보호(AWS는 퍼블릭 키를 저장하고 사용자는 개인 키를 안전한 장소에 보관하는 방식)<br />
+<em>키 페어 : EC2 인스턴스에 연결할 때 자격 증명 입증에 사용하는 보안 자격 증명 집합</em></li>
+  <li><strong>인스턴스 스토어 볼륨</strong>: 임시 데이터를 저장하는 스토리지 볼륨으로 인스턴스 중단, 최대 절전 모드로 전환 또는 종료 시 삭제됨</li>
+  <li><strong>Amazon Elastic Block Store(Amazon EBS)</strong>, 즉 Amazon EBS 볼륨을 사용해 영구 스토리지 볼륨에 데이터 저장</li>
+  <li>인스턴스와 Amazon EBS 볼륨 등의 리소스를 다른 물리적 장소에서 액세스할 수 있는 리전 및 가용 영역</li>
+  <li><strong>보안 그룹</strong>을 사용해 인스턴스에 연결할 수 있는 프로토콜, 포트, 소스 IP 범위를 지정하는 방화벽 기능</li>
+  <li><strong>탄력적 IP 주소(EIP)</strong>: 동적 클라우드 컴퓨팅을 위한 고정 IPv4 주소</li>
+  <li><strong>태그</strong>: 사용자가 생성하여 Amazon EC2 리소스에 할당할 수 있는 메타데이터</li>
+  <li>AWS 클라우드에서는 논리적으로 격리되어 있지만 원할 때마다 고객의 네트워크와 간편히 연결할 수 있는 가상 네트워크인<br />
+<strong>Virtual Private Clouds(VPC)</strong></li>
+</ul>
+
+<h2 id="ec2-인스턴스-생성하기">EC2 인스턴스 생성하기</h2>
+
+<p><strong>Mac OS 환경</strong></p>
+
+<p><strong>AWS 서비스 -&gt; EC2</strong> </p>
+
+<p><strong>1. 인스턴스 시작</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@0z3yf/btrc8A3ynS9/8od0UUfsdQn4uCKJi0brSK/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”2844” data-origin-height=”876” data-filename=”인스턴스 시작.png” width=”909” height=”280” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>우측 상단에 지역을 꼭 서울로 설정하고, 인스턴스 시작을 누른다.</p>
+
+<p><strong>2. AMI 선택</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@byb56E/btrdfHtrkje/CW45pbiBECWgL9KoDejAx0/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”2806” data-origin-height=”1028” data-filename=”ami 선택.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>학습 용도인데 과금이 되면 억울하니, 꼭 프리 티어만 체크!!! </p>
+
+<p>AMI : 인스턴스를 시작하는데 필요한 소프트웨어 구성 (운영 체제, 애플리케이션 서버, 애플리케이션)을 선택</p>
+
+<p>나는 <strong>Ubuntu Server 20.04</strong> AMI를 선택했다.</p>
+
+<p><strong>3. 인스턴스 유형 선택</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@b33vYz/btrc7N3un6j/vfVk9ZLvdVi0fZ3k8i7FgK/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”2870” data-origin-height=”1520” data-filename=”인스턴스 유형 선택.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>앞서 프리티어만 체크를 해서 자동으로 프리티어 사용 가능한 유형이 선택되어 있다.</p>
+
+<p>사용목적에 따라 cpu, 메모리 등을 선택하여 인스턴스를 생성할 수 있다. 가난한 학생은 프리티어만 안고 간다.</p>
+
+<p><strong>4. 인스턴스 세부 정보 구성</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@zFpiE/btrdcQZdkI1/7nbFIGb192k9uVxsZKlXjK/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”2858” data-origin-height=”1516” data-filename=”인스턴스 세부 정보 구성 pass.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>세부 정보 구성을 설정하는 건데, 모두 기본값으로 설정해도 무방하다고 하니 바로 다음! (사실 아직 뭐가 뭔지 모르겠다)</p>
+
+<p><strong>5. 스토리지 추가</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@lOK8N/btrc7PmKRHx/8lNPMPlEoz244de3bV9AiK/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”2870” data-origin-height=”1526” data-filename=”스토리지 추가.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>스토리지 추가에 진입하면 기본적으로 크기가 8GB로 설정되어 있을 거다.</p>
+
+<p>프리티어 사용자에게 최대 30G까지 사용 가능하다고 하니 챙겨줄때 챙겨두자.</p>
+
+<p><strong>6. 태그 추가</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@zhAmk/btrc7PNJy0o/coMhSkSACYuQOMGp6KyeGK/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”2862” data-origin-height=”1516” data-filename=”태그 추가.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>태그 추가도 그냥 바로 다음!</p>
+
+<p><strong>7. 보안 그룹 구성</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@bLc1t7/btrdcQES89J/I3Kxz0kk4os3bPbub8CqJ1/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”1439” data-origin-height=”772” data-filename=”보안그룹 구성.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>인스턴스에 연결할 수 있는 프로토콜, 포트, 소스 IP 범위를 지정하는 방화벽 기능 설정하는 단계다.</p>
+
+<p>인스턴스는 가상머신이기 때문에 GUI처럼 눈에 보이지 않는다. 그래서 터미널을 이용해서 접속할 수 밖에 없어, 보안 그룹 구성에 들어오면 기본적으로 SSH 유형만 기본값으로 설정되어 있다.</p>
+
+<p>나는 주로 웹서버로 활용할것이기 때문에 규칙 추가를 눌러서 일단 HTTP(80), HTTPS(443) 정도만 추가해줬다.</p>
+
+<p><strong>8. 인스턴스 시작 검토</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@swhU8/btrc7V7SeY7/lBtAK59p9kW5qrzkpkdySk/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”2820” data-origin-height=”1396” data-filename=”스크린샷 2021-08-25 오후 11.09.58.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>인스턴스 시작 세부 정보를 검토하고 시작 버튼 선택!</p>
+
+<p><strong>9.  키페어 선택 / 생성</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@oLXMx/btrc7OnOzD9/78QnvYaLsuMtjTv7tBrjH1/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”1398” data-origin-height=”1070” data-filename=”키페어.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>키 페어가 없다면 새 키페 생성을 선택하고, 키 페어 이름 설정 후 키 페어를 다운로드 해준다.  다운로드 후 인스턴스 시작!</p>
+
+<p>참고로 키 페어는 터미널에서 SSH를 통해 인스턴스에 접속할 때 꼭 필요한 파일이기 때문에 꼭 소중히 나만 볼 수 있게 잘 보관해야 한다.</p>
+
+<p>나같은 경우는 aws_key라는 폴더를 만들어 안에다 저장해두었다.</p>
+
+<p>이후 다른 키 페어들도 한 폴더에 저장하면 한 폴더에서 모든 키페어에 접근이 용이하기 때문이다.</p>
+
+<p><strong>10. 인스턴스 실행 확인</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_Image</td>
+      <td>kage@ErP4n/btrdeWYGwyT/Alqlejl3DQKrGe8yLpM1S1/img.png</td>
+      <td>alignCenter</td>
+      <td>data-origin-width=”2850” data-origin-height=”482” data-filename=”완료.png” data-ke-mobilestyle=”widthOrigin”</td>
+      <td> </td>
+      <td> </td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>인스턴스 상태가 실행중이면 완료다! 우리는  AWS에 인스턴스라는 가상 컴퓨터 환경을 만든 것이다.</p>
+
+<p>이제 이 가상 컴퓨터 환경을 서버로 활용하여 나만의 애플리케이션을 실행할 수 있는 것이다!</p>
+
+<p>다음 포스팅에서는 터미널로 EC2 인스턴스에 접속을 해서 내 입맛에 맞게 기본 환경을 셋팅해주자!</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href="https://victorydntmd.tistory.com/61?category=682759">https://victorydntmd.tistory.com/61?category=682759</a></p>
+</blockquote>
+:ET
