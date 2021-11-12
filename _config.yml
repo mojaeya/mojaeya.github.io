@@ -41,8 +41,8 @@ nav:
     - '/blog/'
   Categories:           
     - '/'
-    - { TIL: '/blog/categories/#til' }
-    - { CS: '/blog/categories/#cs' }
+    - { TIL (Today I Learned): '/blog/categories/#til' }
+    - { CS: '/blog/categories/#CS' }
     - { JavaScript: '/blog/categories/#javascript' }
     - { Node.js: '/blog/categories/#node.js' }
     - { MySQL: '/blog/categories/#mysql' }
