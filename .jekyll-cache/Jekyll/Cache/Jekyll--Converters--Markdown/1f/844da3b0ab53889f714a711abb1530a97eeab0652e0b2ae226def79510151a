@@ -1,0 +1,27 @@
+I"�<p><br />
+이번 포스팅에서는 OSI 7 Layer 모델에 대해 자세히 알아보자.</p>
+
+<h2 id="osiopen-system-interconnection-7-layer">OSI(Open System Interconnection) 7 Layer</h2>
+<ul>
+  <li>국제 표준화 기구인 ISO가 제정한, 컴퓨터 네트워크 분야의 통신과정을 7계층으로 나눈 표준을 의미한다.</li>
+  <li>말이 어려운데, <strong>“개방형 체계(Open System)”</strong>란  “다른 것과 상호작용하는 체계”를 말한다. <br />
+그냥 다른 것들(다른 생물체, 환경, 물건 등등)과 상호작용하는 모든 생물체나 물건들이 모두 개방형 체계로 볼 수 있으며 그렇기에 컴퓨터도 개방형 체계이다.</li>
+  <li><strong>“상호연결(Interconnection)”</strong>이란 “다른 것과 연결돼 있는 것에 또 연결하는 것”을 의미한다. 그리고 수 많은 컴퓨터들이 연결돼 있는 인터넷이 바로 이런 상호연결이다.</li>
+</ul>
+
+<p>즉 <mark style="background-color: #ffdce0">OSI 7 Layer</mark>란, <mark style="background-color: #fff5b1">"컴퓨터(개방형 체계)가 인터넷(상호연결)을 이용해 통신하는 과정을 7단계로 나눈 것"</mark>이다.</p>
+
+<p align="center"><img width="60%" src="https://user-images.githubusercontent.com/76654131/142221775-63502a09-307a-4a23-b5c5-ed39eca44046.png" />
+</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href="https://www.youtube.com/watch?v=1pfTxp25MA8">https://www.youtube.com/watch?v=1pfTxp25MA8</a></p>
+</blockquote>
+:ET
