@@ -1,0 +1,100 @@
+I"<p>이전 포스팅에서 CLI환경에서 <strong>SSH</strong>를 통해서 EC2 인스턴스에 <strong>원격접속</strong>을 하였다. </p>
+
+<p>이번 포스팅에서는 EC2 인스턴스에 <strong>SCP</strong>를 통해 <strong>간단한 File up/download</strong>를 해보자!</p>
+
+<blockquote>
+  <p><strong>SCP (Secure CoPy) : SSH를 이용해 네트워크로 연결된 호스트간에 파일을 주고 받는 명령어</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="scp를-통한-파일-업로드복사하기"><strong>SCP를 통한 파일 업로드(복사)하기</strong></h2>
+
+<p>일단 먼저 나는 나중에 헷갈리지 않기 위해 <strong>server</strong> 라는 폴더를 생성해주고 시작하겠다.</p>
+
+<p>터미널에서 ssh를 통해 EC2 인스턴스에 접속한 상태 (초록색 Ubuntu@ip~)에서, <strong>폴더 생성 : mkdir [폴더명]</strong> </p>
+
+<p><strong>그 다음 아래와 같이 만들어진 server 폴더로 이동, pwd 치면 경로가 나온다. 이 경로에다 파일을 업로드할 것이다.</strong></p>
+
+<p align="center"><img width="397" alt="스크린샷 2021-12-05 오후 3 43 11" src="https://user-images.githubusercontent.com/76654131/144736601-6d731a02-1c6e-4e6a-b7c3-e750cd6c8c22.png" /></p>
+
+<p>(ssh로 ec2 접속, scp로 ec2에 파일전송 둘다 터미널에서 명령어를 입력할 때 키 페어(.pem파일)가 있는 경로를 입력해야 하는데, 나는 편의상  키 페어 파일이 있는 디렉토리에 진입한 상태에서 키 페어 이름만 적어서 명령어를 실행해주고 있다.)</p>
+
+<p><strong>SCP</strong>도 이전 포스팅 SSH 명령어 실행과 마찬가지로 키 페어 파일이 있는 디렉토리에 진입한 상태에서 명령어를 실행한다.</p>
+
+<p>인스턴스에 접속한 상태에서 <strong>exit</strong> 명령어 실행하면 인스턴스에서 로그아웃되면서 다시 키 페어 파일이 있는 디렉토리에 진입한 상태로 돌아간다.</p>
+
+<blockquote>
+  <font color="red">키 페어 파일이 있는 디렉토리에 진입한 상태에서</font>
+  <p><mark style="background-color: #dcffe4"># 폴더 전송시</mark></p>
+  <font color="#0086E5">scp -i "키 페어 이름" -r [업로드할 폴더] [EC2 계정 이름]@[EC2 인스턴스의 public DNS]:[경로]</font>
+  <p><strong>ex) scp -i “first-sg-key.pem” -r /Users/Desktop/Backend/test/api_practice_final/ ubuntu@ec2-13-125-228-39.ap-northeast-2.compute.amazonaws.com:/home/ubuntu/server</strong> <br />
+<mark style="background-color: #dcffe4"># 파일 전송시</mark></p>
+  <font color="#0086E5">scp -i "키 페어 이름" [업로드할 파일] [EC2 계정 이름]@[EC2 인스턴스의 public DNS]:[경로]</font>
+</blockquote>
+
+<p>참고로 내가 EC2 인스턴스에 전송(복사)할 파일은 로컬에서 이미 <strong>node_modules</strong>가 설치된 파일이다.</p>
+
+<p>하지만 이대로 전송(복사)를 하면 시간도 오래걸릴 뿐더러 다른 OS로 충돌이 날 수도 있기 때문에 <strong>node_modules</strong>를 지워주고 전송(복사)하겠다.   <strong>rm -rf node_modules/</strong> 명령어로 지워준 다음  SCP 명령어를 통해 전송한다.</p>
+
+<h2 id="파일이-잘-업로드-됐는지-확인-해보기"><strong>파일이 잘 업로드 됐는지 확인 해보기</strong></h2>
+
+<p>터미널에 파일들이 주르륵 나열되면서  완료됐다면, 전송이 잘됐는지 확인해보자.</p>
+
+<p>다시 ssh 명령어로 인스턴스에 접속해서 server 폴더에 진입했을 때,</p>
+
+<p>내가 올린 api_practice_final 폴더와 ls -al을 통해 파일들이 확인되는걸 보니 잘 전송이 되었다.</p>
+
+<p align="center"><img width="737" alt="스크린샷 2021-12-05 오후 3 43 35" src="https://user-images.githubusercontent.com/76654131/144736611-e69cc42e-0f36-4a7f-9936-4a79f3903d56.png" /></p>
+
+<p>아 그리고 아까 노드 모듈을 지우고 올렸으니 인스턴스 환경에 npm i 를 통해 새로 노드 모듈을 설치해주자.</p>
+
+<h2 id="scp를-통한-파일-다운로드하기"><strong>SCP를 통한 파일 다운로드하기</strong></h2>
+
+<p><strong>업로드 방식과 반대로 명령어를 실행해주면 된다.</strong></p>
+
+<blockquote>
+  <p><strong>scp -i “키 페어 이름” -r [EC2 계정 이름]@[EC2 인스턴스의 public DNS]:[경로] [다운로드 받을 로컬 경로]</strong></p>
+</blockquote>
+
+<hr />
+
+<h2 id="업로드한-api-서버가-잘-실행이-되는지-눈으로-확인해보기"><strong>업로드한 API 서버가 잘 실행이 되는지  눈으로 확인해보기</strong></h2>
+
+<p><strong>express-generator를 통해 생성된 프로젝트를 실행 시 진입점은 bin/www다.</strong></p>
+
+<p><strong>bin/www : 서버를 실행하는 스크립트다. http모듈에 express 모듈을 연결하고, 포트를 지정한다.</strong></p>
+
+<p>업로드한 api 서버 폴더 안에 bin/www 파일을 보면, 로컬에서는 포트가 3000으로 되어있는데,</p>
+
+<p>인스턴스 생성시 보안 그룹에 추가했던 http 포트 : <strong>80</strong> 으로 변경해준다.</p>
+
+<p align="center"><img width="621" alt="스크린샷 2021-12-05 오후 3 43 50" src="https://user-images.githubusercontent.com/76654131/144736613-3d3854ac-713e-4b63-97db-6266d98de4b4.png" /></p>
+
+<p>그 다음 index.js 파일에서 간단하게 페이지에 출력할 문자를 적어주었다.</p>
+
+<p align="center"><img width="645" alt="스크린샷 2021-12-05 오후 3 44 01" src="https://user-images.githubusercontent.com/76654131/144736614-73562824-e386-4106-9af2-e28a9ee4fc84.png" /></p>
+
+<p>그 다음 다시 scp를 통해 변경된 사항이 적용되게 재업로드를 해주고,</p>
+
+<p>로컬에서 npm run start로 실행했던 것처럼 Ubuntu에서는 sudo npm run start로 실행한다.</p>
+
+<p>* 1024 이하의 포트는 root권한으로만 사용가능하다. 그래서 sudo 명령어 사용</p>
+
+<p align="center"><img width="739" alt="스크린샷 2021-12-05 오후 3 44 18" src="https://user-images.githubusercontent.com/76654131/144736621-f9b976c9-09d2-4ae5-a21c-5c5b74895cc2.png" /></p>
+
+<p>그러면 빨간 박스와 같이 잘 실행되는 것을 알 수 있고, 인스턴스 퍼블릭 DNS 주소를 브라우저 주소창에 치면 index page 라고 뜨는 것을 확인할 수 있다. </p>
+
+<p>다음 포스팅에서는 aws에서 관계형 데이터베이스를 간편하게 설정, 운영, 확장하게 해주는 RDS를 생성해보자.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET
