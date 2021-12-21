@@ -1,0 +1,121 @@
+I".,<p><br />
+막무가내로 암기를 하니 이해가 안가서 쉽게 이해하고자 앞서 <a href="https://mojaeya.github.io/cs/2021/11/04/osi-tcpip.md/"><strong>OSI 7 Layer 와 TCP/IP 개념 그림으로 이해하기</strong></a> 포스팅을 작성했으니 보고 오면 도움이 될 것 같다.</p>
+
+<h2 id="osiopen-system-interconnection-7-layer">OSI(Open System Interconnection) 7 Layer</h2>
+<ul>
+  <li><strong>국제 표준화 기구인 ISO가 제정한, 컴퓨터 네트워크 분야의 통신과정을 7계층으로 나눈 표준을 의미한다.</strong></li>
+  <li><strong>“개방형 체계(Open System)”</strong>란  “다른 것과 상호작용하는 체계”를 말한다. <br />
+그냥 다른 것들(다른 생물체, 환경, 물건 등등)과 상호작용하는 모든 생물체나 물건들이 모두 개방형 체계로 볼 수 있으며 그렇기에 컴퓨터도 개방형 체계이다.</li>
+  <li><strong>“상호연결(Interconnection)”</strong>이란 “다른 것과 연결돼 있는 것에 또 연결하는 것”을 의미한다. 그리고 수 많은 컴퓨터들이 연결돼 있는 인터넷이 바로 이런 상호연결이다.</li>
+</ul>
+
+<p>즉 <mark style="background-color: #ffdce0">"OSI 7 Layer"</mark>란, <mark style="background-color: #fff5b1">"컴퓨터(개방형 체계)가 인터넷(상호연결)을 이용해 통신하는 과정을 7단계로 나눈 것"</mark>이다.</p>
+
+<p align="center"><img width="60%" src="https://user-images.githubusercontent.com/76654131/142221775-63502a09-307a-4a23-b5c5-ed39eca44046.png" /></p>
+
+<p>우리가 운영체제를 통해 하는 응용프로그램들의 모든 활동이 <mark style="background-color: #dcffe4">Application(응용 계층)</mark>에 해당하는 행위다. <br />
+ex) 마우스로 카카오톡을 실행하거나, 파일 및 삭제, 크롬, 네이버 브라우저로 이동</p>
+
+<p>그래서 <u>다른 서버에 있는 컴퓨터에 브라우저를 이용해 접속하는</u>, 즉 <mark style="background-color: #ffdce0">"인터넷에 접속하는 행위"</mark>는 위 사진처럼 <mark style="background-color: #dcffe4">"Application(응용 계층)"</mark>에서 시작해 각 하위 계층으로 데이터가 이동한 뒤, <mark style="background-color: #dcffe4">"다른 컴퓨터의 Physical(물리 계층)"</mark>에 도착한 다음 각 상위 계층으로 데이터가 이동하는 것으로 이해 할 수 있다.</p>
+
+<h4 id="이렇게-계층을-7개로-나눈-이유">이렇게 계층을 7개로 나눈 이유</h4>
+<p>네크워크 통신 중 연결이 끊어지는 원인이 물리적인 랜선이 문제일수도 있고, 네트워크 문제 등 다양한 문제일 수 있다. <br />
+이런 경우 OSI 7 Layer를 사용하면 네트워크 통신이 일어나는 과정에서 연결이 끊어졌을 때, <font color="#0086E5">계층 구조</font>를 갖고 있기 때문에 단계적으로 파악할 수 있어 문제를 해결하기 용이하다. <br />
+(현재는 참조 모델로만 사용하고 실제로 통신할 때는 <a href="https://mojaeya.github.io/cs/2021/11/05/osi-tcpip-diff/"><strong>시장 경쟁에서 이긴 TCP/IP</strong></a> 모델을 쓰고 있다.)</p>
+
+<hr />
+
+<h2 id="프로토콜">프로토콜</h2>
+
+<ul>
+  <li>컴퓨터 공학에서 사용되는 <mark style="background-color: #ffdce0">"프로토콜(Protocol)"</mark>은 <mark style="background-color: #fff5b1">"다른 기계들이 통신을 하기 위해 서로 지켜야할 규칙"</mark>을 말한다.</li>
+  <li>“통신”이라는 것은 사실 “전기적 신호를 일치시켜서 정보교환을 하는 행위”이기 때문에 특정 “규칙(프로토콜)”을 일치시켜야 한다.</li>
+  <li>“프로토콜을 지켜야(일치시켜야) 한다”는 것은 쉽게 라디오나 무전에서 통신이 되려면 “주파수를 맞춰야 했던 것과 같다”고 생각하면 된다.</li>
+  <li>그리고 “인터넷을 통한 통신”은 사실은 어마어마하게 많은 전기공학, 통신공학, 물리공학 기술 등 수 많은 기술들이 복합적으로 사용돼 가능한 것으로, 당연히 그 수 많은 각각의 기술마다 서로 지켜야 할 프로토콜(규칙)이 있다.</li>
+</ul>
+
+<p>그것들이 바로 “OSI 1계층”부터 “OSI 7계층”까지 지겹도록 나오는 수 많은 프로토콜인 것이다. 그래서 네트워크를 공부한다는 것은 수 많은 프로토콜을 학습한다는 것과 마찬가지인것 같다. <br />
+(“프로토콜” 이란 단어를 규칙으로 해석할 경우 이해가 잘 안간다면, “기술” 이라고 해석하고 이해하면 편하다!)</p>
+
+<hr />
+
+<h4 id="그럼-지금부터-osi-7계층을-자세히-살펴보자">그럼 지금부터 OSI 7계층을 자세히 살펴보자.</h4>
+
+<h2 id="layer-1--physical-layer">Layer 1 : Physical Layer</h2>
+
+<p>먼저 1계층 “Physical Layer (물리 계층)”은 통신 중 제일 낮은 단계이다. <br />
+제일 낮은 단계라는 것은 OSI 7계층 중 맨 밑에 있다는 것이다.</p>
+
+<p>두 대의 컴퓨터가 통신하려면 흔히 <code class="language-plaintext highlighter-rouge">비트(bit)</code> 라고 부르는 0과 1로 된 <code class="language-plaintext highlighter-rouge">디지털 신호</code>를 잘 주고 받으면 된다. 
+이러한 신호를 보내기 위해서는 전선을 통해 전달해야 하는데 전자기파는 항상 0 ~ 무한대[Hz]의 주파수의 범위를 가진다나 뭐라나 이러한 이유 때문에 이런 전기신호를 통과시킬 수 있는 전선은 없다고 한다. 그래서 신호를 전송하려면 전기를 이용한 <code class="language-plaintext highlighter-rouge">아날로그</code> 신호로 바꿔줘서 전송해야 한다.</p>
+
+<p align="center"><img width="60%" src="https://user-images.githubusercontent.com/76654131/146768830-03265ef1-ff5a-450b-9964-505f9ca2998d.png" /></p>
+
+<h4 id="그래서-physical-layer-물리-계층-란">그래서 Physical Layer (물리 계층) 란?</h4>
+<ul>
+  <li>0과 1의 데이터를 아날로그 신호로 바꾸어 전선으로 흘려보내고 <code class="language-plaintext highlighter-rouge">encoding</code></li>
+  <li>아날로그 신호가 들어오면 0과 1의 디지털 신호로 해석하여 <code class="language-plaintext highlighter-rouge">decoding</code></li>
+  <li>즉, 물리 계층은 물리적으로 연결된 두대의 컴퓨터가 0과 1로 이루어진 데이터들을 주고 받을 수 있게 해주는 구간이다.</li>
+</ul>
+
+<h4 id="그럼-어떻게-신호를-바꿔서-보낼까">그럼 어떻게 신호를 바꿔서 보낼까?</h4>
+<p>물리 계층에서 데이터링크 계층으로 데이터를 보낼 때 메인보드에 달린 <code class="language-plaintext highlighter-rouge">랜 카드(LAN card)</code>에서 컴퓨터의 0과 1의 <code class="language-plaintext highlighter-rouge">디지털</code> 신호를 “전기신호” 즉, <code class="language-plaintext highlighter-rouge">아날로그</code> 신호로 변환하여 랜 카드에 연결된 <code class="language-plaintext highlighter-rouge">랜 선</code>으로 보낸다.</p>
+
+<p>이렇게 전기신호와 이것을 다루는 장비들의 영역이기에 말 그대로 <code class="language-plaintext highlighter-rouge">물리계층(Physical Layer)</code>이라 부른다.</p>
+
+<ul>
+  <li>단순히 비트열 전송</li>
+  <li>프로토콜 : Modem, Cable, Fiber, RS-232C</li>
+  <li>장비 : 랜카드, 허브, 리피터</li>
+</ul>
+
+<hr />
+
+<h2 id="layer-2--data-link-layer">Layer 2 : Data Link Layer</h2>
+
+<p>이제 1계층인 물리적인 전선을 지나서, 각 전선들을 통해 전달되는 데이터들이 서로 연결될 때 사용되는 기술과 장비들의 영역을 우린 데이터(<font color="red">Data</font>)들이 연결(<font color="red">link</font>)된다고 해서 <code class="language-plaintext highlighter-rouge">데이터 링크(Data link)</code> 계층이라고 한다.</p>
+
+<p>“데이터링크 계층”은 위에서 말했다시피 서로 다른 데이터(신호)들이 연결되는 계층으로서, 어떻게 다른 컴퓨터들에게 오는 각각의 데이터들을 혼동, 충돌없이 원활하게 다른 컴퓨터로 보내겠느냐에 대한 프로토콜들이 있다.</p>
+
+<h4 id="여러대의-기기들이-연결됐을-때네트워크가-형성됐을-때-각-기기들을-구분하기-위한-무언가가-필요하지-않을까">여러대의 기기들이 연결됐을 때(네트워크가 형성됐을 때) 각 기기들을 구분하기 위한 무언가가 필요하지 않을까?</h4>
+
+<p>그래서 같은 네트워크에서 통신이 가능하게 해주는 매개체(<font color="red">M</font>edia)를 구분하고 접근(<font color="red">A</font>ccess)및 사용하기(<font color="red">C</font>ontrol)위해 사용되는 절대 겹치지 않는 주소인 <code class="language-plaintext highlighter-rouge">MAC</code>(Media Access Control) 주소가 있다.</p>
+
+<p>즉, 겹칠 일이 없는 <code class="language-plaintext highlighter-rouge">MAC</code> 주소를 통신이 가능하게 해주는 모든 매개체들이 각자 가지고 있게 한 것이다.</p>
+
+<p>통신이 가능하게 해주는 매개체를 구분하기 위한 것이 <code class="language-plaintext highlighter-rouge">MAC</code> 주소로, “컴퓨터”인 경우 <code class="language-plaintext highlighter-rouge">랜 카드</code>가 0과1 데이터를 신호로 바꿔 통신이 되게 해주는 매개체이기 때문에 우리가 익숙한 <code class="language-plaintext highlighter-rouge">랜 카드</code>에도 <code class="language-plaintext highlighter-rouge">MAC</code> 주소가 있다.</p>
+
+<p>그리고 <code class="language-plaintext highlighter-rouge">2계층 프로토콜</code>과 <code class="language-plaintext highlighter-rouge">MAC</code> 주소를 이용해 같은 네트워크에 속한 기기들의 원할한 통신이 가능하게 해주는 장비에는 대표적으로 “2계층(L2) 스위치”가 있다.</p>
+
+<h4 id="2계층-스위치-3계층-4계층에도-스위치가-있던데">2계층 스위치? 3계층, 4계층에도 스위치가 있던데?</h4>
+
+<p>3계층에서 사용되는 “L3 스위치”, 4계층에서 사용되는 “L4 스위치”란 것도 있다.</p>
+
+<p>기본적으로 “스위치”는 그 계층의 트래픽을 적절히 분배해 그 계층의 원할한 통신이 가능하게 해주는 기능이라고 생각하면 편하다.</p>
+
+<ul>
+  <li>PDU : 프레임(Frame)</li>
+  <li>프로토콜 : 이더넷, MAC, PPP, ATM, LAN, Wifi</li>
+  <li>장비 : 브릿지, 스위치</li>
+</ul>
+
+<blockquote>
+  <p>PDU(Process Data Unit) : 각 계층에서 전송되는 단위</p>
+</blockquote>
+
+<hr />
+
+<h2 id="layer-3--network-layer">Layer 3 : Network Layer</h2>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href="https://www.youtube.com/watch?v=1pfTxp25MA8">https://www.youtube.com/watch?v=1pfTxp25MA8</a> <br />
+<a href="https://mamu2830.blogspot.com/2020/06/osi-7.html">https://mamu2830.blogspot.com/2020/06/osi-7.html</a></p>
+</blockquote>
+:ET

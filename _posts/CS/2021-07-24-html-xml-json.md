@@ -2,7 +2,7 @@
 layout: post
 title: HTML, XML과 JSON 차이
 category: CS
-tags: [CS]
+tags: [CS, Web]
 comments: true
 ---
 <br>
@@ -149,8 +149,7 @@ JSON을 많이 쓰는 추세지만 XML이 사라지지 않는 이유가 있다.
 
 나중에 프로젝트를 설계하고 개발할 때  XML과 JSON의 사용에 대해 고민해보고 적절하게 사용하는 개발자가 되야겠다.
 
-참고링크) [**왜 여전히 XML 사용을 고려해야 하는가?**](https://www.coovil.net/xml-vs-json/)
-
+🔎 [**왜 여전히 XML 사용을 고려해야 하는가?**](https://www.coovil.net/xml-vs-json/)
 <br>
 <br>
 <br>

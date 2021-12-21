@@ -2,7 +2,7 @@
 layout: post
 title: Signed vs UnSigned
 category: CS
-tags: [CS]
+tags: [CS, Computer Architecture]
 comments: true
 ---
 <br>

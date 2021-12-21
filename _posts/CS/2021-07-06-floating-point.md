@@ -2,7 +2,7 @@
 layout: post
 title: 부동소수점
 category: CS
-tags: [CS]
+tags: [CS, Computer Architecture]
 comments: true
 ---
 

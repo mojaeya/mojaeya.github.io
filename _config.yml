@@ -37,8 +37,10 @@ author:
     email:    mailto:mojaeya@gmail.com
 # Navigation (2nd level links supported)
 nav:
-  Home:           
-    - '/blog/'
+  # Home:           
+  #   - '/blog/'
+  About:          
+    - '/about/'
   Categories:           
     - '/'
     - { CS: '/blog/categories/#CS' }
@@ -49,9 +51,9 @@ nav:
     - { AWS: '/blog/categories/#aws' }
     - { Git: '/blog/categories/#git' }
     - { etc: '/blog/categories/#etc' }
-  About:          
-    - '/about/'
-
+  Search:
+    - '/search/'
+    
 # Where are tags and categories displayed
 tag_page: '/blog/tags/'
 category_page: '/blog/categories/'

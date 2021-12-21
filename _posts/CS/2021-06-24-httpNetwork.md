@@ -1,8 +1,8 @@
 ---
 layout: post
-title: HTTP 네트워크
+title: HTTP 네트워크 개념
 category: CS
-tags: [CS]
+tags: [CS, Network]
 comments: true
 ---
 

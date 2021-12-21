@@ -2,7 +2,7 @@
 layout: post
 title: OSI 7 Layer 와 TCP/IP 차이점
 category: CS
-tags: [CS]
+tags: [CS, Network]
 comments: true
 ---
 <br>
