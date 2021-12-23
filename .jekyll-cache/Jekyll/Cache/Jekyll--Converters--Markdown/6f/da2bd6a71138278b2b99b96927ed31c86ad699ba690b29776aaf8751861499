@@ -1,0 +1,112 @@
+I"Q<p><br />
+지금까지는 내 컴퓨터 즉, 로컬에서만 코드 베이스를 하나로 관리하며 학습 차원에서 개발을 하고 있었다. </p>
+
+<p>하지만 이제 AWS를 통해 서비스하려는 원격서버를 돌리게 되었기 때문에,  개발 환경과 운영 환경 등에 따라 분기처리를 해야하는 필요성을 느꼈다. </p>
+
+<p>어느 환경에 배포하느냐에 따라서 다르게 설정해야하는 항목은 보통 운영체제 레벨에서 <strong><code class="language-plaintext highlighter-rouge">환경 변수</code></strong>를 통해 관리하게 된다</p>
+
+<p>예를 들면 개발 환경에서는 로컬 DB를 사용하는데, 운영 환경에서는 원격DB(RDS)를 사용해야하는 경우를 생각하면 쉽다.</p>
+
+<p>또한 서비스를 배포하거나 깃허브 같은 오픈소스에 올릴 때 DB password 같은 민감한 정보가 노출이 되면 안되기 때문에 환경 변수로 저장해놓고 사용하는 것이 일반적이다.</p>
+
+<h2 id="환경-변수-설정추가">환경 변수 설정(추가)</h2>
+
+<p>express에서는 <strong><code class="language-plaintext highlighter-rouge">NODE_ENV</code></strong>라는 환경 변수를 통해서 개발환경과 운영환경 등에 따른 설정 정보를 다르게 가져올 수 있다.</p>
+
+<p>터미널에서 export 키워드로 환경 변수 설정(추가)</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">export </span><span class="nv">NODE_ENV</span><span class="o">=</span>production <span class="o">(</span>Mac OS<span class="o">)</span>
+</code></pre></div></div>
+
+<p><em>환경변수를 출력하는 리눅스 명령어 $ env 입력해보면 환경변수에 NODE_ENV라는 값이 새로 추가된것을 볼 수 있다.</em> </p>
+
+<h2 id="환경-변수-접근">환경 변수 접근</h2>
+
+<p>Node.js에서 환경 변수에 접근할 때는 <strong><code class="language-plaintext highlighter-rouge">process.env</code></strong>라는 내장 자바스크립트 객체를 사용한다.</p>
+
+<ul>
+  <li>process는 전역 객체에서 별도로 import해야하는 모듈이 없고, 애플리케이션 어디에서든 접근 가능하다.</li>
+  <li>process.env는 NodeJS 앱이 동작할 리눅스/유닉스 시스템의 환경변수를 이용하는 것이다.</li>
+</ul>
+
+<p>프로젝트에서 터미널에서 추가한 환경 변수에 접근</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>process.env.NODE_ENV <span class="o">=</span> <span class="s1">'production'</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="환경변수에따른분기처리json형식-이용">환경변수에 따른 분기처리 (json형식  이용)</h2>
+
+<p>그런데 위와 같이 터미널에서 환경변수를 설정(추가)하는 것은 <strong>일회성</strong>이라 프로세스가 종료되면 사라진다.</p>
+
+<p>특정 환경으로 배포하고자 할 때  매번 환경변수를 일일이 타이핑해서 설정한 뒤에 실행해야 하는 것은 여간 불편한게 아니다.</p>
+
+<p><strong>그래서 package.json - scripts 에 **개발(local),운영(production) 따라</strong> 환경변수가 설정된 스크립트를 등록하고,**</p>
+
+<p><strong>프로젝트 안에 config라는 폴더를 만들어서 특정 환경 명령어로</strong> <strong>앱이 실행될 때마다</strong> <strong>그 안에서 파일을 찾아 읽고 특정환경에 맞는 라우팅이 이루어지도록 설정해줬다.(json형식을 이용)</strong></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>[##_ImageGrid</td>
+      <td>kage@b9ZMOt/btrdpqlJEEv/ENOCRK8enfR6kDubZaX0vK/img.png,kage@CpiYE/btrdlAbzhWg/XGV6kHl4I4XACbItia8c0k/img.png</td>
+      <td>data-origin-width=”834” data-origin-height=”248” data-filename=”스크린샷 2021-08-28 오전 7.58.58.png” width=”404” height=”120” style=”width: 69.30016188611665%; margin-right: 10px;”,data-origin-width=”258” data-origin-height=”180” data-filename=”스크린샷 2021-08-28 오전 8.08.46.png” style=”width: 29.53704741620895%;”</td>
+      <td>_##]</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>밑에 분기처리 코드를 보면 알겠지만 “local” 앱실행 명령어는 사실 안써줘도 된다. 기존의 “start”, “dev”로 실행하면 기본적으로 로컬로 들어가기 때문이다. 하지만 공부를 하고 있기 때문에 알기 위해서 써준것 뿐임을 참고하자.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// config/index.js
+console.log('process.env.NODE_ENV) : ',process.env.NODE_ENV)
+if(['production', 'local'].indexOf(process.env.NODE_ENV) === -1) { // 분기처리 (local, prod)
+    process.env.NODE_ENV = 'local'
+}
+const envs = require(`./${process.env.NODE_ENV}`)
+// const envs = require(`./local`)
+
+Object.assign(process.env, envs)
+
+console.log('envs:',envs)
+
+module.exports = envs // 맞는 값을 가져와서 반환
+
+// config/local.js
+module.exports = {
+    로컬DB: {}   // json형식 (./bin/www 파일 안 PORT:3000)
+}
+// config/production.js
+module.exports = {
+    원격DB: {}, PORT:80  // json형식
+}
+
+// components/db.js
+const mysql = require('mysql')
+const config = require('../config')
+
+const pool = mysql.createPool({
+    connectionLimit : 10,
+    host : config.database.host,
+    user : config.database.user,
+    password : config.database.password,
+    database : config.database.database
+  })
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>로컬 서버 실행 : $ npm run local
+원결 서버 실행 : $ npm run prod
+</code></pre></div></div>
+
+<p>이렇게 특정환경에 맞게 환경변수들을 모듈별로 나눴으니 git에 commit되지 않도록 <strong>.gitignore</strong>에 민감한 db 정보가 담긴 파일들을 설정해주면 그에 따른 정보들은 배포되지 않을 것이다.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href="https://www.daleseo.com/js-node-process-env/">https://www.daleseo.com/js-node-process-env/</a></p>
+</blockquote>
+:ET

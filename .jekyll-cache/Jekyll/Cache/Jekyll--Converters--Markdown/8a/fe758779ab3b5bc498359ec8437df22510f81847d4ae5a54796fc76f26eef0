@@ -1,0 +1,183 @@
+I"=*<h4 id="콜백-함수에-앞서-먼저-nodejs는-싱글스레드-기반의-non-blocking-io-방식을-사용한다는-것을-알고-들어가자">콜백 함수에 앞서 먼저, Node.js는 싱글스레드 기반의 non-Blocking I/O 방식을 사용한다는 것을 알고 들어가자.</h4>
+
+<h4 id="-논블로킹non-blocking">✓ 논블로킹(non-blocking)</h4>
+
+<ul>
+  <li>이전작업이 완료될 때까지 멈추지 않고 다음 작업을 수행하는 것</li>
+</ul>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">wakeUp</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">wake up!</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">eat</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">eat</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">wakeUp</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="nx">eat</span><span class="p">()</span>
+
+<span class="c1">// 출력 순서</span>
+<span class="c1">// eat</span>
+<span class="c1">// wake up!</span>
+</code></pre></div></div>
+
+<p>위 코드 출력 순서 결과를 보시다시피 평소 우리가 예상하는 결과와 달리 후순위의 eat이 먼저 출력된다.</p>
+
+<p>이렇게 <strong><code class="language-plaintext highlighter-rouge">Node.js</code></strong>는  setTimout 같은 시간을 잡아먹는 병목현상을 없애고,</p>
+
+<p>웹앱의 퍼포먼스를 극대화 하기 위해 <strong><code class="language-plaintext highlighter-rouge">논블로킹(non-blocking)</code></strong>이라는 형태로 구성이 된다. </p>
+
+<h2 id="콜백-함수--callback-"><strong>콜백 함수 ( Callback )</strong></h2>
+
+<p><strong>콜백 함수(Callback)</strong>는 함수 안에서 어떤 특정한 시점에 호출되는 함수를 말한다.</p>
+
+<p>보통 콜백함수는 함수의 매개변수로 전달하여 특정 시점에서 콜백함수를 호출한다.</p>
+
+<p>쉽게 말하자면 어떤 일을 다른 객체에게 시키고, 그 일이 끝나는 것은 기다리지 않고 끝나고 부를 때까지 다른 일을 하는 것을 말한다.</p>
+
+<p>그렇기 때문에 <strong>non-block</strong>이며, <strong>비동기 방식의 함수</strong>를 사용합니다.</p>
+
+<p><strong>즉, 콜백 함수란</strong></p>
+
+<p>1. 다른 함수의 인자로써 이용되는 함수.</p>
+
+<p>2. 어떤 이벤트에 의해 호출되어지는 함수.</p>
+
+<p><strong>콜백함수는 아래와 같은 원리로 작동한다.</strong></p>
+
+<p><strong>▶ 함수 정의</strong> </p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 콜백 함수가 될 매개변수 설정
+function plus(a, b, callback) {  
+  var sum = a + b
+  callback(sum) // 매개변수(callback)을 함수 형태로 실행
+}
+</code></pre></div></div>
+
+<p>plus 함수를 보면 callback 이라는 매개변수를 넣어주고 plus 함수 내부에서 callback 매개변수를 함수 형태로 실행하고 있다.</p>
+
+<p><strong>▶ 정의한 함수 호출</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 위에서 정의한 plus 함수에 익명 함수를 인자로 전달하며 plus 함수 호출
+plus(1, 2, function(result) {  // 콜백 함수 
+  console.log(result)   // 3
+})
+</code></pre></div></div>
+
+<p>위에서 정의한 plus 함수에 익명 함수를 인자로 전달하며 plus 함수를 호출하는 모습이다.</p>
+
+<p>그러면 함수에서 정의하고 있는 로직대로  계산이 되어 sum이 익명 함수로 전달되면서 콘솔에 3을 출력</p>
+
+<p>다음 코드를 살펴보자.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function sumFunc(num1, num2){    
+    setTimeout(() =&gt; {   // DB에 연동해서 데이터를 가져오는 코드라고 치자 (시간이 좀 걸리는 설정)
+        console.log('num1+num2 : ', num1+num2)
+        return num1+num2
+    }, 1000);
+}
+const reuslt = sumFunc(5, 2)
+console.log('reuslt : ',reuslt)
+
+//출력순서
+// result : undefined 
+//몇초 지나고 
+// num1+num2 : 7
+</code></pre></div></div>
+
+<p>우리는 위에서 DB를 부르는 sumFunc(5, 2) 코드를 작성해서 result를 받아와 출력하고자 한다.</p>
+
+<p>그런데 실제 작동 과정을 보면,</p>
+
+<p>1. DB에서 데이터를 가져오느라 딜레이 되는 사이에 sumFunc(5, 2) 코드가 아무것도 없는 상태에서 result에 할당이 된다.</p>
+
+<p>   (<strong>논블로킹</strong>에 의해  result 먼저 출력)</p>
+
+<p>2. 할당이 된 다음에  그 위에 setTimeout 코드가 실행 된다.</p>
+
+<p>그래서 결과가 result : undefined  몇초 지나고  num1+num2 : 7이 출력 되는 것이다.</p>
+
+<p>result가 값을 못 받는다.</p>
+
+<p>위 코드 결과가 우리가 실제로 DB에 연동했을 때 생길 수 있는 문제다.  </p>
+
+<p>그럼 이러한 문제를 어떻게 해결할까? 이럴 때 <strong>콜백함수</strong>를 쓰는것이다. </p>
+
+<h2 id="콜백-함수로-비동기-처리-방식의-문제점-해결하기"><strong>콜백 함수로 비동기 처리 방식의 문제점 해결하기</strong></h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>function sumFunc(num1, num2, callback){    
+    setTimeout(() =&gt; {  // DB에 연동해서 데이터를 가져오는 코드라고 치자 (시간이 좀 걸리는 설정)
+        console.log('num1+num2 : ', num1+num2)
+        callback(num1+num2)
+    }, 1000);
+}
+sumFunc(5, 2, function(getMsg){  // callback 함수
+    console.log('result  : ',getMsg)
+})
+
+// 출력순서
+// num1+num2 : 7
+// 몇초 있다
+// result : 7
+</code></pre></div></div>
+
+<p>이렇게 콜백함수를 이용하면 위 코드와 같이 콜백함수 안에서 파마리터로 result 값을 받아 올 수 있다. </p>
+
+<p>만약 sumFunc 함수 부분을 아래와 같이 코드를 작성해 result 값을 출력하고자 한다면, 결과는 다음과 같다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> const reuslt = sumFunc(5, 2, function(getMsg){ // callback
+    console.log('getMsg  : ',getMsg)  // 얘는 값을 받는데
+ })
+ console.log('reuslt : ',reuslt)  // 얘는 값을 못받는다
+</code></pre></div></div>
+
+<p>위 코드 결과를 보면,</p>
+
+<p><strong>콜백함수 안에서는 값을 받는데 DB에서 데이터를 불러오는 사이에 먼저 sumFunc 함수를 할당받은 result는 값을 못받는다.</strong></p>
+
+<p>조금 이해하기가 어렵지만 이 부분이 콜백함수에서 가장 중요한 요소이다.</p>
+
+<p>그러다 보니 이러한 문제를 해결하기 위해 계속 콜백함수안에 콜백함수를 쓰다가 <strong>콜백 지옥(Callback Hell)</strong>이 발생하는 것이다. </p>
+
+<h2 id="콜백-지옥--callback-hell-"> <strong>콜백 지옥 ( Callback Hell )</strong></h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 따로 따로 선언된 콜백함수 2개와 그냥 출력문 1개</span>
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">sleep</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">},</span> <span class="mi">3000</span><span class="p">);</span>
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">wake up!</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">eat</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="c1">// 출력순서</span>
+<span class="c1">// eat</span>
+<span class="c1">// wake up!</span>
+<span class="c1">// sleep</span>
+
+<span class="c1">// ---------------------------------------</span>
+
+<span class="c1">// 콜백 헬</span>
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">sleep</span><span class="dl">'</span><span class="p">)</span>
+     <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">wake up!</span><span class="dl">'</span><span class="p">)</span>        
+        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>            
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">eat</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>    
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>    
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="c1">// 순서대로 출력</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET
