@@ -1,0 +1,36 @@
+I"n<h2 id="문제">문제</h2>
+<p>서울시는 9월 7일부터 교통 혼잡을 막기 위해서 자동차 10부제를 시행한다. 자동차 10부제는 자동차 번호의 일의 자리 숫자와 날짜의 일의 자리 숫자가 일치하면 해당 자동차의 운행을 금지하는 것이다. 예를 들어, 자동차 번호의 일의 자리 숫자가 7이면 7일, 17일, 27일에 운행하지 못한다. 또한 자동차 번호의 일의 자리가 숫자가 0이면 10일, 20일, 30일에 운행하지 못한다. 여러분들은 일일 경찰관이 되어 10부제를 위반하는 자동차의 대수를 세는 봉사활동을 하려고 한다. 날짜의 일의 자리 숫자가 주어지고 7대의 자동차 번호의 끝 두 자리 수가 주어졌을 때 위반하는 자동차의 대수를 출력하는 프로그램을 작성하시오.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫 줄에는 날짜의 일의 자리 숫자가 주어지고 두 번째 줄에는 7대의 자동차 번호의 끝 두 자리 숫자가 주어진다.</p>
+
+<h2 id="출력">출력</h2>
+<p>주어진 날짜와 자동차의 일의 자리 숫자를 보고 10부제를 위반하는 차량의 대수를 출력한다.</p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">day</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">33</span><span class="p">]</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">solution</span><span class="p">(</span><span class="nx">day</span><span class="p">,</span> <span class="nx">arr</span><span class="p">))</span>
+
+<span class="kd">function</span> <span class="nx">solution</span><span class="p">(</span><span class="nx">day</span><span class="p">,</span> <span class="nx">arr</span><span class="p">){</span>
+    <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="k">of</span> <span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">x</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">===</span> <span class="nx">day</span><span class="p">)</span> <span class="nx">count</span> <span class="o">++</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">count</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="comment">Comment</h2>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

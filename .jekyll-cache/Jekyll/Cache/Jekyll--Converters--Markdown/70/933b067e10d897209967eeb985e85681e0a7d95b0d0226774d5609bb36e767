@@ -1,0 +1,39 @@
+I"�<h2 id="문제">문제</h2>
+<p>7개의 자연수가 주어질 때, 이들 중 홀수인 자연수들을 모두 골라 그 합을 구하고,
+고른 홀수들 중 최소값을 찾는 프로그램을 작성하세요.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫 번째 줄에 자연수 7개가 주어진다. 주어진 자연수는 100보다 작다. 홀수가 한 개 이상 반드시 존재한다.</p>
+
+<h2 id="출력">출력</h2>
+<p>첫째 줄에 홀수들의 합을 출력하고, 둘째 줄에 홀수들 중 최소값을 출력한다.</p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">85</span><span class="p">]</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">solution</span><span class="p">(</span><span class="nx">arr</span><span class="p">))</span>
+
+<span class="kd">function</span> <span class="nx">solution</span><span class="p">(</span><span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">min</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="k">of</span> <span class="nx">arr</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">x</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">x</span> <span class="o">&lt;</span> <span class="nx">min</span><span class="p">)</span> <span class="nx">min</span> <span class="o">=</span> <span class="nx">x</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">sum</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="comment">Comment</h2>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET
