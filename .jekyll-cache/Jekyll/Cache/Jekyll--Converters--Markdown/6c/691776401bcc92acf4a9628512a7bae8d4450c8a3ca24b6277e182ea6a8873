@@ -1,0 +1,53 @@
+I"�<h2 id="문제">문제</h2>
+<p>한 개의 문자열을 입력받고, 특정 문자를 입력받아 해당 특정문자가 입력받은 문자열에 몇 개 존재하는지 알아내는 프로그램을 작성하세요.</p>
+
+<h2 id="입력">입력</h2>
+<p>첫 줄에 문자열이 주어지고, 두 번째 줄에 문자가 주어진다.</p>
+
+<h2 id="출력">출력</h2>
+<p>첫 줄에 해당 문자의 개수를 출력한다.</p>
+
+<h2 id="입력예제">입력예제</h2>
+<p>COMPUTERPROGRAMMING <br />
+R</p>
+
+<h2 id="출력예제">출력예제</h2>
+<p>3</p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">){</span>
+   <span class="nx">input</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span>
+    <span class="kd">let</span> <span class="nx">alphabet</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="k">of</span> <span class="nx">str</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">x</span><span class="o">===</span><span class="nx">alphabet</span><span class="p">)</span> <span class="nx">count</span><span class="o">++</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">count</span><span class="p">)</span>
+ 
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

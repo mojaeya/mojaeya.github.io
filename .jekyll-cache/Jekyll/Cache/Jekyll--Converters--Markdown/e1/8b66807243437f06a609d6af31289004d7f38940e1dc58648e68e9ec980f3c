@@ -1,0 +1,49 @@
+I"<h2 id="문제">문제</h2>
+<p>대문자로 이루어진 영어단어가 입력되면 단어에 포함된 ‘A’를 모두 ‘#’으로 바꾸어 출력하는 프로그램을 작성하세요.</p>
+
+<h2 id="입력">입력</h2>
+<p>문자열이 입력된다.</p>
+
+<h2 id="출력">출력</h2>
+<p>바뀐 단어를 출력한다.</p>
+
+<h2 id="입력예제">입력예제</h2>
+<p>BANANA</p>
+
+<h2 id="출력예제">출력예제</h2>
+<p>B#N#N#</p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+
+<span class="kd">let</span> <span class="nx">input</span>
+
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">){</span>
+   <span class="nx">input</span> <span class="o">=</span> <span class="nx">line</span>
+   <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">word</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">word</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">word</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">===</span><span class="dl">"</span><span class="s2">A</span><span class="dl">"</span><span class="p">)</span> <span class="nx">word</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">#</span><span class="dl">"</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">word</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">))</span>
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET

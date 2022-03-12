@@ -1,0 +1,73 @@
+I"�<h2 id="문제">문제</h2>
+<p>(1) 문자열을 입력받아 해당 문자열에 알파벳 대문자가 몇 개 있는지 알아내는 프로그램을 작성하세요.
+(2) 문자열을 입력받아 대문자로 모두 통일하여 문자열을 출력하는 프로그램을 작성하세요.
+(3) 문자열을 입력받아 대문자는 소문자로 소문자는 대문자로 변환하여 출력하는 프로그램을 작성하세요.</p>
+
+<h2 id="입력">입력</h2>
+<p>문자열이 입력된다.</p>
+
+<h2 id="출력">출력</h2>
+<p>(1) 대문자의 개수를 출력한다.
+(2) 대문자로 통일된 문자열이 출력된다.
+(3) 대문자는 소문자로, 소문자는 대문자로 변환된 문자열을 출력합니다.</p>
+
+<h2 id="입력예제">입력예제</h2>
+<p>JavaScriptAlgorithmRocketStudy</p>
+
+<h2 id="출력예제">출력예제</h2>
+<p>(1) 5
+(2) JAVASCRIPTALGORITHMROCKETSTUDY
+(3) jAVAsCRIPTaLGORITHMrOCKETsTUDY</p>
+
+<h2 id="code">CODE</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+
+<span class="kd">let</span> <span class="nx">input</span>
+
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">){</span>
+   <span class="nx">input</span> <span class="o">=</span> <span class="nx">line</span>
+   <span class="nx">rl</span><span class="p">.</span><span class="nx">close</span><span class="p">()</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span> 
+    <span class="kd">let</span> <span class="nx">big</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span>
+    <span class="kd">let</span> <span class="nx">small</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">split</span><span class="p">(</span><span class="dl">""</span><span class="p">)</span>
+    <span class="kd">let</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="nx">big</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="p">{</span>
+        <span class="nx">count</span><span class="o">++</span>
+        <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">small</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">str</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">big</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">count</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">())</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="dl">""</span><span class="p">))</span>
+ 
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+<h2 id="comment">Comment</h2>
+<ul>
+  <li>toUpperCase() 함수는 대상 문자열을 모두 대문자로 변환</li>
+  <li>toLowerCase() 함수는 대상 문자열을 모두 소문자로 변환</li>
+</ul>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET
