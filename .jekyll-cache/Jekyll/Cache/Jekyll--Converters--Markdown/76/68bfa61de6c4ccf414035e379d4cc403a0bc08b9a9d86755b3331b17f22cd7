@@ -1,0 +1,76 @@
+I"<h2 id="문제">문제</h2>
+<p>N개의 문자열이 입력되면 그 중 가장 긴 문자열을 출력하는 프로그램을 작성하세요.</p>
+
+<h2 id="입력">입력</h2>
+<p>N개의 문자열이 주어진다. <br />
+각 문자열의 길이는 서로 다르다.</p>
+
+<h2 id="출력">출력</h2>
+<p>가장 긴 문자열을 출력한다.</p>
+
+<h2 id="입력예제">입력예제</h2>
+<p>teacher <br />
+time <br />
+student <br />
+beautiful <br />
+good</p>
+
+<h2 id="출력예제">출력예제</h2>
+<p>beautiful</p>
+
+<h2 id="code-1">CODE 1</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">readline</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">readline</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">rl</span> <span class="o">=</span> <span class="nx">readline</span><span class="p">.</span><span class="nx">createInterface</span><span class="p">({</span>
+    <span class="na">input</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdin</span><span class="p">,</span>
+    <span class="na">output</span><span class="p">:</span> <span class="nx">process</span><span class="p">.</span><span class="nx">stdout</span>
+<span class="p">})</span>
+
+<span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nx">rl</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">line</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">line</span><span class="p">){</span>
+   <span class="nx">input</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">line</span><span class="p">)</span>
+<span class="p">})</span>
+  <span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">close</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(){</span>
+    <span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span><span class="nx">input</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">max</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">length</span><span class="p">)</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">input</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">max</span><span class="p">)</span>
+ 
+    <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="code-2">CODE 2</h2>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">str</span><span class="o">=</span><span class="p">[</span><span class="dl">"</span><span class="s2">teacher</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">student</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">beautiful</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">good</span><span class="dl">"</span><span class="p">]</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">solution</span><span class="p">(</span><span class="nx">str</span><span class="p">))</span>
+
+<span class="kd">function</span> <span class="nx">solution</span><span class="p">(</span><span class="nx">s</span><span class="p">){</span>  
+  <span class="kd">let</span> <span class="nx">answer</span> <span class="o">=</span> <span class="dl">""</span><span class="p">,</span> <span class="nx">max</span> <span class="o">=</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">MIN_SAFE_INTEGER</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">x</span> <span class="k">of</span> <span class="nx">s</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="nx">max</span><span class="p">){</span>
+          <span class="nx">max</span> <span class="o">=</span> <span class="nx">x</span><span class="p">.</span><span class="nx">length</span>
+          <span class="nx">answer</span> <span class="o">=</span> <span class="nx">x</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">answer</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h2 id="comment">Comment</h2>
+<ul>
+  <li>Number.MIN_SAFE_INTEGER 상수는 JavaScript에서 안전한 <code class="language-plaintext highlighter-rouge">최소</code> 정수값을 나타낸다.</li>
+  <li>Number.MAX_SAFE_INTEGER 상수는 JavaScript에서 안전한 <code class="language-plaintext highlighter-rouge">최대</code> 정수값을 나타낸다.</li>
+</ul>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET
