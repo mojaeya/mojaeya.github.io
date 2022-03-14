@@ -1,4 +1,4 @@
-I"�<h2 id="문제">문제</h2>
+I"�<h2 id="문제">문제</h2>
 <p>소문자로 된 한개의 문자열이 입력되면 중복된 문자를 제거하고 출력하는 프로그램을 작성하세요. 제거된 문자열의 각 문자는 원래 문자열의 순서를 유지합니다.</p>
 
 <h2 id="입력">입력</h2>
@@ -48,15 +48,15 @@
 <span class="p">}</span>
 </code></pre></div></div>
 <h2 id="comment">Comment</h2>
-<p><code class="language-plaintext highlighter-rouge">indexOf() 함수</code></p>
+<p><strong><code class="language-plaintext highlighter-rouge">indexOf() 함수</code></strong></p>
 <ul>
   <li>Array.prototype.indexOf()</li>
   <li>
     <p>String.prototype.indexOf()</p>
   </li>
   <li>.indexOf( value, start )</li>
-  <li>value : 필수. 찾으려는 문자열을 넣는다.</li>
-  <li>start : 선택. 검색을 시작할 인덱스 값. 입력하지 않으면 처음부터 검색.</li>
+  <li>value : 찾으려는 문자열을 넣는다.</li>
+  <li>start(Optional): 검색을 시작할 인덱스 값. 입력하지 않으면 처음부터 검색.</li>
   <li>대소문자를 구분</li>
   <li>찾는 문자열이 없는 경우 -1을 반환</li>
 </ul>
