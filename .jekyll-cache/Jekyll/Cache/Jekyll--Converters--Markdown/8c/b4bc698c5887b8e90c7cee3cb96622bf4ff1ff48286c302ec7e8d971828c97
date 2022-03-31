@@ -1,0 +1,79 @@
+I"R<p><br />
+어느새 aws에서 1년간 무료로 제공해주는 프리티어 기간이 3월달로 끝이 난다.</p>
+
+<p>예전에 만들어둔 계정이지만 공부를 똑바로 안해서 제대로 쓴거는 반년이 채 안되는 것 같다.(반성)<br />
+내가 아직 공부하는 수준에서는 프리티어 한도 내에서 충분하기 하기도 하고, 난 가난한 학생이기 때문에 새로운 계정을 파서 프리티어 1년을 알차게 쓰기로 했다.</p>
+
+<p>그런데 기존 프로젝트에서 쓰던 rds db가 사라지면 귀찮을 걸 떠나서 중요한 데이터가 날라간다… <br />
+그래서 aws에서 제공해주는 스냅샷을 통해 기존 계정의 RDS DB를 새로운 계정으로 이전 시키려고 한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">한 브라우저에서 동시접속이 안되기 때문에 일단 RDS DB를 이전 시킬 새로운 aws 계정 ID를 따놓자.</code></p>
+
+<p><img width="318" alt="스크린샷 2022-03-31 오후 10 20 14" src="https://user-images.githubusercontent.com/76654131/161064560-ef1270e9-4a8e-4edb-b19e-3222d770331a.png" /></p>
+
+<h2 id="기존-계정-rds-db-스냅샷-생성">기존 계정 RDS DB 스냅샷 생성</h2>
+<h4 id="스냅샷-생성-후-왼쪽-탭에서-스냅샷-클릭">스냅샷 생성 후 왼쪽 탭에서 스냅샷 클릭</h4>
+<p><img width="1005" alt="스크린샷 2022-03-31 오후 9 32 31" src="https://user-images.githubusercontent.com/76654131/161059654-4c1c4759-ac52-4523-8aa6-15a01d151e8e.png" /></p>
+
+<h2 id="스냅샷-공유">스냅샷 공유</h2>
+<h4 id="생성된-스냅샷-선택-및-공유">생성된 스냅샷 선택 및 공유</h4>
+<p><img width="1010" alt="스크린샷 2022-03-31 오후 9 36 46" src="https://user-images.githubusercontent.com/76654131/161061224-b7d4d896-1d1c-4d2c-af93-5ee23c47898a.png" /></p>
+
+<h4 id="rds-db-이전-시킬-새로운-aws-계정-id-입력">RDS DB 이전 시킬 새로운 aws 계정 ID 입력</h4>
+<p><img width="808" alt="스크린샷 2022-03-31 오후 9 37 03" src="https://user-images.githubusercontent.com/76654131/161062130-fbd9ba5c-3c8c-4070-b830-f6eecc27063a.png" /></p>
+
+<hr />
+
+<p>이제 스냅샷이 공유가 되었으니 RDS DB 이전 시킬 <strong><code class="language-plaintext highlighter-rouge">새로운 계정으로 접속!</code></strong></p>
+
+<hr />
+
+<h2 id="스냅샷-복원">스냅샷 복원</h2>
+<h4 id="스냅샷---나와-공유됨---공유된-스냅샷-선택-및-스냅샷-복원">스냅샷 -&gt; 나와 공유됨 -&gt; 공유된 스냅샷 선택 및 스냅샷 복원</h4>
+<p><img width="951" alt="스크린샷 2022-03-31 오후 9 41 12" src="https://user-images.githubusercontent.com/76654131/161063372-7c6efe45-0701-459b-a93e-ee7d56f16302.png" /></p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">복원 과정은 기존의 rds 생성 과정이랑 거의 동일하다</code></strong></p>
+
+<ul>
+  <li>DB 스냅샷 ID 설정해주고, 다중 AZ 배포 - 아니요 선택
+<br /></li>
+</ul>
+
+<p><img width="424" alt="스크린샷 2022-03-31 오후 9 43 35" src="https://user-images.githubusercontent.com/76654131/161064735-ceefdb77-9523-4cb3-bae0-59a3dfb2a9ce.png" /></p>
+
+<hr />
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">VPC / 서브넷그룹</code> – VPC가 구성되어 있다면 선택, Default 사용해도 무방</li>
+  <li><code class="language-plaintext highlighter-rouge">퍼블릭 액세스 가능</code> – Public IP를 할당하여 VPC 외부에서서 DB인스턴스 접근을 허용할 것인지 체크  <br />
+<u>나는 학습용이기 때문에 예를 선택해서 외부에서도 접근 가능하게 만들었다.</u></li>
+  <li><code class="language-plaintext highlighter-rouge">VPC 보안 그룹</code> – 인/아웃바운드 규칙이 정의된 보안그룹을 선택한다. <br />
+  <u>EC2에서 접근하게 하려면, 보안그룹을 새로 생성한 후 EC2의 보안그룹을 연결해주면 된다.</u></li>
+</ul>
+
+<p><img width="408" alt="스크린샷 2022-03-31 오후 9 44 17" src="https://user-images.githubusercontent.com/76654131/161064964-7e447549-4994-4b57-9209-ead2ced69019.png" /></p>
+
+<hr />
+
+<ul>
+  <li>DB 인스턴스 클래스 - 프리티어에서 무료로 사용 가능한 <code class="language-plaintext highlighter-rouge">db.t2.micro</code> 선택
+<img width="597" alt="스크린샷 2022-03-31 오후 10 43 00" src="https://user-images.githubusercontent.com/76654131/161069792-a8a039b3-4069-4d06-9897-a3b9422e08e4.png" /></li>
+</ul>
+
+<p>기존의 rds 생성 과정이랑 거의 동일하기 때문에 별 다른 특이사항이 없으면 DB 인스턴스 복원 선택!</p>
+
+<p>이로써 새로운 aws 계정으로 기존에 쓰던 RDS DB를 스냅샷을 이용해서 이전 완료했다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">이전 시키기 위해 생성했던 공유 스냅샷은 비용 발생을 방지하기 위해 삭제해주자!</code></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong> <br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다. <br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다. <br />
+<a href=""></a></p>
+</blockquote>
+:ET
