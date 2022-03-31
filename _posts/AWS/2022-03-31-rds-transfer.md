@@ -18,22 +18,22 @@ comments: true
 
 `한 브라우저에서 동시접속이 안되기 때문에 일단 RDS DB를 이전 시킬 새로운 aws 계정 ID를 따놓자.`
 
-<img width="318" alt="스크린샷 2022-03-31 오후 10 20 14" src="https://user-images.githubusercontent.com/76654131/161064560-ef1270e9-4a8e-4edb-b19e-3222d770331a.png">
+<img width="250" alt="스크린샷 2022-03-31 오후 10 20 14" src="https://user-images.githubusercontent.com/76654131/161064560-ef1270e9-4a8e-4edb-b19e-3222d770331a.png">
 
 ---
 
 ## 기존 계정 RDS DB 스냅샷 생성
 #### 스냅샷 생성 후 왼쪽 탭에서 스냅샷 클릭
-<img width="1005" alt="스크린샷 2022-03-31 오후 9 32 31" src="https://user-images.githubusercontent.com/76654131/161059654-4c1c4759-ac52-4523-8aa6-15a01d151e8e.png">
+<img width="1000" alt="스크린샷 2022-03-31 오후 9 32 31" src="https://user-images.githubusercontent.com/76654131/161059654-4c1c4759-ac52-4523-8aa6-15a01d151e8e.png">
 
 ---
 
 ## 스냅샷 공유
 #### 생성된 스냅샷 선택 및 공유 
-<img width="1010" alt="스크린샷 2022-03-31 오후 9 36 46" src="https://user-images.githubusercontent.com/76654131/161061224-b7d4d896-1d1c-4d2c-af93-5ee23c47898a.png">
+<img width="1000" alt="스크린샷 2022-03-31 오후 9 36 46" src="https://user-images.githubusercontent.com/76654131/161061224-b7d4d896-1d1c-4d2c-af93-5ee23c47898a.png">
 
 #### RDS DB 이전 시킬 새로운 aws 계정 ID 입력
-<img width="808" alt="스크린샷 2022-03-31 오후 9 37 03" src="https://user-images.githubusercontent.com/76654131/161062130-fbd9ba5c-3c8c-4070-b830-f6eecc27063a.png">
+<img width="700" alt="스크린샷 2022-03-31 오후 9 37 03" src="https://user-images.githubusercontent.com/76654131/161062130-fbd9ba5c-3c8c-4070-b830-f6eecc27063a.png">
 
 ---
 
@@ -43,14 +43,14 @@ comments: true
 
 ## 스냅샷 복원 
 #### 스냅샷 -> 나와 공유됨 -> 공유된 스냅샷 선택 및 스냅샷 복원 
-<img width="951" alt="스크린샷 2022-03-31 오후 9 41 12" src="https://user-images.githubusercontent.com/76654131/161063372-7c6efe45-0701-459b-a93e-ee7d56f16302.png">
+<img width="900" alt="스크린샷 2022-03-31 오후 9 41 12" src="https://user-images.githubusercontent.com/76654131/161063372-7c6efe45-0701-459b-a93e-ee7d56f16302.png">
 
 **`복원 과정은 기존의 rds 생성 과정이랑 거의 동일하다`**
 
 - DB 스냅샷 ID 설정해주고, 다중 AZ 배포 - 아니요 선택
 <br>
 
-<img width="424" alt="스크린샷 2022-03-31 오후 9 43 35" src="https://user-images.githubusercontent.com/76654131/161064735-ceefdb77-9523-4cb3-bae0-59a3dfb2a9ce.png">
+<img width="500" alt="스크린샷 2022-03-31 오후 9 43 35" src="https://user-images.githubusercontent.com/76654131/161064735-ceefdb77-9523-4cb3-bae0-59a3dfb2a9ce.png">
 
 ---
 
@@ -60,12 +60,14 @@ comments: true
 - `VPC 보안 그룹` – 인/아웃바운드 규칙이 정의된 보안그룹을 선택한다.   
     <u>EC2에서 접근하게 하려면, 보안그룹을 새로 생성한 후 EC2의 보안그룹을 연결해주면 된다.</u>
 
-<img width="408" alt="스크린샷 2022-03-31 오후 9 44 17" src="https://user-images.githubusercontent.com/76654131/161064964-7e447549-4994-4b57-9209-ead2ced69019.png">
+<img width="500" alt="스크린샷 2022-03-31 오후 9 44 17" src="https://user-images.githubusercontent.com/76654131/161064964-7e447549-4994-4b57-9209-ead2ced69019.png">
 
 ---
 
 - DB 인스턴스 클래스 - 프리티어에서 무료로 사용 가능한 `db.t2.micro` 선택
-<img width="597" alt="스크린샷 2022-03-31 오후 10 43 00" src="https://user-images.githubusercontent.com/76654131/161069792-a8a039b3-4069-4d06-9897-a3b9422e08e4.png">
+<br>
+
+<img width="500" alt="스크린샷 2022-03-31 오후 10 43 00" src="https://user-images.githubusercontent.com/76654131/161069792-a8a039b3-4069-4d06-9897-a3b9422e08e4.png">
 
 ---
 
