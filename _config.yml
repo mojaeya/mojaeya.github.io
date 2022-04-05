@@ -68,3 +68,6 @@ google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google a
 disqus_short_name: 'mojaeya-github-io' # leave blank if you don't want disqus
 
 plugins: [jekyll-paginate]
+
+plugins:
+    - jekyll-sitemap
