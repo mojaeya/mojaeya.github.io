@@ -69,5 +69,3 @@ disqus_short_name: 'mojaeya-github-io' # leave blank if you don't want disqus
 
 plugins: [jekyll-paginate]
 
-plugins:
-    - jekyll-sitemap
