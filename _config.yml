@@ -1,10 +1,10 @@
 # Site Info
-title: '사라진 기억들에게'
-tagline: '사라진 기억들에게'
-description: ''
-baseurl: ''
+title: "사라진 기억들에게"
+tagline: "사라진 기억들에게"
+description: ""
+baseurl: ""
 url: http://mojaeya.github.io
-logo: '/public/logo.png'
+logo: "/public/logo.png"
 
 # Site configurations
 gems:
@@ -16,9 +16,9 @@ kramdown:
 excerpt_separator: "<!-- more -->"
 sass:
   style: compressed
-  sass_dir: _scss    
+  sass_dir: _scss
 paginate: 5
-paginate_path: '/blog/page:num'
+paginate_path: "/blog/page:num"
 permalink: pretty
 
 version: 1.0.0
@@ -30,33 +30,35 @@ author:
   gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
     #linkedin:  https://www.linkedin.com/in/lizhihao
-    github:    https://github.com/mojaeya
+    github: https://github.com/mojaeya
     # facebook:  <hide>
     #twitter:   https://twitter.com/Li_Zhihao
     #weibo:     http://weibo.com/41173780
-    email:    mailto:mojaeya@gmail.com
+    email: mailto:mojaeya@gmail.com
 # Navigation (2nd level links supported)
 nav:
-  # Home:           
+  # Home:
   #   - '/blog/'
-  About:          
-    - '/about/'
-  Categories:           
-    - '/'
-    - { CS: '/blog/categories/#CS' }
-    - { JavaScript: '/blog/categories/#javascript' }
-    - { Node.js: '/blog/categories/#node.js' }
-    - { MySQL: '/blog/categories/#mysql' }
-    - { Algorithm: '/blog/categories/#algorithm' }
-    - { AWS: '/blog/categories/#aws' }
-    - { Git: '/blog/categories/#git' }
-    - { etc: '/blog/categories/#etc' }
+  About:
+    - "/about/"
+  Categories:
+    - "/"
+    - { CS: "/blog/categories/cs" }
+    - { HTML: "/blog/categories/#html" }
+    - { CSS: "/blog/categories/#css" }
+    - { JavaScript: "/blog/categories/#javascript" }
+    - { Node.js: "/blog/categories/#node.js" }
+    - { MySQL: "/blog/categories/#mysql" }
+    - { Algorithm: "/blog/categories/#algorithm" }
+    - { AWS: "/blog/categories/#aws" }
+    - { Git: "/blog/categories/#git" }
+    - { etc: "/blog/categories/#etc" }
   Search:
-    - '/search/'
-    
+    - "/search/"
+
 # Where are tags and categories displayed
-tag_page: '/blog/tags/'
-category_page: '/blog/categories/'
+tag_page: "/blog/tags/"
+category_page: "/blog/categories/"
 
 hero:
   image: /public/img/we_will_be_giants_by_yalestewart.jpg
@@ -64,8 +66,7 @@ hero:
 
 # Puglins
 mathjax: true # whether support mathjax
-google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
-disqus_short_name: 'mojaeya-github-io' # leave blank if you don't want disqus
+google_analytics_token: "UA-00000000-1" # leave blank if you don't want google analytics
+disqus_short_name: "mojaeya-github-io" # leave blank if you don't want disqus
 
 plugins: [jekyll-paginate]
-
