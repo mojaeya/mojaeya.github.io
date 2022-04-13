@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 
+title:
 category: HTML
-tags: [html]]
+tags: [html]
 comments: true
 ---
 

@@ -39,8 +39,8 @@ author:
 nav:
   # Home:
   #   - '/blog/'
-  About:
-    - "/about/"
+  # About:
+  #   - "/about/"
   Categories:
     - "/"
     - { CS: "/blog/categories/cs" }
@@ -53,8 +53,8 @@ nav:
     - { AWS: "/blog/categories/#aws" }
     - { Git: "/blog/categories/#git" }
     - { etc: "/blog/categories/#etc" }
-  Search:
-    - "/search/"
+  # Search:
+  #   - "/search/"
 
 # Where are tags and categories displayed
 tag_page: "/blog/tags/"
