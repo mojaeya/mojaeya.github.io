@@ -1,8 +1,8 @@
 ---
 layout: post
 title:
-category: AWS
-tags: [aws]
+category: Git
+tags: [git]
 comments: true
 ---
 

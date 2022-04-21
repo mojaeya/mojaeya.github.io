@@ -1,8 +1,8 @@
 ---
 layout: post
 title:
-category: AWS
-tags: [aws]
+category: MongoDB
+tags: [mongodb]
 comments: true
 ---
 

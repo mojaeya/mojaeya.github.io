@@ -1,8 +1,8 @@
 ---
 layout: post
 title:
-category: AWS
-tags: [aws]
+category: MySQL
+tags: [mysql]
 comments: true
 ---
 
