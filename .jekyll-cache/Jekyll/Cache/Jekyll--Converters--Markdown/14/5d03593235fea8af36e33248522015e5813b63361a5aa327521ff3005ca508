@@ -1,0 +1,84 @@
+I"�<h2 id="form">&lt;form&gt;</h2>
+
+<p>웹에서는 form 요소를 사용하여 사용자로부터 입력을 받을 수 있다.<br />
+또한, 사용자가 입력한 데이터를 서버로 보낼 때에도 form 요소를 사용한다.</p>
+
+<p><img width="226" alt="이메일 입력박스, 비밀번호 입력박스" src="https://user-images.githubusercontent.com/76654131/164585535-ebb23800-029d-437b-a464-04acf3c4f9f5.png" /></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"email"</span><span class="nt">&gt;</span>이메일<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"email"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"pw"</span><span class="nt">&gt;</span>비밀번호<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"pw"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<p>최근 유행하는 프레임워크로 개발하는 추세로는 폼 태그를 안쓰지만 html에서 form 태그는 중요한 개념이다.</p>
+
+<hr />
+
+<h2 id="input-태그">input 태그</h2>
+
+<ul>
+  <li>사용자로부터 정보를 입력 받는 태그</li>
+</ul>
+
+<h3 id="type-속성">type 속성</h3>
+
+<p>다른 html 태그들은 태그명을 가지고 UI 및 용도가 달라지는데,<br />
+특이하게 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 태그는 <strong>‘type’</strong> 이라는 속성 값에 따라 용도가 달라지고 화면에 보여지는 UI랑 용도가 달라진다.</p>
+
+<p>즉, <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 태그는 <strong>‘type’</strong> 속성을 사용하면 데이터 형식을 지정할 수 있다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"email"</span><span class="nt">&gt;</span>이메일<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"email"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"pw"</span><span class="nt">&gt;</span>비밀번호<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"pw"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<p>위에서 사용한 이메일과 비밀번호 외에도 22가지 ‘type’이 있다.</p>
+
+<h3 id="input-과-label-태그">input 과 label 태그</h3>
+
+<p><img width="226" alt="이메일 입력박스, 비밀번호 입력박스" src="https://user-images.githubusercontent.com/76654131/164585535-ebb23800-029d-437b-a464-04acf3c4f9f5.png" /></p>
+
+<p>일반 사용자들이 보기에는 ‘이메일하고 비밀번호를 입력하라는 거구나’ 하고 알 수 있지만 검색엔진이나 시각장애인은 모른다.<br />
+그래서 필요한게 <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 태그이다.<br />
+<code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 태그를 사용하면 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 태그에 이름을 붙일 수 있는데, <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 의 <strong>‘for’</strong> 의 값과 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 의 <strong>‘id’</strong> 의 값이 같으면 연결된다.</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 을 클릭하면, 연결된 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 에 입력할 수 있도록 포커스 되거나 토글 된다.<br />
+<code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 에 focus가 오면 스크린리더가 <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 을 읽기 때문에 접근성 측면에서 중요하다.</p>
+</blockquote>
+
+<h3 id="name-속성">name 속성</h3>
+
+<ul>
+  <li>name 속성은 폼(form)이 제출된 후 서버에서 폼 데이터(form data)를 참조하기 위해 사용되거나, 자바스크립트에서 요소를 참조하기 위해 사용된다.
+<img width="350" alt="당신이 배우고 싶은 언어는? (다중선택 가능), HTML, CSS, JavaScript" src="https://user-images.githubusercontent.com/76654131/164602791-f96f4bfe-0411-44e0-831d-43966246e477.png" /></li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_lang"</span> <span class="na">id=</span><span class="s">"chk_html"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_html"</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_lang"</span> <span class="na">id=</span><span class="s">"chk_css"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_css"</span><span class="nt">&gt;</span>CSS<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_lang"</span> <span class="na">id=</span><span class="s">"chk_js"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_js"</span><span class="nt">&gt;</span>JavaScript<span class="nt">&lt;/label&gt;</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="https://tecoble.techcourse.co.kr/post/2021-05-22-html-form-tag/">https://tecoble.techcourse.co.kr/post/2021-05-22-html-form-tag/</a></p>
+</blockquote>
+:ET

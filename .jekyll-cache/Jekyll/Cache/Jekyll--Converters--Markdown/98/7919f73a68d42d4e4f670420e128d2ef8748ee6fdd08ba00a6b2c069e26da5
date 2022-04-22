@@ -1,0 +1,122 @@
+I"*<h2 id="form-태그">form 태그</h2>
+
+<p>웹에서는 form 요소를 사용하여 사용자로부터 입력을 받을 수 있다.<br />
+또한, 사용자가 입력한 데이터를 서버로 보낼 때에도 form 요소를 사용한다.</p>
+
+<p><img width="226" alt="이메일 입력박스, 비밀번호 입력박스" src="https://user-images.githubusercontent.com/76654131/164585535-ebb23800-029d-437b-a464-04acf3c4f9f5.png" /></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"email"</span><span class="nt">&gt;</span>이메일<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"email"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"pw"</span><span class="nt">&gt;</span>비밀번호<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"pw"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<p>최근 유행하는 프레임워크로 개발하는 추세로는 페이지 전환을 일으키는 폼 태그를 안쓰지만 html에서 form 태그는 중요한 개념이다.</p>
+
+<hr />
+
+<h2 id="input-태그">input 태그</h2>
+
+<ul>
+  <li>사용자로부터 정보를 입력 받는 태그</li>
+</ul>
+
+<h3 id="-input-태그의-type-속성">&gt; input 태그의 ‘type’ 속성</h3>
+
+<p>다른 html 태그들은 태그명을 가지고 UI 및 용도가 달라지는데,<br />
+특이하게 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 태그는 <strong>‘type’</strong> 이라는 속성 값에 따라 용도가 달라지고 화면에 보여지는 UI랑 용도가 달라진다.</p>
+
+<p>즉, <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 태그는 <strong>‘type’</strong> 속성을 사용하면 데이터 형식을 지정할 수 있다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;form</span> <span class="na">action=</span><span class="s">""</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"email"</span><span class="nt">&gt;</span>이메일<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"email"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"pw"</span><span class="nt">&gt;</span>비밀번호<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"pw"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+</code></pre></div></div>
+
+<p>위에서 사용한 이메일과 비밀번호 외에도 여러가지 <strong>‘type’</strong> 속성이 있다.</p>
+
+<h3 id="-input-과-label-태그">&gt; input 과 label 태그</h3>
+
+<p><img width="226" alt="이메일 입력박스, 비밀번호 입력박스" src="https://user-images.githubusercontent.com/76654131/164585535-ebb23800-029d-437b-a464-04acf3c4f9f5.png" /></p>
+
+<p>일반 사용자들이 보기에는 ‘이메일하고 비밀번호를 입력하라는 거구나’ 하고 알 수 있지만 검색엔진이나 시각장애인은 모른다.<br />
+그래서 필요한게 <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 태그이다.<br />
+<code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 태그를 사용하면 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 태그에 이름을 붙일 수 있는데, <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 의 <strong>‘for’</strong> 의 값과 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 의 <strong>‘id’</strong> 의 값이 같으면 연결된다.</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 을 클릭하면, 연결된 <code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 에 입력할 수 있도록 포커스 되거나 토글 된다.<br />
+<code class="language-plaintext highlighter-rouge">&lt;input&gt;</code> 에 focus가 오면 스크린리더가 <code class="language-plaintext highlighter-rouge">&lt;label&gt;</code> 을 읽기 때문에 접근성 측면에서 중요하다.</p>
+</blockquote>
+
+<h3 id="-name-속성">&gt; name 속성</h3>
+
+<ul>
+  <li>name 속성은 폼(form)이 제출된 후 서버에서 폼 데이터(form data)를 참조하기 위해 사용되거나, 자바스크립트에서 요소를 참조하기 위해 사용된다.</li>
+</ul>
+
+<p><img width="350" alt="당신이 배우고 싶은 언어는? (다중선택 가능), HTML, CSS, JavaScript" src="https://user-images.githubusercontent.com/76654131/164602791-f96f4bfe-0411-44e0-831d-43966246e477.png" /></p>
+
+<p>위와 같이 언어를 선택하는 옵션들이 ‘당신이 배우고 싶은 언어는?’ 라는 질문에 해당하는 옵션들이라는 것을 알려주기 위해서는 하나의 그룹으로 묶어줘야 한다.</p>
+
+<p>사람이 각자 고유의 주민번호(html-id)가 있지만 동명이인(html-name)이 있는 것 처럼 html에서 name은 사람의 이름과 똑같은 역할을 한다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_lang"</span> <span class="na">id=</span><span class="s">"chk_html"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_html"</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_lang"</span> <span class="na">id=</span><span class="s">"chk_css"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_css"</span><span class="nt">&gt;</span>CSS<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_lang"</span> <span class="na">id=</span><span class="s">"chk_js"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_js"</span><span class="nt">&gt;</span>JavaScript<span class="nt">&lt;/label&gt;</span>
+</code></pre></div></div>
+
+<p>그래서 name에 같은 이름을 설정해주면 동일한 옵션 그룹으로 인식하게 된다.<br />
+그런데 이렇게 해준다고 해도 화면 UI 상에는 변화가 없다.<br />
+하지만 나중에 자바스크립트를 배울 때 프로그램적으로 참조하여 사용하기 때문에 중요하다.</p>
+
+<h3 id="-input-typehidden">&gt; input type=”hidden”</h3>
+
+<ul>
+  <li>사용자의 입력을 받기 위한 용도가 아님. 대부분이 개발자가 사용하기 위해서 쓰는 태그</li>
+</ul>
+
+<p>렌더링이 끝난 웹 페이지에서는 전혀 보이지 않으며, 폼 제출 시 사용자가 변경해서는 안 되는 데이터를 함께 보낼 때 유용하게 사용된다.<br />
+ex) 데이터베이스의 레코드를 저장하거나, 고유한 보안 토큰 등을 서버로 보낼 때 주로 사용</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"hidden"</span> <span class="na">name=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h3 id="-input-typeimage">&gt; input type=”image”</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- 일반 --&gt;</span>
+<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"./img/sample.jpeg"</span> <span class="na">alt=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+<span class="c">&lt;!-- 클릭 용도 --&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"image"</span> <span class="na">src=</span><span class="s">"./img/sample.jpeg"</span> <span class="na">alt=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>기존의 img 태그랑 뭐가 다른거냐?</p>
+
+<p>화면상 보여지는 이미지는 똑같지만, 이미지에 커서를 놓았을 때 img 태그는 일반 커서지만, input type=”image”를 사용한 이미지는 클릭을 하는 손가락 커서가 생긴다.<br />
+그럼 검색엔진에서는 ‘이 이미지는 클릭 이벤트를 받아서 처리하려고 만든 이미지구나’ 하고 인식을 하게 된다.</p>
+
+<h3 id="-button-태그의-type-속성">&gt; button 태그의 ‘type’ 속성</h3>
+
+<p><img width="269" alt="스크린샷 2022-04-22 오후 5 17 21" src="https://user-images.githubusercontent.com/76654131/164647770-51df0f32-c526-442a-8cc3-0e254f14b551.png" /></p>
+
+<p><br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="https://tecoble.techcourse.co.kr/post/2021-05-22-html-form-tag/">https://tecoble.techcourse.co.kr/post/2021-05-22-html-form-tag/</a><br />
+<a href="http://www.tcpschool.com/">http://www.tcpschool.com/</a></p>
+</blockquote>
+:ET
