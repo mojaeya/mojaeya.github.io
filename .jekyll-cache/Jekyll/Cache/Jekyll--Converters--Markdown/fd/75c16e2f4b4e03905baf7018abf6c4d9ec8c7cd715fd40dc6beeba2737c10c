@@ -1,0 +1,273 @@
+I"�=<h2 id="css-선택자">CSS 선택자</h2>
+
+<ul>
+  <li>CSS에서는 스타일을 적용할 대상을 선택하기 위해서 선택자(selector)를 사용한다.</li>
+</ul>
+<p align="center"><img width="600" alt="스크린샷 2022-05-13 오후 12 05 10" src="https://user-images.githubusercontent.com/76654131/168203272-3f837451-b38a-44e7-9a46-2474282c907a.png" /></p>
+
+<h4 id="-전체-선택자"># 전체 선택자</h4>
+
+<ul>
+  <li>전체 선택자는 HTML 페이지 내부의 모든 태그에 지정된 스타일을 적용</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+  <span class="c">/* 전체 선택자 */</span>
+  <span class="o">*</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">greenyellow</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<h4 id="-클래스-선택자"># 클래스 선택자</h4>
+
+<ul>
+  <li>클래스 선택자는 태그의 class 속성값을 활용하는 선택자</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+  <span class="c">/* 클래스 선택자 */</span>
+  <span class="c">/* 선택자 이름이 점(.)으로 시작 */</span>
+  <span class="nc">.color-red</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.bg-yellow</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">yellow</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"color-red"</span><span class="nt">&gt;</span>빨간 글자색입니다.<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"color-red bg-yellow"</span><span class="nt">&gt;</span>빨간색 글자에 노란색 배경입니다.<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
+
+<h4 id="-태그-선택자"># 태그 선택자</h4>
+
+<ul>
+  <li>태그 선택자는 태그명을 사용해서 HTML 요소를 찾고, 동일한 스타일 속성을 적용하기 위해 사용</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+  <span class="c">/* 태그 선택자 */</span>
+  <span class="c">/* 태그 이름을 선택자로 사용 */</span>
+  <span class="nt">a</span> <span class="p">{</span>
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>하이퍼링크를 위한 태그인 <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> 태그는 원래 <code class="language-plaintext highlighter-rouge">&lt;a&gt;</code> 태그 안의 텍스트에 밑줄이 자동으로 추가되게 된다.<br /> 태그 선택자 안에 text-decoration: none; 사용하면 밑줄이 사라지게 된다.</p>
+</blockquote>
+
+<h4 id="-id-선택자"># ID 선택자</h4>
+
+<ul>
+  <li>ID 선택자는 태그가 id 속성 값이 <font color="red">유일</font>하다는 특징을 활용한 선택자
+    <blockquote>
+      <p>HTML 태그에서 id는 모든 태그에서 사용할 수 있는 속성이며 반드시 중복되는 값이 없는 유일한 값을
+속성 값으로 사용해야 한다.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+  <span class="c">/* id 선택자 */</span>
+  <span class="c">/* # + id 속성 값 */</span>
+  <span class="nf">#container</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">400px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">50px</span><span class="p">;</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">greenyellow</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">"container"</span><span class="nt">&gt;&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h4 id="-복합-선택자"># 복합 선택자</h4>
+
+<p><img width="600" alt="스크린샷 2022-05-13 오후 12 34 59" src="https://user-images.githubusercontent.com/76654131/168206243-f4ec72b3-a561-4c37-a1cf-5eeb4e3ec981.png" /></p>
+
+<p><img width="700" alt="스크린샷 2022-05-13 오후 12 38 16" src="https://user-images.githubusercontent.com/76654131/168206544-05bab7d8-af1f-472a-9e40-0c0956728193.png" /></p>
+
+<h4 id="-속성-선택자"># 속성 선택자</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+  <span class="c">/* 속성 선택자 */</span>
+  <span class="c">/* E[attr] 형식 */</span>
+  <span class="nt">a</span><span class="o">[</span><span class="nt">href</span><span class="o">]</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">black</span><span class="p">;</span>
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c">/* E[attr="val"] 형식 */</span>
+  <span class="nt">input</span><span class="o">[</span><span class="nt">type</span><span class="o">=</span><span class="s1">"text"</span><span class="o">]</span> <span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">solid</span> <span class="no">red</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="o">[</span><span class="nt">name</span><span class="o">=</span><span class="s1">"blue"</span><span class="o">]</span> <span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">2px</span> <span class="nb">solid</span> <span class="no">blue</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"/link"</span><span class="nt">&gt;</span>링크<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">"blue"</span> <span class="na">id=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">name=</span><span class="s">"blue"</span><span class="nt">&gt;</span>abc<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<h4 id="-가상-클래스-선택자"># 가상 클래스 선택자</h4>
+
+<ul>
+  <li>가상 클래스 선택자는 특정 요소에 마우스가 포커스 되거나, 버튼 위에 마우스가 위치 되거나 하는 사용자의 이벤트에 대해 스타일을 지정하는 선택자이다.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">가상 클래스 선택자</th>
+      <th style="text-align: center">기능</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">:link</td>
+      <td style="text-align: center">방문한 적이 없는 링크</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:visited</td>
+      <td style="text-align: center">방문한 적이 있는 링크</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:hover</td>
+      <td style="text-align: center">마우스를 롤오버 했을 때</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:active</td>
+      <td style="text-align: center">마우스를 클릭했을 때</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:focus</td>
+      <td style="text-align: center">포커스 되었을 때 (input 태그 등)</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:first</td>
+      <td style="text-align: center">첫번째 요소</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:last</td>
+      <td style="text-align: center">마지막 요소</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:first-child</td>
+      <td style="text-align: center">첫번째 자식</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:last-child</td>
+      <td style="text-align: center">마지막 자식</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">:nth-child(2n+1)</td>
+      <td style="text-align: center">홀수 번째 자식</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="링크와-입력창에-활용"><code class="language-plaintext highlighter-rouge">링크와 입력창에 활용</code></h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+  <span class="c">/* 가상 클래스 선택자 */</span>
+  <span class="nt">a</span> <span class="p">{</span>
+    <span class="nl">text-decoration</span><span class="p">:</span> <span class="nb">none</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c">/* 마우스가 오버 됐을때 */</span>
+  <span class="nt">a</span><span class="nd">:hover</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c">/* 방문한 적이 없는 링크 */</span>
+  <span class="nt">a</span><span class="nd">:link</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">blue</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c">/* 방문한 적이 있는 링크 */</span>
+  <span class="nt">a</span><span class="nd">:visited</span> <span class="p">{</span>
+    <span class="nl">color</span><span class="p">:</span> <span class="no">green</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c">/* 마우스가 포커스 됐을 때  */</span>
+  <span class="nt">input</span><span class="nd">:focus</span> <span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">5px</span> <span class="nb">solid</span> <span class="no">red</span> <span class="cp">!important</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://naver.com"</span><span class="nt">&gt;</span>네이버<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://google.com"</span><span class="nt">&gt;</span>구글<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">""</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<h4 id="테이블에-활용"><code class="language-plaintext highlighter-rouge">테이블에 활용</code></h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+  <span class="nt">table</span><span class="o">,</span>
+  <span class="nt">th</span><span class="o">,</span>
+  <span class="nt">td</span> <span class="p">{</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">1px</span> <span class="nb">solid</span> <span class="no">black</span><span class="p">;</span>
+    <span class="nl">border-collapse</span><span class="p">:</span> <span class="nb">collapse</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nt">table</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">100%</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c">/* 홀수 행에만 색깔 적용 */</span>
+  <span class="nt">tbody</span> <span class="nt">tr</span><span class="nd">:nth-child</span><span class="o">(</span><span class="err">2</span><span class="nt">n</span> <span class="o">+</span> <span class="err">1</span><span class="o">)</span> <span class="p">{</span>
+    <span class="nl">background-color</span><span class="p">:</span> <span class="no">greenyellow</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;table&gt;</span>
+  <span class="nt">&lt;thead&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;th&gt;</span>이름<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>연락처<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;th&gt;</span>이메일<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/thead&gt;</span>
+  <span class="nt">&lt;tbody&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>손흥민<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>010-0000-0000<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>son@email.com<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>박지성<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>010-0000-0001<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>park@email.com<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+      <span class="nt">&lt;td&gt;</span>차범근<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>010-0000-0002<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;td&gt;</span>cha@email.com<span class="nt">&lt;/td&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+  <span class="nt">&lt;/tbody&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div></div>
+
+<p><img width="681" alt="스크린샷 2022-05-13 오후 1 02 17" src="https://user-images.githubusercontent.com/76654131/168208873-8c84f382-3a07-4aa2-9537-b19e477911c4.png" /></p>
+<blockquote>
+  <p><br />
+<br />
+<br /></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a></p>
+</blockquote>
+:ET

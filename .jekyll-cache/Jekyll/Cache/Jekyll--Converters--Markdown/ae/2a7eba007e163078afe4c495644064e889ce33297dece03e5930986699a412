@@ -1,0 +1,25 @@
+I"r<h2 id="박스-모델box-model">박스 모델(box model)</h2>
+
+<p>html 문서의 구성요소들은 기본적으로 <code class="language-plaintext highlighter-rouge">박스</code> 모양으로 정의된다.<br />
+CSS 박스 모델은 콘텐츠(Content), 패딩(Padding), 테두리(Border), 그리고 마진(Margin) 네 가지 요소로 구성된다.</p>
+
+<p align="center"><img width="417" alt="스크린샷 2022-05-13 오후 3 21 58" src="https://user-images.githubusercontent.com/76654131/168223215-4d2e3edd-f665-4f05-8be0-90fc9f6e48b4.png" /></p>
+
+<ul>
+  <li>Contents box - 콘텐츠 영역으로 텍스트 및 이미지의 실제 영역.</li>
+  <li>Padding box - 테투리와 콘텐츠 사이의 안쪽 여백.</li>
+  <li>Border box - 박스를 둘러싼 테투리 영역.</li>
+  <li>Margin box - 박스의 외부 영역으로 바로 앞 박스와의 여백.
+<br />
+<br />
+<br /></li>
+</ul>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="https://dinfree.com/lecture/frontend/122_css_3.html#m2">https://dinfree.com/lecture/frontend/122_css_3.html#m2</a></p>
+</blockquote>
+:ET
