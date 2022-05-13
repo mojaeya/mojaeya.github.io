@@ -56,11 +56,11 @@ HTML 문서의 구성요소들은 기본적으로 `박스` 모양으로 정의�
 
 그런데 위의 그림을 보면 box-sizing 값에 따라서 우리 눈에 보이는 UI 상의 이미지 크기 차이가 큰 것을 알 수 있다.
 
-`content-box` : 순수 콘텐츠 박스 크기만 300 x 100 (border까지 포함해서 340x140 이 되어버린다!)
+`box-sizing: content-box` : 순수 콘텐츠 박스 크기만 300 x 100 (border까지 포함해서 340x140 이 되어버린다!)
 
 <img width="210" alt="스크린샷 2022-05-13 오후 3 49 58" src="https://user-images.githubusercontent.com/76654131/168227276-33bad0d7-8cda-47d1-8edc-87cf29a3f2a4.png">
 
-`border-box` : border 너비 까지 포함해서 300 x 100 (콘텐츠 박스 크기가 자동으로 260x60)
+`box-sizing: border-box` : border 너비 까지 포함해서 300 x 100 (콘텐츠 박스 크기가 자동으로 260x60)
 
 <img width="208" alt="스크린샷 2022-05-13 오후 3 50 15" src="https://user-images.githubusercontent.com/76654131/168227314-238ac53e-e359-4ed9-a0e3-36c3ac574294.png">
 

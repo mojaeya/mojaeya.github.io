@@ -1,4 +1,4 @@
-I"�<h2 id="박스-모델--box-model-">박스 모델 ( Box Model )</h2>
+I"�<h2 id="박스-모델--box-model-">박스 모델 ( Box Model )</h2>
 
 <h4 id="-박스-개요"># 박스 개요</h4>
 
@@ -16,7 +16,7 @@
 
 <hr />
 
-<h4 id="-박스-크기--box-sizing-"># 박스 크기 ( box-sizing )</h4>
+<h2 id="박스-크기--box-sizing-">박스 크기 ( Box Sizing )</h2>
 
 <p>박스요소에 크기를 지정하면 기본적으로 콘텐츠 영역에 적용 된다.</p>
 <font color="red">그러나,</font>
@@ -47,10 +47,23 @@
 <p><img width="369" alt="스크린샷 2022-05-13 오후 3 52 37" src="https://user-images.githubusercontent.com/76654131/168227667-43b56fbd-eeaa-457a-9a2c-cf01a48f5e81.png" /></p>
 
 <ul>
-  <li>width: 300px; height: 100px; 은 콘텐츠 영역이 300px X 100px 임을 의미한다.</li>
-  <li><u>전체 박스 크기는 border, margin, padding 에 콘텐츠 영역 크기를 더해야 한다.</u></li>
-  <li>그래서 실제로 박스 크기 계산을 편하게 하기 위해서는 <code class="language-plaintext highlighter-rouge">border</code> 를 기준으로 하는 것이 편하다.<br />
-이경우 box-sizing 속성을 boder-box 로 지정하면 된다. 디폴트는 content-box.</li>
+  <li>width: 300px; height: 100px; 은 콘텐츠 영역이 300 x 100 임을 의미한다.</li>
+</ul>
+
+<p>그런데 위의 그림을 보면 box-sizing 값에 따라서 우리 눈에 보이는 UI 상의 이미지 크기 차이가 큰 것을 알 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">box-sizing: content-box</code> : 순수 콘텐츠 박스 크기만 300 x 100 (border까지 포함해서 340x140 이 되어버린다!)</p>
+
+<p><img width="210" alt="스크린샷 2022-05-13 오후 3 49 58" src="https://user-images.githubusercontent.com/76654131/168227276-33bad0d7-8cda-47d1-8edc-87cf29a3f2a4.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">box-sizing: border-box</code> : border 너비 까지 포함해서 300 x 100 (콘텐츠 박스 크기가 자동으로 260x60)</p>
+
+<p><img width="208" alt="스크린샷 2022-05-13 오후 3 50 15" src="https://user-images.githubusercontent.com/76654131/168227314-238ac53e-e359-4ed9-a0e3-36c3ac574294.png" /></p>
+
+<ul>
+  <li>그래서 실제로 박스 크기 계산을 편하게 하기 위해서는 <code class="language-plaintext highlighter-rouge">border</code> 를 기준으로 하는 것이 편하다.</li>
+  <li>box-sizing 속성을 boder-box 로 지정하면 된다.</li>
+  <li>디폴트는 content-box.</li>
 </ul>
 
 <p><br />
