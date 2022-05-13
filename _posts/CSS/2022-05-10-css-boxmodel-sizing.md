@@ -68,6 +68,44 @@ HTML 문서의 구성요소들은 기본적으로 `박스` 모양으로 정의�
 - box-sizing 속성을 boder-box 로 지정하면 된다.
 - 디폴트는 content-box.
 
+---
+
+## border 속성
+
+border 영역을 지정하기 위한 여러 속성이 있다.
+
+- border-width : 테두리 두께를 지정하는 속성
+
+```html
+<style>
+  div {
+    border-width: 2px 10px 4px 20px; /* top, right, bottom, left */
+    border-width: 2px 10px; /* top bottom, right left */
+    border-width: 5px /* 4면 모두 5px */
+    border-width: 5px 10px 7px /* top,:5px, right,left:10px; bottom:7px */
+  }
+</style>
+```
+
+- border-style : 테두리의 모양을 지정하는 속성 (4곳의 테두리를 각각 다르게 지정 가능)
+- border-color : 테두리의 색상을 지정하는 속성
+- border-radius : 테두리의 모서리를 둥글게 만들기 위한 속성
+
+`단축형(Shorthand)`
+
+CSS의 많은 속성들이 여러 속성들을 묶어 단축형으로 사용할 수 있도록 지원한다.
+
+- border 의 경우 width, style, color 순으로 나열
+
+```html
+<style>
+  div {
+    border: 5px solid red;
+    border-left: 5px solid red;
+  }
+</style>
+```
+
 <br>
 <br>
 <br>

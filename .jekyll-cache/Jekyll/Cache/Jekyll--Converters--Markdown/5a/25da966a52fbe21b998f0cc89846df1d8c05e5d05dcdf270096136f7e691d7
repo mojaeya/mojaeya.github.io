@@ -1,0 +1,18 @@
+I"|<h2 id="css-position">CSS Position</h2>
+
+<p><code class="language-plaintext highlighter-rouge">position</code> 속성은 박스 구성요소들을 배치하기 위한 속성이다. 어떤 <code class="language-plaintext highlighter-rouge">position</code> 속성을 사용 하느냐에 따라 위치가 달라질 수 있으므로 전체적인 내용을 잘 이해하고 익숙하게 사용할 수 있도록 해야 한다.</p>
+
+<p align="center"><img width="560" alt="스크린샷 2022-05-13 오후 6 29 05" src="https://user-images.githubusercontent.com/76654131/168254754-aa5f52d8-da27-4e45-97dd-80a6b81a9004.png" />
+</p>
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="https://dinfree.com/lecture/frontend/122_css_3.html#m2">https://dinfree.com/lecture/frontend/122_css_3.html#m2</a></p>
+</blockquote>
+:ET

@@ -1,0 +1,107 @@
+I"<h2 id="박스-모델--box-model-">박스 모델 ( Box Model )</h2>
+
+<h4 id="-박스-개요"># 박스 개요</h4>
+
+<p>HTML 문서의 구성요소들은 기본적으로 <code class="language-plaintext highlighter-rouge">박스</code> 모양으로 정의된다.<br />
+<strong>CSS 박스 모델</strong>은 <code class="language-plaintext highlighter-rouge">콘텐츠(Content)</code>, <code class="language-plaintext highlighter-rouge">패딩(Padding)</code>, <code class="language-plaintext highlighter-rouge">테두리(Border)</code>, 그리고 <code class="language-plaintext highlighter-rouge">마진(Margin)</code> 네 가지 요소로 구성된다.</p>
+
+<p align="center"><img width="417" alt="스크린샷 2022-05-13 오후 3 21 58" src="https://user-images.githubusercontent.com/76654131/168223215-4d2e3edd-f665-4f05-8be0-90fc9f6e48b4.png" /></p>
+
+<ul>
+  <li>Contents box - 콘텐츠 영역으로 텍스트 및 이미지의 실제 영역.</li>
+  <li>Padding box - Content를 둘러싼 공간(Border와 Content 사이의 공간)</li>
+  <li>Border box - Content와 Padding을 둘러싼 선</li>
+  <li>Margin box - Border를 둘러싼 공간</li>
+</ul>
+
+<hr />
+
+<h2 id="박스-크기--box-sizing-">박스 크기 ( Box Sizing )</h2>
+
+<p>박스요소에 크기를 지정하면 기본적으로 콘텐츠 영역에 적용 된다.</p>
+<font color="red">그러나,</font>
+<p><code class="language-plaintext highlighter-rouge">실제 박스의 크기</code>는 <u>border, margin, padding을 모두 더해야 하기 때문에</u> 각각의 박스를 적절하게 배치 하려면 이들 크기가 함께 고려 되어야 한다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;style&gt;</span>
+  <span class="nt">div</span> <span class="p">{</span>
+    <span class="nl">width</span><span class="p">:</span> <span class="m">300px</span><span class="p">;</span>
+    <span class="nl">height</span><span class="p">:</span> <span class="m">100px</span><span class="p">;</span>
+    <span class="nl">padding</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+    <span class="nl">border</span><span class="p">:</span> <span class="m">10px</span> <span class="nb">solid</span> <span class="no">green</span><span class="p">;</span>
+    <span class="nl">margin</span><span class="p">:</span> <span class="m">10px</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nc">.box-cb</span> <span class="p">{</span>
+    <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">content-box</span><span class="p">;</span> <span class="c">/* 콘텐츠 크기 기준으로 width, height 적용  */</span>
+  <span class="p">}</span>
+
+  <span class="nc">.box-bb</span> <span class="p">{</span>
+    <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span> <span class="c">/* border까지 포함해서 width, height 적용 */</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+<span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-cb"</span><span class="nt">&gt;</span>contetn-box<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"box-bb"</span><span class="nt">&gt;</span>border-box<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<p><img width="369" alt="스크린샷 2022-05-13 오후 3 52 37" src="https://user-images.githubusercontent.com/76654131/168227667-43b56fbd-eeaa-457a-9a2c-cf01a48f5e81.png" /></p>
+
+<ul>
+  <li>width: 300px; height: 100px; 은 콘텐츠 영역이 300 x 100 임을 의미한다.</li>
+</ul>
+
+<p>그런데 위의 그림을 보면 box-sizing 값에 따라서 우리 눈에 보이는 UI 상의 이미지 크기 차이가 큰 것을 알 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">box-sizing: content-box</code> : 순수 콘텐츠 박스 크기만 300 x 100 (border까지 포함해서 340x140 이 되어버린다!)</p>
+
+<p><img width="210" alt="스크린샷 2022-05-13 오후 3 49 58" src="https://user-images.githubusercontent.com/76654131/168227276-33bad0d7-8cda-47d1-8edc-87cf29a3f2a4.png" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">box-sizing: border-box</code> : border 너비 까지 포함해서 300 x 100 (콘텐츠 박스 크기가 자동으로 260x60)</p>
+
+<p><img width="208" alt="스크린샷 2022-05-13 오후 3 50 15" src="https://user-images.githubusercontent.com/76654131/168227314-238ac53e-e359-4ed9-a0e3-36c3ac574294.png" /></p>
+
+<ul>
+  <li>그래서 실제로 박스 크기 계산을 편하게 하기 위해서는 <code class="language-plaintext highlighter-rouge">border</code> 를 기준으로 하는 것이 편하다.</li>
+  <li>box-sizing 속성을 boder-box 로 지정하면 된다.</li>
+  <li>디폴트는 content-box.</li>
+</ul>
+
+<hr />
+
+<h2 id="border-속성">border 속성</h2>
+
+<p>border 영역을 지정하기 위한 여러 속성이 있다.</p>
+
+<ul>
+  <li>border-width : 테두리 두께를 지정하는 속성</li>
+</ul>
+
+<p>div {
+border-width: 2px 10px 4px 20px; /_ top, right, bottom, left <em>/
+border-width: 2px 10px; /</em> top bottom, right left <em>/
+border-width: 5px /</em> 4면 모두 5px <em>/
+border-width: 5px 10px 7px /</em> top,:5px, right,left:10px; bottom:7px _/
+}</p>
+
+<ul>
+  <li>
+    <p>5px 10px 7px -&gt;
+top,:5px, right,left:10px; bottom:7px</p>
+  </li>
+  <li>border-style : 테두리의 모양을 지정하는 속성 (4곳의 테두리를 각각 다르게 지정 가능)</li>
+  <li>border-color : 테두리의 색상을 지정하는 속성</li>
+  <li>border-radius : 테두리의 모서리를 둥글게 만들기 위한 속성</li>
+</ul>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="https://dinfree.com/lecture/frontend/122_css_3.html#m2">https://dinfree.com/lecture/frontend/122_css_3.html#m2</a></p>
+</blockquote>
+:ET
