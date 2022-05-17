@@ -1,0 +1,43 @@
+I"s<h2 id="dom-이벤트event">DOM 이벤트(Event)</h2>
+
+<p>웹 페이지를 이용하면 웹 화면과 사용자 사이에서 수많은 상호작용이 나타난다.
+버튼을 클릭한다든지, 마우스로 스크롤, 검색 키워드를 입력하는 행동 등 이렇게 사용자가 웹 페이지를 이용하면서 행하는 액션을 <code class="language-plaintext highlighter-rouge">이벤트(Event)</code>라고 한다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">이벤트(Event)</code>가 발생하면 보통 사전에 정의된 특정 코드가 실행되고 그에 따라 기능이 동작하거나 화면이 변경되는 등의 변화가 발생 한다.</p>
+
+<hr />
+
+<h2 id="이벤트-핸들러event-handler">이벤트 핸들러(Event Handler)</h2>
+
+<p>이벤트 핸들러는 이벤트 발생을 감지하고 처리할 코드를 수행하는 역할을 한다.</p>
+
+<ol>
+  <li>HTML 태그의 속성으로 정의하는 형식</li>
+  <li>자바스크립트에서 DOM 엘리먼트의 속성에 콜백 함수를 정의하는 형식</li>
+</ol>
+
+<font color="red">이벤트 핸들러는 앞의 이벤트 이름 앞에 on을 붙여 사용한다.</font>
+
+<hr />
+
+<h2 id="html-이벤트">HTML 이벤트</h2>
+
+<font color="#1E90FF">글자</font>
+
+<p><br /></p>
+
+<font color="#0086e5">글자</font>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/105608999">바닐라 자바스크립트</a><br />
+<a href="https://dinfree.com/lecture/frontend/123_js_3.html#m1">https://dinfree.com/lecture/frontend/123_js_3.html#m1</a></p>
+</blockquote>
+:ET

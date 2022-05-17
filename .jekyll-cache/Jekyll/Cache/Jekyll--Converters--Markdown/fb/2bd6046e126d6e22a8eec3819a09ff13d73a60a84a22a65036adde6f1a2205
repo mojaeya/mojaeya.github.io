@@ -1,0 +1,187 @@
+I"�@<h2 id="domdocument-object-model">DOM(Document Object Model)</h2>
+
+<p>자바스크립트는 HTML 문서의 모든 요소에 접근하여 변경할 수 있다. 사용자가 웹 페이지에 접근하면 웹 페이지가 로드되면서 브라우저는 웹 페이지에 대한 <code class="language-plaintext highlighter-rouge">DOM(Document Object Model)</code>을 생성하게 된다.
+<code class="language-plaintext highlighter-rouge">DOM</code>은 HTML 문서에 접근하기 위한 표준을 정의하며 일종의 인터페이스이다.</p>
+
+<p>HTML DOM 모델은 <code class="language-plaintext highlighter-rouge">객체트리</code>로 구성된다.</p>
+
+<p align="center"><img width="514" alt="스크린샷 2022-05-14 오후 10 02 11" src="https://user-images.githubusercontent.com/76654131/168426888-b4b1c552-ff19-47f9-be66-9334cad0f141.png" /></p>
+
+<hr />
+
+<p>사용자가 브라우저에 입력하는 데이터는 DOM 요소의 <code class="language-plaintext highlighter-rouge">value</code> 속성에 저장된다.<br />
+결국 우리는 사용자 데이터를 자바스크립트에서 가져와서 사용하려면</p>
+
+<ol>
+  <li>먼저 DOM 요소에 접근을 한 뒤</li>
+  <li>해당 요소 속성 정보에 접근해야 한다.</li>
+</ol>
+
+<h2 id="dom-요소element에-접근하기">DOM 요소(element)에 접근하기</h2>
+
+<h4 id="예제-1"><code class="language-plaintext highlighter-rouge">예제 1</code></h4>
+
+<p><img width="228" alt="스크린샷 2022-05-15 오후 2 22 17" src="https://user-images.githubusercontent.com/76654131/168458404-d3c0c569-604f-4d11-855e-fc92839366e3.png" /></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"userId"</span><span class="nt">&gt;</span>사용자 ID<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"userId"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="c">&lt;!-- &lt;script&gt; --&gt;</span>
+</code></pre></div></div>
+
+<h3 id="1-id-값을-이용해서-dom-요소-찾기">1. id 값을 이용해서 DOM 요소 찾기</h3>
+
+<p>document 객체의 내장 함수인 <code class="language-plaintext highlighter-rouge">getElementByID</code> 를 사용하여 HTML 요소에 대한 접근이 가능하다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">userIdElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">userId</span><span class="dl">"</span><span class="p">);</span>
+  <span class="c1">// console.log(userIdElement);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="2-태그명을-이용해서-dom-요소-찾기">2. 태그명을 이용해서 DOM 요소 찾기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">getElementsByTagName</code> : 파라미터로 전달한 태그명에 해당하는 모든 HTML 요소 반환</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">labelElements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">"</span><span class="s2">label</span><span class="dl">"</span><span class="p">);</span>
+  <span class="c1">// console.log(labelElements);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="3-클래스명을-이용해서-dom-요소-찾기">3. 클래스명을 이용해서 DOM 요소 찾기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">getElementsByClassName</code> : 파라미터로 전달한 클래스명과 동일한 class 속성값을 포함하고 있는 모든 HTML 요소 반환</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">const</span> <span class="nx">inputElements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">form-control</span><span class="dl">"</span><span class="p">);</span>
+  <span class="c1">// console.log(inputElements);</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="예제-2"><code class="language-plaintext highlighter-rouge">예제 2</code></h4>
+
+<p><img width="226" alt="스크린샷 2022-05-15 오후 2 21 16" src="https://user-images.githubusercontent.com/76654131/168458384-ad2e6a88-7770-4965-b04e-82799849867b.png" /></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_pl"</span> <span class="na">id=</span><span class="s">"chk_html"</span> <span class="na">value=</span><span class="s">"HTML"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_html"</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_pl"</span> <span class="na">id=</span><span class="s">"chk_css"</span> <span class="na">value=</span><span class="s">"CSS"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_css"</span><span class="nt">&gt;</span>CSS<span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">name=</span><span class="s">"chk_pl"</span> <span class="na">id=</span><span class="s">"chk_js"</span> <span class="na">value=</span><span class="s">"JS"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"chk_js"</span><span class="nt">&gt;</span>JavaScript<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"doSave();"</span><span class="nt">&gt;</span>저장<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- &lt;script&gt; --&gt;</span>
+</code></pre></div></div>
+
+<h3 id="4-name-속성-값을-이용해서-dom-요소-찾기">4. name 속성 값을 이용해서 DOM 요소 찾기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">getElementsByName</code> : 파리미터로 전달한 name 값과 동일한 name 속성값을 포함하고 있는 모든 HTML 요소 반환</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">doSave</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">chks</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByName</span><span class="p">(</span><span class="dl">"</span><span class="s2">chk_pl</span><span class="dl">"</span><span class="p">);</span>
+    <span class="c1">// console.log(chks);</span>
+    <span class="c1">// "chk_pl" 이라는 name 속성값을 포함하고 있는 모든 HTML 요소를 불러온 뒤,</span>
+    <span class="kd">let</span> <span class="nx">checkedValue</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">chk</span> <span class="k">of</span> <span class="nx">chks</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">chk</span><span class="p">.</span><span class="nx">checked</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// checked 메소드를 사용해서 체크된 값들만 걸러준다.</span>
+        <span class="nx">checkedValue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chk</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1">// console.log(checkedValue);</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="5-css-선택자를-이용해서-dom-요소-찾기"><font color="red">5. CSS 선택자를 이용해서 DOM 요소 찾기</font></h3>
+
+<p>document 객체의 내장 함수인 <code class="language-plaintext highlighter-rouge">querySelector</code>, <code class="language-plaintext highlighter-rouge">querySelectorAll</code> 을 사용하면 파라미터로 CSS 선택자를 사용할 수 있다. getElementByXXX() 와 달리 단일 메서드로 원하는 요소를 찾을 수 있다.</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">querySelector()</code></strong></li>
+</ul>
+
+<p>지정된 선택자와 일치하는 document의 첫 번째 element를 반환하고 종료된다. 일치하는 요소가 없으면 null을 반환한다. (한건 ex) 유일한 값을 가진 id 선택자)</p>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">querySelectorAll()</code></strong></li>
+</ul>
+
+<p>지정된 셀렉터 그룹에 일치하는 document의 element list를 나타낸다. 즉 NodeList를 반환한다.
+지정된 셀렉터가 없는 경우에는 비어있는 NodeList로 반환된다. (여러건)</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">doSave</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">checkedElements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">"</span><span class="s2">[name=chk_pl]:checked</span><span class="dl">"</span><span class="p">);</span>
+    <span class="c1">// console.log(checkedElements);</span>
+    <span class="c1">// css 가상 클래스 선택자 ":checked" 를 이용해서 "chk_pl" 이라는 name 속성값을 포함하고 있는</span>
+    <span class="c1">// *체크된 HTML 요소만* 불러온다.</span>
+    <span class="kd">let</span> <span class="nx">checkedValue</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">const</span> <span class="nx">chk</span> <span class="k">of</span> <span class="nx">checkedElements</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">checkedValue</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">chk</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="c1">// console.log(checkedValue);</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>이렇게 CSS선택자를 이용해서 접근하면 HTML 태그나 속성값들을 이용해서 DOM에 접근하는 것보다<br />
+<strong><font color="#1E90FF">훨씬 간단하고 유용하다.</font></strong></p>
+
+<hr />
+
+<h2 id="dom-속성attribute-조작하기">DOM 속성(attribute) 조작하기</h2>
+
+<p>이제 DOM 요소에 접근을 하였으니 DOM 요소가 가지고 있는 속성 정보를 읽어오거나, 값을 변경하는 등 조작할 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">예제</code></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- &lt;body&gt; --&gt;</span>
+<span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"selLanguage"</span><span class="nt">&gt;</span>가장 좋아하는 프로그래밍 언어는?<span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"selLanguage"</span> <span class="na">value=</span><span class="s">""</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"HTML"</span><span class="nt">&gt;</span>HTML<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"CSS"</span><span class="nt">&gt;</span>CSS<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"JS"</span><span class="nt">&gt;</span>JavaScript<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"doSave();"</span><span class="nt">&gt;</span>저장<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">onclick=</span><span class="s">"setLang();"</span><span class="nt">&gt;</span>설정<span class="nt">&lt;/button&gt;</span>
+<span class="c">&lt;!-- &lt;script&gt; --&gt;</span>
+</code></pre></div></div>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">doSave</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">favoriteLang</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#selLanguage</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">favoriteLang</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">setLang</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#selLanguage</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">JS</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p><img src="https://user-images.githubusercontent.com/76654131/168460022-f7e04c7b-55ed-4d9d-a899-ee01cae6fa61.gif" alt="May-15-2022 15-20-50" /></p>
+
+<p>이렇게 value 메소드를 이용해 속성정보에 접근해 속성명을 읽어오거나, 값을 넣어서 변경해서 세팅해줄 수 있다.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/105608999">바닐라 자바스크립트</a><br />
+<a href="https://www.w3schools.com/js/js_htmldom.asp">https://www.w3schools.com/js/js_htmldom.asp</a></p>
+</blockquote>
+:ET
