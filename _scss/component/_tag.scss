@@ -1,37 +1,38 @@
 .post-tag {
   display: inline-block;
-  background: rgba($theme-color, 0.35);
-  padding: 0 .5rem;
-  margin-right: .5rem;
+  background: rgba(#a840ff, 0.35);
+  padding: 0 0.5rem;
+  margin-right: 0.5rem;
   border-radius: 4px;
   color: $theme-color;
   font-family: $font-sans;
   font-size: 90%;
   &:before {
+    // color: #1e90ff;
     content: "\f02b";
     font-family: $font-font-awesome;
-    padding-right: .5em;
+    padding-right: 0.5em;
   }
   &:hover {
     text-decoration: none;
-    background: $theme-color;
+    background: #a840ff; // 0086e5
     color: $white;
   }
-  @include transition(all .1s ease-in-out);
+  @include transition(all 0.1s ease-in-out);
 }
 
 .tags-expo {
   :target:before {
-    content:"";
-    display:block;
-    height:72px; /* fixed header height*/
-    margin:-72px 0 0; /* negative fixed header height */
+    content: "";
+    display: block;
+    height: 72px; /* fixed header height*/
+    margin: -72px 0 0; /* negative fixed header height */
   }
   .tags-expo-list {
     @media (min-width: 38em) {
       font-size: 0.9rem;
       .post-tag {
-        margin: .2em .3em;
+        margin: 0.2em 0.3em;
       }
     }
   }
@@ -41,11 +42,11 @@
       list-style-position: inside;
       padding: 0;
       li {
-        @include transition(all .1s ease-in-out);
+        @include transition(all 0.1s ease-in-out);
         padding: 0 1rem;
         &:hover {
           list-style-type: disc;
-          padding: 0 .5rem;
+          padding: 0 0.5rem;
         }
       }
     }
@@ -60,7 +61,7 @@
       padding: 0;
     }
     // index.html 홈페이지 첫화면 post-title 크기 조절
-    .post-title {    
+    .post-title {
       color: $theme-color;
       margin-top: 0;
       font-size: 0.9rem;
@@ -69,3 +70,7 @@
   }
 }
 
+// // 홈 화면 태그 안 글자 색상
+// .tags-expo a {
+//   color: black;
+// }

@@ -1,20 +1,20 @@
 /* Colors 
  * Based on colors from Base16: http://chriskempson.github.io/base16/#default.
  */
-$red:      #ac4142;
-$orange:   #d28445;
-$yellow:   #f4bf75;
-$green:    #90a959;
-$cyan:     #75b5aa;
-$blue:     #6a9fb5;
-$magenta:  #aa759f;
-$brown:    #8f5536;
-$default:  #505050;
+$red: #ac4142;
+$orange: #d28445;
+$yellow: #f4bf75;
+$green: #90a959;
+$cyan: #75b5aa;
+$blue: #6a9fb5;
+$magenta: #aa759f;
+$brown: #8f5536;
+$default: #505050;
 
-$gray: #59606D;
-$white:      #fff;
-$lightgrey:  #eee;
-$black:      #000;
+$gray: #59606d;
+$white: #fff;
+$lightgrey: #eee;
+$black: #000;
 
 $theme-color: #353535;
 $theme-color-dark: darken($theme-color, 10%);
@@ -25,7 +25,7 @@ $masthead-title-small-color: $black;
 
 /* Layout */
 $reverse-layout: true;
-$overlay-sidebar: false;
+$overlay-sidebar: true;
 
 /* Font stack */
 $font-serif: "PT Serif", Georgia, "Times New Roman", serif;
