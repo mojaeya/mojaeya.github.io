@@ -5,7 +5,11 @@ layout: default
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <span class="post-date">{{ page.date | date_to_string }}</span>
-  <a href="{{ site.baseurl }}{{ post.url }}#disqus_thread"></a>
+  <a
+    href="{{ site.baseurl }}{{ post.url }}#disqus_thread"
+    data-disqus-identifier="{{ page.id }}"
+  >
+  </a>
 
   {% if page.tags %} | {% for tag in page.tags %}
   <a
@@ -18,6 +22,7 @@ layout: default
 </div>
 
 {% if page.comments %}
+<h2>Comments</h2>
 <div id="disqus_thread"></div>
 <script>
   /**
