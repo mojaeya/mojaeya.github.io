@@ -66,5 +66,4 @@ TCP/IP는 비표준으로 그냥 이런 방식으로 해야해 정도의 개념�
 > **Reference**  
 > 본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.  
 > 잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.  
-> [https://www.youtube.com/watch?v=f4u1fKaZ4Jo](https://www.youtube.com/watch?v=f4u1fKaZ4Jo)<br>
-> [https://www.venturesquare.net/514020](https://www.venturesquare.net/514020)
+> [https://www.youtube.com/watch?v=f4u1fKaZ4Jo](https://www.youtube.com/watch?v=f4u1fKaZ4Jo)<br> > [https://www.venturesquare.net/514020](https://www.venturesquare.net/514020)
