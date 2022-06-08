@@ -1,0 +1,86 @@
+I"�<p><br /></p>
+
+<p>이전 포스팅에서 DOM 이벤트와 이벤트 핸들러 개념을 click 이벤트를 예시로 들어 알아보았는데,<br />
+이번 포스팅에서는 click 이벤트 외의 대표적인 DOM 이벤트들을 알아보자.</p>
+
+<hr />
+
+<h2 id="html-dom-events">HTML DOM Events</h2>
+
+<h3 id="-load-이벤트">&gt; <code class="language-plaintext highlighter-rouge">load</code> 이벤트</h3>
+
+<ul>
+  <li>HTML 태그가 DOM 객체 트리 모델로 모두 추가가 되었을 때 발생</li>
+</ul>
+
+<p>사용자가 웹 페이지에 접근하는 순간 자바스크립트 엔진이 HTML DOM 객체 트리를 구성하는데,<br />
+HTML 구조가 복잡하고 방대할 경우 HTML DOM 객체 트리를 다 만들기도 전에 <font color="#1E90FF">script가 먼저 실행되는 경우</font>가 발생할 수 있다. 이러한 경우 script 안에 작성해둔 이벤트 함수들이 HTML 코드를 못 찾아 <font color="red">에러가 발생한다.</font></p>
+
+<p>이럴 때 <code class="language-plaintext highlighter-rouge">load</code> 이벤트를 사용하면 <code class="language-plaintext highlighter-rouge">에러 없이 안전하게 사용할 수 있다.</code></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">id=</span><span class="s">"btnSave"</span><span class="nt">&gt;</span>저장<span class="nt">&lt;/button&gt;</span>
+  <span class="c">&lt;!-- 수많은 html 태그 ...  --&gt;</span>
+  . . .
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">setEvent</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">btnSave</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">저장 실행</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">});</span>
+    <span class="c1">//  수많은 이벤트 함수...</span>
+  <span class="p">}</span>
+
+  <span class="c1">// load 이벤트 - HTML 태그가 DOM 객체 트리 모델로 모두 추가가 되었을 때만 발생</span>
+  <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">load</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">setEvent</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="-change-이벤트">&gt; <code class="language-plaintext highlighter-rouge">change</code> 이벤트</h3>
+
+<ul>
+  <li>요소 변경이 끝나면 발생</li>
+  <li>select 와 input type=checkbox, radio는 선택 값이 변경된 직후에 이벤트가 발생</li>
+  <li>input type=text : 텍스트 입력 요소인 경우에는 버튼 클릭 등으로 포커스를 잃을 때 이벤트가 발생</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"sel"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"KO"</span><span class="nt">&gt;</span>Korea<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"CN"</span><span class="nt">&gt;</span>China<span class="nt">&lt;/option&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">value=</span><span class="s">"JP"</span><span class="nt">&gt;</span>Japan<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">sel</span><span class="dl">"</span><span class="p">).</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">change</span><span class="dl">"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#sel</span><span class="dl">"</span><span class="p">).</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 선택된 value 출력</span>
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="-focus-blur-이벤트">&gt; <code class="language-plaintext highlighter-rouge">focus</code>, <code class="language-plaintext highlighter-rouge">blur</code> 이벤트</h3>
+
+<ul>
+  <li>
+    <p>focus 이벤트는 요소가 포커스를 받을 때, blur 이벤트는 포커스를 잃을 때 발생합니다.</p>
+
+    <p><br />
+<br />
+<br /></p>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/105608999">바닐라 자바스크립트</a></p>
+</blockquote>
+:ET

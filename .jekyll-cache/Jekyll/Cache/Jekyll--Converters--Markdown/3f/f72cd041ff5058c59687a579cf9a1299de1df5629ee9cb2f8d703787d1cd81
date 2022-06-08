@@ -1,0 +1,23 @@
+I"W<p><br /></p>
+
+<p>이전 포스팅에서 DOM 이벤트와 이벤트 핸들러 개념을 click 이벤트를 예시로 들어 알아보았는데,<br />
+이번 포스팅에서는 click 이벤트 외의 대표적인 dom 이벤트들을 알아보자.</p>
+
+<hr />
+
+<h2 id="html-dom-events">HTML DOM Events</h2>
+
+<h4 id="load"><code class="language-plaintext highlighter-rouge">load</code></h4>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/105608999">바닐라 자바스크립트</a></p>
+</blockquote>
+:ET

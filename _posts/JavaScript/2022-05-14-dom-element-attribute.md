@@ -119,7 +119,7 @@ document 객체의 내장 함수인 `querySelector`, `querySelectorAll` 을 사�
 
 - **`querySelector()`**
 
-지정된 선택자와 일치하는 document의 첫 번째 element를 반환하고 종료된다. 일치하는 요소가 없으면 null을 반환한다. (한건 ex) 유일한 값을 가진 id 선택자)
+지정된 선택자와 일치하는 document의 첫 번째 element를 반환하고 종료된다. 일치하는 요소가 없으면 null을 반환한다. (한건) ex 유일한 값을 가진 id 선택자
 
 - **`querySelectorAll()`**
 
