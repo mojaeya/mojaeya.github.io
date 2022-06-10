@@ -1,6 +1,6 @@
 ---
 layout: post
-title: DOM Events (load, unload, change, focus, blur, scroll, preventDefault)
+title: DOM Events (load, unload, change, focus, blur, scroll, preventDefault())
 category: JavaScript
 tags: [javascript, dom]
 comments: true
@@ -8,7 +8,7 @@ comments: true
 
 <br>
 
-이전 포스팅에서 DOM 이벤트와 이벤트 핸들러 개념을 click 이벤트를 예시로 들어 알아보았는데,  
+[이전 포스팅](https://mojaeya.github.io/javascript/2022/05/15/domEvent-Handler/)에서 DOM 이벤트와 이벤트 핸들러 개념을 click 이벤트를 예시로 들어 알아보았는데,  
 이번 포스팅에서는 click 이벤트 외의 대표적인 DOM 이벤트들을 알아보자.
 
 ---
@@ -166,7 +166,7 @@ HTML 구조가 복잡하고 방대할 경우 HTML DOM 객체 트리를 다 만�
 
 ---
 
-### > `preventDefault` 이벤트
+### > `preventDefault()` 이벤트 메서드
 
 - 이벤트의 기본 동작을 중지
 

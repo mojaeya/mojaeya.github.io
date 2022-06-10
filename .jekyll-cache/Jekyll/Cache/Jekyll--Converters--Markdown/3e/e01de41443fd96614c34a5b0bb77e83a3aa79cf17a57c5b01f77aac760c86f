@@ -1,0 +1,30 @@
+I"�<h2 id="이벤트-버블링bubbling">이벤트 버블링(Bubbling)</h2>
+
+<ul>
+  <li>이벤트가 발생한 노드에서 최상위 노으로 이벤트가 순차적으로 전파되는 것을 <code class="language-plaintext highlighter-rouge">이벤트 버블링</code>이라고 한다.</li>
+</ul>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- &lt;style&gt; --&gt;</span>
+
+<span class="nt">&lt;body&gt;</span> <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"parent-parent"</span> <span class="na">onclick=</span><span class="s">"parentParentFunction();"</span><span class="nt">&gt;</span>
+      DIV 이벤트 실행
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"parent"</span><span class="nt">&gt;</span>
+        div 이벤트 실행 및 버블링
+        <span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"child"</span> <span class="na">onclick=</span><span class="s">"childFunction();"</span><span class="nt">&gt;</span>p 이벤트 실행 및 버블링<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span> <span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/105608999">바닐라 자바스크립트</a></p>
+</blockquote>
+:ET

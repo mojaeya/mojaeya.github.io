@@ -1,0 +1,32 @@
+I"><h2 id="keyboard-이벤트">Keyboard 이벤트</h2>
+
+<h3 id="-keyboard--keydown-keypress-keyup-이벤트">&gt; Keyboard : <code class="language-plaintext highlighter-rouge">keydown</code>, <del><code class="language-plaintext highlighter-rouge">keypress</code></del>, <code class="language-plaintext highlighter-rouge">keyup</code> 이벤트</h3>
+
+<blockquote>
+  <p>현재 keypress 이벤트 타입은 deprecated 되어 권장되지 않는다.</p>
+</blockquote>
+
+<h4 id="keydown---keypress---keyup-순으로-이벤트-진행">keydown -&gt; <del>keypress</del> -&gt; keyup 순으로 이벤트 진행</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">keydown</code> - 키보드를 누를 때 실행되고 키를 누르고 있을 때 단 한번만 실행된다.</li>
+  <li><del><code class="language-plaintext highlighter-rouge">keypress</code></del> - 키보드를 누를 때 실행되고 키를 누르고 있을 때 계속 실행된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">keyup</code> - 누른 키에서 손을 뗄 때 실행된다.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">keyup</code> 이벤트 시점에 사용자가 입력한 값이 value 속성에 들어감</p>
+
+<p><img src="https://user-images.githubusercontent.com/76654131/173028836-bae5e84c-300d-41b0-bb7d-5dd11d315c63.gif" alt="Jun-10-2022 17-49-54" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/105608999">바닐라 자바스크립트</a></p>
+</blockquote>
+:ET

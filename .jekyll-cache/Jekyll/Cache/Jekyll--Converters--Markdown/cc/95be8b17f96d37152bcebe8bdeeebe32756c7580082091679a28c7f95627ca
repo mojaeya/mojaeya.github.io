@@ -1,0 +1,80 @@
+I"�<h2 id="keyboard-이벤트">Keyboard 이벤트</h2>
+
+<h3 id="-keyboard--keydown-keypress-keyup-이벤트">&gt; Keyboard : <code class="language-plaintext highlighter-rouge">keydown</code>, <del><code class="language-plaintext highlighter-rouge">keypress</code></del>, <code class="language-plaintext highlighter-rouge">keyup</code> 이벤트</h3>
+
+<blockquote>
+  <p>현재 keypress 이벤트 타입은 deprecated 되어 권장되지 않는다.
+<img width="517" alt="스크린샷 2022-06-10 오후 6 07 34" src="https://user-images.githubusercontent.com/76654131/173032051-c227f1da-9cf8-4ff7-8986-b4bf245f8c8e.png" /></p>
+</blockquote>
+
+<h4 id="keydown---keypress---keyup-순으로-이벤트-진행">keydown -&gt; <del>keypress</del> -&gt; keyup 순으로 이벤트 진행</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">keydown</code> - 키를 누르는 동작 자체에 반응한다.</li>
+  <li><del><code class="language-plaintext highlighter-rouge">keypress</code></del> - 키를 누르고 있을 때 실행된다.</li>
+  <li><code class="language-plaintext highlighter-rouge">keyup</code> - 누른 키에서 손을 뗄 때 실행된다. 이 때 화면에 출력되어 사용자 눈에 보이게 된다.</li>
+</ul>
+
+<p>❗️ <code class="language-plaintext highlighter-rouge">keyup</code> 이벤트 시점에 <u>사용자가 입력한 값이</u> <font color="red">value 속성에 들어간다.</font></p>
+
+<p><img src="https://user-images.githubusercontent.com/76654131/173028836-bae5e84c-300d-41b0-bb7d-5dd11d315c63.gif" alt="Jun-10-2022 17-49-54" /></p>
+
+<hr />
+
+<h2 id="활용">활용</h2>
+
+<h3 id="-keyup-이벤트---예시-주민번호-입력-화면">&gt; <code class="language-plaintext highlighter-rouge">keyup</code> 이벤트 - 예시) 주민번호 입력 화면</h3>
+
+<p>사용자가 주민번호 앞자리 6자리를 입력하면 자동으로 다음칸으로 넘어가게 하는 편리함을 제공하는 것이 개발자의 의무이다.</p>
+
+<p><img src="https://user-images.githubusercontent.com/76654131/173033590-8f7544c2-a903-4b21-a133-ed394472afee.gif" alt="Jun-10-2022 18-16-01" /></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">"id1"</span> <span class="na">onkeyup=</span><span class="s">"moveNext();"</span> <span class="nt">/&gt;</span>-<span class="nt">&lt;input</span>
+    <span class="na">type=</span><span class="s">"text"</span>
+    <span class="na">name=</span><span class="s">""</span>
+    <span class="na">id=</span><span class="s">"id2"</span>
+  <span class="nt">/&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">moveNext</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#id2</span><span class="dl">"</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<h3 id="-keypress-이벤트---예시-숫자만-입력되게">&gt; <del><code class="language-plaintext highlighter-rouge">keypress</code></del> 이벤트 - 예시) 숫자만 입력되게!</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">""</span> <span class="na">onkeypress=</span><span class="s">"onlyNumber();"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+  <span class="kd">function</span> <span class="nx">onlyNumber</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 숫자 0의 keyCode : 48</span>
+    <span class="c1">// 숫자 9의 keyCode : 57</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">&gt;=</span> <span class="mi">48</span> <span class="o">&amp;&amp;</span> <span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">&lt;=</span> <span class="mi">57</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span> <span class="c1">// 이벤트 중지 시킴 -&gt; keyup 이벤트로 안넘어가서 화면상에 출력 X</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>그런데 치명적</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/105608999">바닐라 자바스크립트</a></p>
+</blockquote>
+:ET
