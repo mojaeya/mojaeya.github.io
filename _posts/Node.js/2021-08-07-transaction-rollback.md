@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Transaction과 Rollback
+title: Node.js | Transaction과 Rollback
 category: Node.js
 tags: [node.js]
 comments: true

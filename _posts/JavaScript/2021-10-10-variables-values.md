@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 변수와 값
+title: JavaScript | 변수와 값
 category: JavaScript
 tags: [javascript, 모던 JS 입문]
 comments: true

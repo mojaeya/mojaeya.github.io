@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "[백준/Node.js] readline 모듈 입출력 방법"
+title: "[백준/node.js] readline 모듈 입출력 방법"
 category: Algorithm
 tags: [algorithm, baekjoon, node.js 입출력]
 comments: true

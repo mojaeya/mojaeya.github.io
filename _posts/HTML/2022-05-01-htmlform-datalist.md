@@ -1,6 +1,6 @@
 ---
 layout: post
-title: form 자식 태그 (datalist)
+title: HTML 폼(form) 자식 태그 (datalist)
 category: HTML
 tags: [html]
 comments: true

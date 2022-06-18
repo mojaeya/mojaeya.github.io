@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 스냅샷으로 RDS DB 이전하기
+title: AWS | 스냅샷으로 RDS DB 이전하기
 category: AWS
 tags: [aws]
 comments: true

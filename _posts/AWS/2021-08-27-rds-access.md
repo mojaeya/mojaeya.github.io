@@ -1,6 +1,6 @@
 ---
 layout: post
-title: RDS 접근하기
+title: AWS | RDS 접근하기
 category: AWS
 tags: [aws]
 comments: true
