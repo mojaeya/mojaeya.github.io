@@ -1,0 +1,122 @@
+I"�$<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<h2 id="리스트-랜더링-list-rendering-v-for">리스트 랜더링 List Rendering (v-for)</h2>
+
+<p>다중 데이터를 처리해야 할 때 리스트 랜더링 <code class="language-plaintext highlighter-rouge">v-for</code> 디렉티브를 이용한다.</p>
+
+<p>제품 리스트처럼 동일한 UI 패턴에 데이터만 다르게 처리되는 부분들이 다중 데이터를 이용해서 처리되는 부분이라고 생각하면 된다.</p>
+
+<p>select의 option, table의 tr 태그 등 반복적으로 랜더링 할 HTML 태그에 <code class="language-plaintext highlighter-rouge">v-for</code> 디렉티브를 사용하면 배열에 있는 데이터 수만큼 html 태그를 반복적으로 렌더링 한다.</p>
+
+<h4 id="v-for-디렉티브-사용-방법">v-for 디렉티브 사용 방법</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">v</span><span class="o">-</span><span class="k">for</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">(item, index) in items</span><span class="dl">"</span>
+<span class="c1">// items = 데이터 배열, item = 배열의 각 item, index = 배열의 현재 index</span>
+</code></pre></div></div>
+
+<h2 id="활용">활용</h2>
+
+<h3 id="select의-option-태그">select의 option 태그</h3>
+
+<p>for in 반복문 쓰는 것처럼 <code class="language-plaintext highlighter-rouge">v-for</code> 디렉티브를 써주는데, 반드시 데이터의 <font color="red">유일한 값</font>을 <code class="language-plaintext highlighter-rouge">key</code>로 잡아줘야 한다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- &lt;template&gt; --&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;select</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">""</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;option</span> <span class="na">:value=</span><span class="s">"city.code"</span> <span class="na">:key=</span><span class="s">"city.code"</span> <span class="na">v-for=</span><span class="s">"city in cities"</span><span class="nt">&gt;</span>
+      {{ city.title }}
+    <span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;/select&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">cities</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span><span class="p">,</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">02</span><span class="dl">"</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">부산</span><span class="dl">"</span><span class="p">,</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">051</span><span class="dl">"</span> <span class="p">},</span>
+        <span class="p">{</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">제주</span><span class="dl">"</span><span class="p">,</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">064</span><span class="dl">"</span> <span class="p">},</span>
+      <span class="p">],</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="table의-tr-태그">table의 tr 태그</h3>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- &lt;template&gt; --&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;table&gt;</span>
+    <span class="nt">&lt;thead&gt;</span>
+      <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span>제품번호<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>제품명<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>가격<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>주문수량<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>합계<span class="nt">&lt;/th&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/thead&gt;</span>
+    <span class="nt">&lt;tbody&gt;</span>
+      <span class="nt">&lt;tr</span> <span class="na">:key=</span><span class="s">"drink.drinkId"</span> <span class="na">v-for=</span><span class="s">"drink in drinkList"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;td&gt;</span>{{ drink.drinkId }<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>{{ drink.drinkName }<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>{{ drink.price }<span class="nt">&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">""</span> <span class="na">v-model=</span><span class="s">"drink.qty"</span> <span class="nt">/&gt;&lt;/td&gt;</span>
+        <span class="nt">&lt;td&gt;</span>{{ drink.price * drink.qty }<span class="nt">&lt;/td&gt;</span>
+      <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;/tbody&gt;</span>
+  <span class="nt">&lt;/table&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">drinkList</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="na">drinkId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">drinkName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">코카콜라</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">price</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
+          <span class="na">qty</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">drinkId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">drinkName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">환타</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">price</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
+          <span class="na">qty</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="na">drinkId</span><span class="p">:</span> <span class="dl">"</span><span class="s2">3</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">drinkName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">사이다</span><span class="dl">"</span><span class="p">,</span>
+          <span class="na">price</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
+          <span class="na">qty</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="p">},</span>
+      <span class="p">],</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h4 id="리스트-렌더링-적용-화면">리스트 렌더링 적용 화면</h4>
+
+<p><img width="378" alt="스크린샷 2022-06-20 오전 4 39 46" src="https://user-images.githubusercontent.com/76654131/174497645-559d2dfd-c2d4-4ff1-8b78-c8034dc42ff3.png" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET

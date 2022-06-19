@@ -1,0 +1,37 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p><strong><mark style="background-color: #dcffe4">Vue 컴포넌트</mark></strong>에서 이벤트를 처리할 때는 <code class="language-plaintext highlighter-rouge">v-on</code> 디렉티브를 사용하고 심볼 `@로도 사용이 가능하다.</p>
+
+<h2 id="클릭-이벤트-v-onclick">클릭 이벤트 (v-on:click)</h2>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- &lt;template&gt; --&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"increaseCounter"</span><span class="nt">&gt;</span>Add 1<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;p&gt;&lt;/p&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">counter</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET
