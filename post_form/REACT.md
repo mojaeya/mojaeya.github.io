@@ -1,6 +1,6 @@
 ---
 layout: post
-title:
+title: React |
 category: React.js
 tags: [react.js]
 comments: true

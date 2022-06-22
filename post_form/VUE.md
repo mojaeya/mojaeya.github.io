@@ -1,6 +1,6 @@
 ---
 layout: post
-title:
+title: Vue.js |
 category: Vue.js
 tags: [vue.js]
 comments: true

@@ -76,11 +76,11 @@ export default {
     </thead>
     <tbody>
       <tr :key="drink.drinkId" v-for="drink in drinkList">
-        <td>{{ '{{ drink.drinkId ' }}}</td>
-        <td>{{ '{{ drink.drinkName ' }}}</td>
-        <td>{{ '{{ drink.price ' }}}</td>
+        <td>{{ '{{ drink.drinkId ' }}}}</td>
+        <td>{{ '{{ drink.drinkName ' }}}}</td>
+        <td>{{ '{{ drink.price ' }}}}</td>
         <td><input type="text" name="" id="" v-model="drink.qty" /></td>
-        <td>{{ '{{ drink.price * drink.qty ' }}}</td>
+        <td>{{ '{{ drink.price * drink.qty ' }}}}</td>
       </tr>
     </tbody>
   </table>
