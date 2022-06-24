@@ -1,0 +1,27 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<h2 id="vue에서-부트스트랩-사용하기">Vue에서 부트스트랩 사용하기</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install bootstrap
+</code></pre></div></div>
+
+<hr />
+
+<p>폴더 명 이름 view 안붙는거는 정해진 네이밍 룰</p>
+
+<h2 id="slot-modal">slot modal</h2>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET

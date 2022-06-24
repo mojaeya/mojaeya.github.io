@@ -1,0 +1,84 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p align="center"><img width="70%" alt="스크린샷 2022-06-24 오후 10 31 03" src="https://user-images.githubusercontent.com/76654131/175546221-8585d594-9488-4499-8ab2-7b9d976a4b74.png" />
+</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">sampleData</span><span class="p">:</span> <span class="dl">""</span><span class="p">,</span>
+      <span class="na">cities</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="na">fnInterval</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+  <span class="c1">//   props: {</span>
+
+  <span class="c1">//   },</span>
+
+  <span class="c1">// 가장 먼저 호출됨.</span>
+  <span class="nx">setup</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="c1">// 인스턴스가 초기화되면 props 설정을 처리한 후 data() 또는 computed 같은 다른 옵션을 처리하기 직전에 호출</span>
+  <span class="nx">beforeCreate</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="c1">// data(), watch, computed, methods 이런 정보를 모두 가지고 준비가 끝난 상태</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">getCityList</span><span class="p">();</span>
+  <span class="p">},</span>
+
+  <span class="c1">// 반응 상태 설정을 완료를 했지만, 아직 DOM 노드가 생성되지 않은 상태.</span>
+  <span class="nx">beforeMount</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="c1">// 실제 DOM이 랜더링이 끝난 상태</span>
+  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// this.getCityList()</span>
+
+    <span class="k">this</span><span class="p">.</span><span class="nx">fnInterval</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">setInterval</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">aaaa</span><span class="dl">"</span><span class="p">);</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="p">},</span>
+
+  <span class="c1">// data 변경으로 인해 DOM을 업데이이트 하기 직전 상태.</span>
+  <span class="nx">beforeUpdate</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="c1">// DOM이 업데이트 된 후에 호출</span>
+  <span class="nx">updated</span><span class="p">()</span> <span class="p">{},</span>
+
+  <span class="c1">// 현재 컴포넌트를 빠져 나가기 직전</span>
+  <span class="nx">beforeUnmount</span><span class="p">()</span> <span class="p">{},</span>
+  <span class="c1">// 현재 컴포넌트를 빠져 나갈 때</span>
+  <span class="nx">unmounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">clearInterval</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">fnInterval</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">fnInterval</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">cities</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">getCityList</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// 서버에 도시 목록을 요청.</span>
+      <span class="c1">// 가져오는데 시간이 소요</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">cities</span> <span class="o">=</span> <span class="p">[{</span> <span class="na">code</span><span class="p">:</span> <span class="dl">"</span><span class="s2">02</span><span class="dl">"</span><span class="p">,</span> <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">서울</span><span class="dl">"</span> <span class="p">}];</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a><br />
+<a href="https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram">https://vuejs.org/guide/essentials/lifecycle.html#lifecycle-diagram</a></p>
+</blockquote>
+:ET

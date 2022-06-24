@@ -5,12 +5,11 @@ category: Vue.js
 tags: [vue.js]
 comments: true
 ---
+
 > Vue.js 3.x / Vue-CLI
-폴더 명 이름 view 안붙는거는 정해진 네이밍 룰
+> 폴더 명 이름 view 안붙는거는 정해진 네이밍 룰
 
 파일명은 두단어 이상으로 !
-
-## slot modal
 
 <br>
 <br>
