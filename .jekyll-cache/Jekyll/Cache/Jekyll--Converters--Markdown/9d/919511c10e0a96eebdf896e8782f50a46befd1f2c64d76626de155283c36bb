@@ -1,0 +1,31 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<h2 id="vue에서-부트스트랩-사용하기">Vue에서 부트스트랩 사용하기</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 부트스트랩 설치</span>
+<span class="nx">$</span> <span class="nx">npm</span> <span class="nx">install</span> <span class="nx">bootstrap</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// main.js</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">bootstrap/dist/css/bootstrap.min.css</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">"</span><span class="s2">bootstrap/dist/js/bootstrap.min.js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="slot-modal">slot modal</h2>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET

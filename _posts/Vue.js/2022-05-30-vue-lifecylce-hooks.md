@@ -20,7 +20,7 @@ comments: true
 export default {
   components: {},
   data() {},
-//props: {},
+  //props: {},
 
   // 제일 먼저 호출
   setup() {},
@@ -48,6 +48,7 @@ export default {
 
   // 현재 컴포넌트를 빠져 나갈 때
   unmounted() {},
+};
 ```
 
 ---
@@ -101,7 +102,7 @@ export default {
   },
 ```
 
-❗️ 그런데 사용자가 이 화면, 즉 현재 컴포넌트를 빠져나가서 다른 페이지로 이동을 해도 **<mark style='background-color: #dcffe4'>Vue</mark>**는 `SPA(Single Page Application)`이기 떄문에 계속 setInterval() 함수가 계속 반복해서 작동을 하고 있는 상태가 되어버린다.
+❗️ 그런데 사용자가 이 화면, 즉 현재 컴포넌트를 빠져나가서 다른 페이지로 이동을 해도 **<mark style='background-color: #dcffe4'>Vue</mark>**는 `SPA(Single Page Application)`이기 때문에 계속 setInterval() 함수가 계속 반복해서 작동을 하고 있는 상태가 되어버린다.
 
 ✔️ 이런 경우 `현재 컴포넌트를 빠져 나가는` `unmounted` 시점에 함수를 종료해주면 성능면에서 좋게 해결된다.
 
