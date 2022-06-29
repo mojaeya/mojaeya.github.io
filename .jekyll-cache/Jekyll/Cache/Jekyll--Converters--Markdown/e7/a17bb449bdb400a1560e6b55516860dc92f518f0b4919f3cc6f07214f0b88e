@@ -1,0 +1,87 @@
+I"�<blockquote>
+  <p>MySQL 8.0.25 / Mac OS</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">Node.js</code>에서 <code class="language-plaintext highlighter-rouge">mysql</code>을 사용하는데 <code class="language-plaintext highlighter-rouge">user</code>를 <code class="language-plaintext highlighter-rouge">'root'</code>가 아닌 공부용 DB 스키마 <code class="language-plaintext highlighter-rouge">'dev'</code>로 설정하고 클라이언트 프로그램에서 사용하려고 했더니 아래와 같은 오류가 발생했다.</p>
+
+<p><strong>“Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client at Handshake.Sequence._packetToError”</strong></p>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">MySQL</code>에서는 보통 <code class="language-plaintext highlighter-rouge">'root'</code> 이외에 최종관리자 권한을 주지 않는 한 다른 계정으로 접속했을 때 그 계정에 권한이 없다.<br />
+그러므로 <code class="language-plaintext highlighter-rouge">'dev'</code>라는 새로운 계정(유저)를 생성하고 DB 권한을 부여해줘야 한다.</p>
+
+<p>구글링을 해보니 터미널로 설정하는 방법이 주를 이루어 여기서는 workbench를 활용해서 더 간단하게 해결해보자.</p>
+
+<h2 id="새-계정에-schema-권한-설정">새 계정에 Schema 권한 설정</h2>
+
+<p><code class="language-plaintext highlighter-rouge">Workbench 접속</code></p>
+
+<h4 id="1-계정account-생성">1. 계정(Account) 생성</h4>
+
+<p><img width="80%" alt="스크린샷 2022-06-29 오후 9 36 33" src="https://user-images.githubusercontent.com/76654131/176439805-26c9ee7b-d050-46c5-bcb8-cd7cc36a8a12.png" /></p>
+
+<blockquote>
+  <p>MySQL에서 % 는 와일드 카드로 사용된다. <br /> 서버와 같은 외부에서 허용하도록 하려면 host주소에 %로 지정해주면 된다.</p>
+</blockquote>
+
+<p><img width="80%" alt="스크린샷 2022-06-29 오후 9 37 53" src="https://user-images.githubusercontent.com/76654131/176439814-1d90e838-a4f2-45c4-a05b-cab494755464.png" /></p>
+
+<h4 id="2-schema-권한-설정">2. Schema 권한 설정</h4>
+
+<p><img width="80%" alt="스크린샷 2022-06-29 오후 9 38 19" src="https://user-images.githubusercontent.com/76654131/176439818-4ca0c2ee-963c-4426-9de3-942b842c4ec5.png" /></p>
+
+<p><img width="80%" alt="스크린샷 2022-06-29 오후 9 38 43" src="https://user-images.githubusercontent.com/76654131/176439828-30eadb80-f525-4c71-918b-77d4baebab96.png" /></p>
+
+<p><img width="80%" alt="스크린샷 2022-06-29 오후 9 38 59" src="https://user-images.githubusercontent.com/76654131/176439834-a64b677e-dc07-4be2-a1d5-953f1f303a79.png" /></p>
+
+<h4 id="️-이렇게-하면-workbench로-dev라는-새로운-계정유저를-생성하고-db-권한을-부여해준거다">✔️ 이렇게 하면 <code class="language-plaintext highlighter-rouge">Workbench</code>로 <code class="language-plaintext highlighter-rouge">dev</code>라는 새로운 계정(유저)를 생성하고 DB 권한을 부여해준거다.</h4>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">그럼 잠시 터미널로 설정하는 법을 알아보자.</code></p>
+
+<hr />
+
+<p>터미널로 아래와 같이 설정하면 위의 <code class="language-plaintext highlighter-rouge">Workbench</code>에서 설정한 것과 동일하게 설정되는데,</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; CREATE USER <span class="s1">'dev'</span>@<span class="s1">'%'</span> IDENTIFIED BY <span class="s1">'패스워드'</span><span class="p">;</span>
+
+mysql&gt; GRANT ALL PRIVILEGES ON <span class="k">*</span>.<span class="k">*</span> TO <span class="s1">'dev'</span>@<span class="s1">'%'</span><span class="p">;</span>
+
+mysql&gt; FLUSH PRIVILEGES<span class="p">;</span>
+</code></pre></div></div>
+
+<p>이렇게 터미널로 설정한 경우, MySQL 8.0에서는 MySQL 패스워드 플러그인 <code class="language-plaintext highlighter-rouge">caching_sha2_password</code> 때문에<br />
+클라이언트 프로그램에서 사용하는 경우 지금과 같은 <font color="red">에러</font>가 발생한다.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>SELECT Host,User,plugin,authentication_string FROM mysql.user<span class="p">;</span>
+</code></pre></div></div>
+
+<p><img width="545" alt="스크린샷 2022-06-29 오후 10 25 15" src="https://user-images.githubusercontent.com/76654131/176448403-61710ebb-c041-4295-863a-28b8cdf34260.png" /></p>
+
+<p>그래서 추가적으로 이렇게 <code class="language-plaintext highlighter-rouge">mysql_native_password</code> 플러그인으로 바꿔주야 정상 작동한다.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql&gt; ALTER USER <span class="s1">'dev'</span>@<span class="s1">'%'</span> IDENTIFIED WITH mysql_native_password BY <span class="s1">'패스워드'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>반면 <code class="language-plaintext highlighter-rouge">Workbench</code>를 이용해 위의 방법으로 설정하면, 자동으로 <code class="language-plaintext highlighter-rouge">mysql_native_password</code> 플러그인이 설정되어 정상 작동한다.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>SELECT Host,User,plugin,authentication_string FROM mysql.user<span class="p">;</span>
+</code></pre></div></div>
+
+<p><img width="561" alt="스크린샷 2022-06-29 오후 9 41 10" src="https://user-images.githubusercontent.com/76654131/176439845-46094f33-1f75-46e2-9b18-a8b4bef6b3b4.png" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href=""></a></p>
+</blockquote>
+:ET
