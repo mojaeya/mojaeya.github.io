@@ -1,0 +1,17 @@
+I"]<p>“terminal.integrated.letterSpacing”: 1</p>
+
+<h1 id="branch-icon-set-this-parameter-to-ue0a0--for-the-popular-powerline-branch-icon">Branch icon. Set this parameter to ‘\UE0A0 ‘ for the popular Powerline branch icon.</h1>
+
+<p>typeset -g POWERLEVEL9K_VCS_BRANCH_ICON=’\uF126 ‘</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href=""></a></p>
+</blockquote>
+:ET
