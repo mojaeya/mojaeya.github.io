@@ -1,0 +1,87 @@
+I"<p align="center"><img width="40%" alt="스크린샷 2021-10-31 오전 12 04 26" src="https://user-images.githubusercontent.com/76654131/139538640-fa1c0f5f-2743-487e-a1af-889be9ed8dd2.png" /></p>
+
+<h1 id="aws-amazon-web-services">AWS (Amazon Web Services)</h1>
+
+<ul>
+  <li><strong>아마존에서 개발한 클라우드 컴퓨팅 플랫폼</strong></li>
+</ul>
+
+<h2 id="-클라우드-컴퓨팅이란">▶ 클라우드 컴퓨팅이란?</h2>
+
+<p><strong><mark style="background-color: #ffdce0">종량 요금제 방식</mark></strong>으로 클라우드 서비스 플랫폼을 통해 컴퓨팅 파워, DB스토리지, 기타 IT 리소스를 <strong>온디맨드</strong>로 제공하는 서비스를 의미.</p>
+
+<p>기존 하드웨어에 의존해 서버를 구축하던 방식에 비해 막대한 사전투자를 할 필요가 없고,<br />
+하드웨어의 유지 보수에 신경을 쓰지 않게 됨으로써 오로지 서비스를 제공하는 것에만 신경을 집중할 수 있는 엄청난 장점이 있다.</p>
+
+<p>특히, 스타트업처럼 아직 서비스가 안정화되지 않은 경우, AWS로 백엔드 인프라를 구축한다면 보다 유연하고 저렴하게 여러 가지 문제들을 해결할 수 있다.</p>
+
+<p>개발을 배우고 있는 입장인 나는 앞으로 팀을 이루어서 프로젝트를 하게 된다면, 여럿이 DB를 사용해야 하는데 한사람이 계속 서버를 돌리고 있지 않은 이상 DB에 접근하기 힘든 상황이 될것이다. 이러한 문제를 해결해주는게 AWS다.</p>
+
+<p>앞으로 백엔드 개발자가 되어 정교한 개발을 하기 위해 AWS를 경험해보자!</p>
+
+<h2 id="-클라우드-컴퓨팅의-유형">▶ 클라우드 컴퓨팅의 유형</h2>
+
+<h3 id="1-laas--infrastructure-as-a-service-"><font color="black">1. laaS ( Infrastructure as a Service )</font></h3>
+
+<p>서비스로서의 인프라, 일반적으로 네트워킹 기능, 컴퓨터(가상 또는 전용 하드웨어) 및 데이터 스토리지 공간에 대한 액세스를 제공한다.<br />
+<strong><font color="#1E90FF">대표적으로 AWS</font></strong></p>
+
+<h3 id="2-pass--platform-as-a-service-"><font color="black">2. PasS ( Platform as a Service )</font></h3>
+
+<p>서비스로서의 플랫폼, 일반적으로 하드웨어와 운영체제를 관리를 해주기 때문에 사용자는 애플리케이션 개발과 관리에 집중할 수 있다.<br />
+<strong><font color="#1E90FF">대표적으로 HeroKu</font></strong></p>
+
+<h3 id="3-saas--software-as-a-service-"><font color="black">3. SaaS ( Software as a Service )</font></h3>
+
+<p>서비스로서의 소프트웨어, 서비스 공급자에 의해 실행되고 관리되는 완전한 제품을 제공한다.</p>
+
+<p>대부분의 경우 웹 기반 이메일과 같은 최종 사용자 애플리케이션을 말한다. 특정 소프트웨어를 어떻게 사용할지만 생각하면 된다.<br />
+<strong><font color="#1E90FF">대표적으로 Dropbox, Google Drive, Naver Cloud, Web Mail</font></strong></p>
+
+<hr />
+
+<h2 id="aws의-주요-서비스">AWS의 주요 서비스 </h2>
+
+<p>많은 서비스가 있지만, 일단 내가 배운 서비스들만 기록하고 추후에 더 많은 서비스를 경험해보고 업데이트 하겠다.</p>
+
+<h3 id="1-ec2--elastic-compute-cloud-">1. EC2 ( Elastic Compute Cloud )</h3>
+
+<ul>
+  <li><strong>AWS에서 제공하는  확장 가능 컴퓨팅 용량</strong></li>
+</ul>
+
+<p>아마존닷컴의 클라우드 컴퓨팅 플랫폼 아마존 웹 서비스의 중앙부를 이루며,<br />
+사용자가 <strong>가상 컴퓨터</strong>를 임대 받아 그 위에 자신만의 컴퓨터 애플리케이션들을 실행할 수 있게 한다.<br />
+<strong>( 메모리, 스토리지 등을 설정해 마치 컴퓨터를 구입하듯이 구입하여 서버로 사용한다 )</strong></p>
+
+<p>EC2는 사용자가 <strong>아마존 머신 이미지(AMI)</strong>로 부팅하여 아마존이 <strong>“인스턴스”라 부르는 가상 머신</strong>을, 원하는 소프트웨어를 포함하여 구성할 수 있게 하는 웹 서비스를 제공함으로써 스케일링이 가능한 애플리케이션 배치(deployment)를 장려한다.</p>
+
+<p>사용자는 필요하면 서버 인스턴스를 만들고 시작하고 종료할 수 있으며, <strong>실행 중인 서버에 대해 시간 당 지불</strong>하므로 <strong>“일래스틱”(elastic, 탄력적인)</strong>이라는 용어를 사용하게 된다.</p>
+
+<h3 id="2-rds--relational-database-service-">2. RDS ( Relational Database Service )</h3>
+
+<ul>
+  <li><strong>AWS의 관계형 데이터베이스 PaaS</strong></li>
+</ul>
+
+<p>DB 소프트웨어를 패치하거나 DB를 백업하거나 시점 복구를 활성화하는 것과 같은 복잡한 관리 프로세스들은 자동으로 관리된다.</p>
+
+<p>클라우드 내에서 운영하는 웹서비스로서 <strong>관계형 데이터베이스를 간편하게 설정, 운영 및 확장</strong>이 가능하다.</p>
+
+<p>Amazon RDS는 아래와 같이 익숙한 데이터베이스 엔진 중에서 선택 가능하다.</p>
+
+<p align="center"><img width="70%" alt="스크린샷 2021-10-31 오전 12 04 48" src="https://user-images.githubusercontent.com/76654131/139538654-38654fc3-d988-47df-bb7b-a66c66176ff8.png" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://aws.amazon.com/ko/rds/">https://aws.amazon.com/ko/rds/</a><br />
+<a href="https://hellominchan.tistory.com/145">https://hellominchan.tistory.com/145</a><br />
+<a href="https://ko.wikipedia.org/wiki">https://ko.wikipedia.org/wiki</a></p>
+</blockquote>
+:ET

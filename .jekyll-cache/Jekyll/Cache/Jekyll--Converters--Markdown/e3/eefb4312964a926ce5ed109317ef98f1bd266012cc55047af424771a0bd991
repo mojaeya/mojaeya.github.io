@@ -1,0 +1,32 @@
+I"�<blockquote>
+  <p>M1 Mac / Homebrew</p>
+</blockquote>
+
+<h2 id="homebrew로-mongodb-설치">Homebrew로 MongoDB 설치</h2>
+
+<h3 id="1-mongodb-tap-등록-및-확인"><code class="language-plaintext highlighter-rouge">1. mongodb tap 등록 및 확인</code></h3>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 등록</span>
+<span class="nx">$</span> <span class="nx">brew</span> <span class="nx">tap</span> <span class="nx">mongodb</span><span class="o">/</span><span class="nx">brew</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 확인하는 방법 2가지</span>
+<span class="nx">$</span> <span class="nx">brew</span> <span class="nx">tap</span> <span class="o">|</span> <span class="nx">grep</span> <span class="nx">mongodb</span>
+<span class="nx">$</span> <span class="nx">brew</span> <span class="nx">tap</span> <span class="c1">// 전체 탭 목록 출력</span>
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">$</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://velog.io/@fcfargo/TIL-MongoDB-Mongoose">https://velog.io/@fcfargo/TIL-MongoDB-Mongoose</a><br />
+<a href="https://seyslee.github.io/blog/installing-mongodb-on-m1-mac/">https://seyslee.github.io/blog/installing-mongodb-on-m1-mac/</a></p>
+</blockquote>
+:ET
