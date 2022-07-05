@@ -2,7 +2,7 @@
 layout: post
 title: AWS | RDS 접근하기(EC2, Workbench)
 category: AWS
-tags: [aws]
+tags: [aws, rds, mysql workbench]
 comments: true
 ---
 
