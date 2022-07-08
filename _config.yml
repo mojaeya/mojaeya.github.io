@@ -46,6 +46,7 @@ nav:
     - { HTML: "/blog/categories/#html" }
     - { CSS: "/blog/categories/#css" }
     - { JavaScript: "/blog/categories/#javascript" }
+    - { TypeScript: "/blog/categories/#typescript" }
     - { Vue.js: "/blog/categories/#vue.js" }
     - { React.js: "/blog/categories/#react.js" }
     - { Node.js: "/blog/categories/#node.js" }
