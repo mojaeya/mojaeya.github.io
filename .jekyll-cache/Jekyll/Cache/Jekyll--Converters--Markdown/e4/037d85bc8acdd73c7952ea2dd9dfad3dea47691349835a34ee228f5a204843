@@ -1,0 +1,64 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p><a href="https://mojaeya.github.io/vue.js/2022/06/03/vue-reuse-component-basic/">이전 포스팅</a>을 읽고 오시면 도움이 됩니다.</p>
+
+<hr />
+
+<h2 id="자식-컴포넌트에서-부모-컴포넌트로-이벤트데이터-전달하기-커스텀-이벤트">자식 컴포넌트에서 부모 컴포넌트로 이벤트/데이터 전달하기 (커스텀 이벤트)</h2>
+
+<p>자식 컴포넌트에서 부모 컴포넌트로 이벤트를 전달할 때는 <code class="language-plaintext highlighter-rouge">$emit</code>을 사용한다.</p>
+
+<h4 id="-components--childcomponentvue-자식-컴포넌트">&gt; components / ChildComponent.vue (자식 컴포넌트)</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">msg</span><span class="p">:</span> <span class="dl">"</span><span class="s2">자식 컴포넌트로부터 부모 컴포넌트로 메시지 전달</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$emit</span><span class="p">(</span><span class="dl">"</span><span class="s2">send-msg</span><span class="dl">"</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">msg</span><span class="p">);</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>자식 컴포넌트가 <code class="language-plaintext highlighter-rouge">mounted</code> 되면 $emit을 통해 부모 컴포넌트에 만들어둔 커스텀 이벤트 <code class="language-plaintext highlighter-rouge">send-msg</code> 이벤트를 호출한다.</p>
+
+<h4 id="-views--parentviewvue-부모-컴포넌트">&gt; views / ParentView.vue (부모 컴포넌트)</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">&lt;!-- &lt;template&gt; --&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;child-component</span> <span class="err">@</span><span class="na">send-msg=</span><span class="s">"sendMsg"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">import</span> <span class="nx">ChildComponent</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/components/fragments/ChildComponent.vue</span><span class="dl">'</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">ChildComponent</span> <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">sendMessage</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 자식 컴포넌트에서 이벤트 호출</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="-componets--childcomponentvue-자식-컴포넌트">&gt; componets / ChildComponent.vue (자식 컴포넌트)</h4>
+
+<h4 id="-views--parentviewvue-부모-컴포넌트-1">&gt; views / ParentView.vue (부모 컴포넌트)</h4>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET

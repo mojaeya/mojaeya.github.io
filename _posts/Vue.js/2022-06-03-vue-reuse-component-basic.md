@@ -19,9 +19,9 @@ comments: true
 **<mark style='background-color: #dcffe4'>Vue</mark>**에서 `컴포넌트`는 우리가 화면에서 보는 페이지 자체일 수도 있고, 페이지 내의 특정 기능 요소일 수도 있다.
 
 그러므로 **<mark style='background-color: #dcffe4'>Vue</mark>**로 개발을 할 때 `컴포넌트 설계`를 어떻게 하는지가 중요하다.  
-(동일한 기능을 가진 컴포넌트를 하나 마들어 여러 페이지에서 사용)
+(동일한 기능을 가진 컴포넌트를 하나 만들어 여러 페이지에서 사용)
 
-**<mark style='background-color: #dcffe4'>Vue CLI</mark>**로 프로젝트를 생성하면 src폴더 안에 `components`, `views` 폴더가 있는데  
+**<mark style='background-color: #dcffe4'>Vue CLI</mark>**로 프로젝트를 생성하면 src 폴더 안에 `components`, `views` 폴더가 있는데  
 `views` 폴더에 우리가 페이지라고 부르는 화면 하나 하나에 해당하는 **<mark style='background-color: #dcffe4'>Vue 컴포넌트</mark>** 파일을 생성하는거고,  
 `component` 폴더에는 **<mark style='background-color: #dcffe4'>다른 Vue 폴더</mark>** 에서 호출해서 공통으로 사용할 수 있는 **<mark style='background-color: #dcffe4'>Vue 컴포넌트</mark>**을 생성하고 관리하게 되는 것이다.
 
