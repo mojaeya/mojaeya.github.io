@@ -1,0 +1,234 @@
+I"�Q<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p>개발을 하다보면 어떤 화면의 경우는 굉장히 비슷한 UI와 기능을 가지고 있는데, 아주 일부만 다른 경우가 있을 수 있다.</p>
+
+<p>예를 들어 많은 화면에 쓰이는 <code class="language-plaintext highlighter-rouge">팝업(Modal)</code> 같은 경우 말이다.</p>
+
+<p>하나의 애플리케이션 안에서 팝업창의 디자인은 일관성을 갖는게 좋다. 하지만 여러명의 개발자가 공동으로 개발을 하다보면 일관성을 갖기가 당연히 힘들다.</p>
+
+<p>이러한 문제를 <strong><mark style="background-color: #dcffe4">Vue</mark></strong>에서는 <code class="language-plaintext highlighter-rouge">Slot</code>을 이용해 해결할 수 있다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Slot</code>은 특정 컴포넌트 내에 등록된 다른 하위 컴포넌트의 마크업을 재정의하거나 확장하는 기능이다.<br />
+<strong><code class="language-plaintext highlighter-rouge">컴포넌트의 재활용성을 높여주는 기능이다.</code></strong></p>
+
+<p>이번 포스팅에서는 부트스트랩을 이용한 팝업(Modal) 기본 틀에 해당하는 컴포넌트를 <code class="language-plaintext highlighter-rouge">Slot</code>을 이용해 만들고, 이를 재사용하는 방법을 알아보자.</p>
+
+<hr />
+
+<h2 id="slot을-이용해-팝업의-기본-틀에-해당하는-재사용-컴포넌트-생성">Slot을 이용해 팝업의 기본 틀에 해당하는 재사용 컴포넌트 생성</h2>
+
+<blockquote>
+  <p>부트스트랩 Modal - Static backdrop (X 버튼을 눌러야만 창 닫힘) 사용</p>
+</blockquote>
+
+<p><img width="846" alt="스크린샷 2022-07-26 오후 2 16 34" src="https://user-images.githubusercontent.com/76654131/180933251-44646a78-cd65-458d-9dea-448a547b2c83.png" /></p>
+
+<p>일단 부트스트랩 Modal - Static backdrop <code class="language-plaintext highlighter-rouge">&lt;!-- Modal --&gt;</code> 아래 코드 부분만 복사해서 Slot을 이용한 팝업의 기본 틀에 해당하는 재사용 컴포넌트 생성해줄 것이다.</p>
+
+<p>일반적으로 팝업창은 header, body, footer로 이루어진다.</p>
+
+<p>우리는 부트스트랩 Modal - Static backdrop의 기본 구조에서 기존 모달을 감싸고 있는 부분은 그대로 두고 header, body, footer에 해당하는 <code class="language-plaintext highlighter-rouge">html</code> 요소만 <code class="language-plaintext highlighter-rouge">Slot</code>을 이용해 재정의 해주려고 한다.</p>
+
+<p>그래서 아래 코드 해당하는 부분에 <code class="language-plaintext highlighter-rouge">&lt;slot&gt;</code> 태그를 정의해주었다.</p>
+
+<blockquote>
+  <p>하나의 영역에만 적용할 때는 slot에 name 속성을 지정 안해줘도 된다.<br />아래 예제에서는 여러개 사용하기 때문에 name 속성을 사용하였다.</p>
+</blockquote>
+
+<h4 id="-components--slotmodalvue-자식-컴포넌트">&gt; components / SlotModal.vue (자식 컴포넌트)</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span>
+    <span class="na">class=</span><span class="s">"modal fade"</span>
+    <span class="na">id=</span><span class="s">"staticBackdrop"</span>
+    <span class="na">data-bs-backdrop=</span><span class="s">"static"</span>
+    <span class="na">data-bs-keyboard=</span><span class="s">"false"</span>
+    <span class="na">tabindex=</span><span class="s">"-1"</span>
+    <span class="na">aria-labelledby=</span><span class="s">"staticBackdropLabel"</span>
+    <span class="na">aria-hidden=</span><span class="s">"true"</span>
+  <span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">id=</span><span class="s">"staticBackdropLabel"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;slot</span> <span class="na">name=</span><span class="s">"title"</span><span class="nt">&gt;&lt;/slot&gt;</span>
+          <span class="nt">&lt;/h5&gt;</span>
+          <span class="nt">&lt;button</span>
+            <span class="na">type=</span><span class="s">"button"</span>
+            <span class="na">class=</span><span class="s">"btn-close"</span>
+            <span class="na">data-bs-dismiss=</span><span class="s">"modal"</span>
+            <span class="na">aria-label=</span><span class="s">"Close"</span>
+          <span class="nt">&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;slot</span> <span class="na">name=</span><span class="s">"body"</span><span class="nt">&gt;&lt;/slot&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;slot</span> <span class="na">name=</span><span class="s">"footer"</span><span class="nt">&gt;&lt;/slot&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<p>이렇게 <code class="language-plaintext highlighter-rouge">Slot</code>에 name을 지정해서 사용하는 <code class="language-plaintext highlighter-rouge">Slot</code>을 <code class="language-plaintext highlighter-rouge">Named Slots</code>이라고 한다. 이제 이 컴포넌트는 정해진 html 구조를 갖게 된 것이다.</p>
+
+<p>그렇기에 공동의 개발자들이 모두 팝업창을 만들 때 이 컴포넌트를 재사용하면 각 <code class="language-plaintext highlighter-rouge">Slot</code>에 해당하는 코드만 작성하면 되기 때문에 일관성있는 팝업 창을 만들 수 있게 된다.</p>
+
+<hr />
+
+<h2 id="부모-컴포넌트에서-마크업-재정의하기">부모 컴포넌트에서 마크업 재정의하기</h2>
+
+<p>우리가 마크업을 재정의 하기에 앞서 <code class="language-plaintext highlighter-rouge">부모 컴포넌트 페이지</code>에서 <code class="language-plaintext highlighter-rouge">버튼 클릭시</code> 모달창을 띄우기 위해서는<br />
+부트스트랩 Modal - Static backdrop <code class="language-plaintext highlighter-rouge">&lt;!-- Button trigger modal --&gt;</code> 아래 부분에 해당하는 형식의 코드가 필요하다.</p>
+
+<p>그래서 <code class="language-plaintext highlighter-rouge">부모 컴포넌트</code>에는 <code class="language-plaintext highlighter-rouge">버튼 부분</code>에 <code class="language-plaintext highlighter-rouge">data-bs-toggle="modal"</code> 이 정의되어 있어야 하고, <code class="language-plaintext highlighter-rouge">data-bs-target</code>의 값이 아까 <code class="language-plaintext highlighter-rouge">자식 컴포넌트</code>에서 정의한 <code class="language-plaintext highlighter-rouge">&lt;!-- Modal --&gt;</code> 아래 코드 부분의 id<br />
+즉, 모달창의 id 값과 같아야 <code class="language-plaintext highlighter-rouge">부모 컴포넌트</code>에서 마크업을 재정의한 구조가 포함된 완성된 모달창을 띄울 수 있는 것이다.</p>
+
+<p>이렇게 되면 단순히 모달창을 만들기 위해서 props를 정의할 필요도 없고, 부모에서 자식 컴포넌트로 props 데이터를 전달할 필요도 없게된다.
+<code class="language-plaintext highlighter-rouge">slot</code> 덕분에 코드가 간결해지고 편해지는 것이다.</p>
+
+<p>그런데 한 애플리케이션에서 보통 여러개의 모달창이 필요할텐데, <code class="language-plaintext highlighter-rouge">자식 컴포넌트</code>에서의 모달창 id가 ‘staticBackdrop’으로 고정되어 있기 때문에 우리가 <code class="language-plaintext highlighter-rouge">여러 부모 컴포넌트</code>에서 재사용해서 여러개의 모달창을 띄울 수 없다.</p>
+
+<p>그래서 이 포스팅 예제에서는 <strong><code class="language-plaintext highlighter-rouge">잠시 자식 컴포넌트로 돌아가서</code></strong><br />
+<code class="language-plaintext highlighter-rouge">props</code>를 이용해서 부모로부터 유동적으로 id를 전달받을 수 있게 데이터바인딩까지 해주었다.</p>
+
+<h4 id="-components--slotmodalvue-자식-컴포넌트-수정">&gt; components / SlotModal.vue (자식 컴포넌트) 수정!!!</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div</span>
+    <span class="na">class=</span><span class="s">"modal fade"</span>
+    <span class="na">:id=</span><span class="s">"modalId"</span>
+    <span class="na">data-bs-backdrop=</span><span class="s">"static"</span>
+    <span class="na">data-bs-keyboard=</span><span class="s">"false"</span>
+    <span class="na">tabindex=</span><span class="s">"-1"</span>
+    <span class="na">:aria-labelledby=</span><span class="s">"`${modalId}Label`"</span>
+    <span class="na">aria-hidden=</span><span class="s">"true"</span>
+  <span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;h5</span> <span class="na">class=</span><span class="s">"modal-title"</span> <span class="na">:id=</span><span class="s">"`${modalId}Label`"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;slot</span> <span class="na">name=</span><span class="s">"title"</span><span class="nt">&gt;&lt;/slot&gt;</span>
+          <span class="nt">&lt;/h5&gt;</span>
+          <span class="nt">&lt;button</span>
+            <span class="na">type=</span><span class="s">"button"</span>
+            <span class="na">class=</span><span class="s">"btn-close"</span>
+            <span class="na">data-bs-dismiss=</span><span class="s">"modal"</span>
+            <span class="na">aria-label=</span><span class="s">"Close"</span>
+          <span class="nt">&gt;&lt;/button&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;slot</span> <span class="na">name=</span><span class="s">"body"</span><span class="nt">&gt;&lt;/slot&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;slot</span> <span class="na">name=</span><span class="s">"footer"</span><span class="nt">&gt;&lt;/slot&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">props</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">modalId</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+      <span class="na">default</span><span class="p">:</span> <span class="dl">"</span><span class="s2">myModal</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><strong><code class="language-plaintext highlighter-rouge">다시 부모 컴포넌트로 돌아와서...</code></strong></p>
+
+<p><code class="language-plaintext highlighter-rouge">&lt;slot-modal modalId="userModal"&gt;</code> 에 지정한 <code class="language-plaintext highlighter-rouge">modalId 값</code>이 <code class="language-plaintext highlighter-rouge">props</code>를 통해 자식 컴포넌트에 전달이 될 것이다.
+(<code class="language-plaintext highlighter-rouge">data-bs-target</code> 값도 id와 동일한 값으로 설정해주면 된다)</p>
+
+<p>이렇게 되면 한 화면 안에서 id만 다르게 설정해주면 여러개의 모달창을 띄울 수 있게 된 것이다.</p>
+
+<p>부모 컴포넌트에서 자식 컴포넌트에서 정의한 슬롯 태그 영역에 마크업을 재정의할 때는 <code class="language-plaintext highlighter-rouge">&lt;template&gt;</code> 태그를 사용하면 된다.</p>
+
+<p>이 때 <code class="language-plaintext highlighter-rouge">v-slot:(slot name)</code> 디렉티브를 사용해서 자식 컴포넌트에서 정의한 <code class="language-plaintext highlighter-rouge">Named Slots</code> 과 동일한 이름을 넣어주면 자식 컴포넌트의 동일한 이름의 <code class="language-plaintext highlighter-rouge">slot</code> 위치로 부모 컴포넌트에서 작성한 html 코드가 삽입되게 된다. (Name이 없는 slot은 <code class="language-plaintext highlighter-rouge">v-slot:default</code>로 지정)</p>
+
+<blockquote>
+  <p>v-slot: 대신에 단축어로 #을 사용 가능</p>
+</blockquote>
+
+<h4 id="-views--slotviewvue-부모-컴포넌트">&gt; views / SlotView.vue (부모 컴포넌트)</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;button</span>
+      <span class="na">class=</span><span class="s">"btn btn-primary"</span>
+      <span class="na">data-bs-toggle=</span><span class="s">"modal"</span>
+      <span class="na">data-bs-target=</span><span class="s">"#userModal"</span>
+    <span class="nt">&gt;</span>
+      Show Modal
+    <span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;slot-modal</span> <span class="na">modalId=</span><span class="s">"userModal"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;template</span> <span class="na">v-slot:title</span><span class="nt">&gt;</span>모달창 타이틀<span class="nt">&lt;/template&gt;</span>
+      <span class="nt">&lt;template</span> <span class="na">v-slot:body</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row gy-2"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-3"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"form-label"</span><span class="nt">&gt;</span>이메일주소<span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-9"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-3"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"form-label"</span><span class="nt">&gt;</span>전화번호<span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-9"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"tel"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-3"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"form-label"</span><span class="nt">&gt;</span>주소<span class="nt">&lt;/label&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-9"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">name=</span><span class="s">""</span> <span class="na">id=</span><span class="s">""</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;/template&gt;</span>
+      <span class="nt">&lt;template</span> <span class="na">v-slot:footer</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-secondary"</span> <span class="na">data-bs-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>
+          닫기
+        <span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>저장<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/template&gt;</span>
+    <span class="nt">&lt;/slot-modal&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">import</span> <span class="nx">SlotModal</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/components/fragments/SlotModal.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">SlotModal</span> <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="완성된-모달창">완성된 모달창</h2>
+
+<p><img width="121" alt="스크린샷 2022-07-26 오후 3 28 12" src="https://user-images.githubusercontent.com/76654131/180939151-ef4a28d3-b83f-4062-b398-d3c530be4347.png" /></p>
+
+<p><img width="547" alt="스크린샷 2022-07-26 오후 3 28 23" src="https://user-images.githubusercontent.com/76654131/180939162-e67e45b6-2b3c-4b44-b144-bf1d1a7c503e.png" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET
