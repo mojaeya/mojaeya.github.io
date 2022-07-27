@@ -1,0 +1,57 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p>웹페이지는 여러 화면으로 구성되어 있지만, 일반적으로 상단(header)에 로고와 메뉴, 가운데에 컨텐츠 내용, 하단(footer)에 사이트정보 등의 고정적인 형태로 화면이 반복되는 경우가 많다.</p>
+
+<p>그렇기에 이번 포스팅에서는 이중에서도 항상 고정적인 header 영역과 footer 영역의 레이아웃을 꾸미기 위한 컴포넌트를 분리하고자 한다.</p>
+
+<hr />
+
+<h2 id="기본적인-레이아웃은-최상위-컴포넌트인-appvue에서-모두-구성한다">기본적인 레이아웃은 최상위 컴포넌트인 <code class="language-plaintext highlighter-rouge">App.vue</code>에서 모두 구성한다.</h2>
+
+<p>Header와 Footer 레이아웃 컴포넌트는 components/layouts 폴더에 따로 분리하고 <code class="language-plaintext highlighter-rouge">App.vue</code>에서 import해서 재사용한다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;header-layout</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;router-view</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;footer-layout</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">import</span> <span class="nx">HeaderLayout</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/components/layouts/HeaderLayout.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">FooterLayout</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/components/layouts/FooterLayout.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">HeaderLayout</span><span class="p">,</span> <span class="nx">FooterLayout</span> <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="header-레이아웃-컴포넌트">Header 레이아웃 컴포넌트</h2>
+
+<h4 id="-componentslayoutsheaderlayoutvue">» components/layouts/HeaderLayout.vue</h4>
+
+<hr />
+
+<h2 id="footer-레이아웃-컴포넌트">Footer 레이아웃 컴포넌트</h2>
+
+<h4 id="-componentslayoutsfooterlayoutvue">» components/layouts/FooterLayout.vue</h4>
+
+<hr />
+
+<blockquote>
+  <p><br />
+<br />
+<br /></p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET
