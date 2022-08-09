@@ -36,7 +36,7 @@ comments: true
 > - 파일명은 두단어 이상 합성어로 작성하기!
 > - 그리고 views 폴더는 xxxView.vue 로 작성하기!
 
-#### > components / PageTitle.vue
+#### > src / components / PageTitle.vue
 
 ```html
 <template>
@@ -44,7 +44,7 @@ comments: true
 </template>
 ```
 
-#### > views / PageView.vue
+#### > src / views / PageView.vue
 
 ```vue
 <template>
@@ -74,7 +74,7 @@ export default {
 
 🔗 위에서 봤던 PageTitle.vue 파일을 아래와 같이 수정
 
-#### > components / PageTitle.vue (자식 컴포넌트)
+#### > src / components / PageTitle.vue (자식 컴포넌트)
 
 ```vue
 <template>
@@ -105,7 +105,7 @@ export default {
 
 🔗 PageView.vue 파일에서 사용하고 있는 PageTitle 컴포넌트에 title이라는 속성 추가
 
-#### > views / PageView.vue (부모 컴포넌트)
+#### > src / views / PageView.vue (부모 컴포넌트)
 
 ✓ 여기서 설정한 title 값이, `자식 컴포넌트인` PageTitle.vue에 정의된 props의 title에 전달되는 것이다.
 

@@ -19,7 +19,7 @@ comments: true
 자식 컴포넌트가 `mounted` 되면 `$emit`을 통해 부모 컴포넌트에 만들어둔 커스텀 이벤트 `send-msg` 이벤트를 호출한다.  
 그리고 `두번째 파라미터`로 `데이터를 전송`한다.
 
-#### > components / ChildComponent.vue (자식 컴포넌트)
+#### > src / components / ChildComponent.vue (자식 컴포넌트)
 
 ```javascript
 // <script>
@@ -40,7 +40,7 @@ export default {
 
 그래서 자식 컴포넌트로부터 전달받은 데이터를 부모 컴포넌트에서 사용할 수 있는 것이다.
 
-#### > views / ParentView.vue (부모 컴포넌트)
+#### > src / views / ParentView.vue (부모 컴포넌트)
 
 ```html
 <!-- <template> -->
@@ -67,7 +67,7 @@ export default {
 
 자식 컴포넌트에는 데이터 옵션에 `msg` 가 정의되어있다.
 
-#### > components / ChildComponent.vue (자식 컴포넌트)
+#### > src / components / ChildComponent.vue (자식 컴포넌트)
 
 ```html
 <template>
@@ -95,7 +95,7 @@ export default {
 접근하는 방법은 `$refs`를 이용하는 것이고,  
 접근하고 나면 자식 컴포넌트에 정의된 데이터(예제에서는 'msg')를 직접 변경할 수 있게 된다.
 
-#### > views / ParentView.vue (부모 컴포넌트)
+#### > src / views / ParentView.vue (부모 컴포넌트)
 
 ```html
 <!-- <template> -->

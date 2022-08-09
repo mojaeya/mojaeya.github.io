@@ -19,7 +19,7 @@ comments: true
 
 ## Header 레이아웃 컴포넌트 생성
 
-#### > App.vue
+#### > src / App.vue
 
 ```html
 <template>
@@ -32,7 +32,7 @@ comments: true
 
 기존 `App.vue`에서 메뉴(네이게이션) 역할을 하던 코드 부분을 그대로 `Header` 레이아웃 컴포넌트로 복사한다.
 
-#### > components/layouts/HeaderLayout.vue
+#### > src / components / layouts / HeaderLayout.vue
 
 ```html
 <template>
@@ -49,7 +49,7 @@ comments: true
 
 `Footer` 레이아웃 컴포넌트는 간단하게 부트스트랩 - Footers를 이용해서 작성해주었다.
 
-#### > components/layouts/FooterLayout.vue
+#### > src / components / layouts / FooterLayout.vue
 
 ```html
 <template>
@@ -71,7 +71,7 @@ comments: true
 
 `App.vue`에서 **components/layouts** 폴더에 만들어둔 `Header`와 `Footer` 레이아웃 컴포넌트를 아래와 같이 import해서 재사용하면 된다.
 
-#### > App.vue
+#### > src / App.vue
 
 ```html
 <template>

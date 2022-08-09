@@ -1,0 +1,19 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">Plugin(플러그인)</code>은 특정 기능을 제공하는 코드이다. 우리는 이미 플러그인들을 설치해서 사용하고 있다.<br />
+<code class="language-plaintext highlighter-rouge">npm</code>으로 설치했던 패키지들도 <code class="language-plaintext highlighter-rouge">플러그인</code> 이기 때문이다.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET

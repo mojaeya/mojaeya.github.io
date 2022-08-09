@@ -1,0 +1,91 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p>부모 컴포넌트에서 자식 컴포넌트로 데이터를 전달하는 경우 <code class="language-plaintext highlighter-rouge">props</code>를 사용하면 된다.</p>
+
+<p align="center"><img width="661" alt="스크린샷 2022-07-27 오후 3 55 09" src="https://user-images.githubusercontent.com/76654131/181181721-bf74658d-0556-40ff-9728-0e3eb80e4696.png" /></p>
+
+<p>하지만 컴포넌트 계층 구조가 복잡해지고 자식의 자식 컴포넌트로 데이터를 전달해줘야 한다면❓<br />
+<code class="language-plaintext highlighter-rouge">props</code>를 계속해서 쓰다가는 코드 구조가 굉장히 복잡해질 것이다.</p>
+
+<p>이런 경우에 <strong><mark style="background-color: #dcffe4">Vue</mark></strong>에서 제공하는 <code class="language-plaintext highlighter-rouge">Provide/Inject</code>를 사용하면 된다.</p>
+
+<hr />
+
+<h2 id="provide--inject-적용-해보기">Provide / Inject 적용 해보기</h2>
+
+<p align="center"><img width="635" alt="스크린샷 2022-07-27 오후 3 55 16" src="https://user-images.githubusercontent.com/76654131/181181712-011d75f3-b608-4532-9e25-72d1b48043d8.png" />
+</p>
+
+<p>위 그림처럼 자식의 자식 컴포넌트까지 구성한 다음 <code class="language-plaintext highlighter-rouge">Provide / Inject</code>를 사용하는 것이 아니고,<br />
+편의상 자식 컴포넌트 하나만을 가지고 이것을 어떤 컴포넌트가 쓰고 있다고 가정하고 기능을 적용시켜보겠다.</p>
+
+<h3 id="️-부모-컴포넌트에서-자식-컴포넌트로-전달하고자-하는-데이터를-provide에-정의한다">✔️ 부모 컴포넌트에서 자식 컴포넌트로 전달하고자 하는 데이터를 <code class="language-plaintext highlighter-rouge">provide</code>에 정의한다.</h3>
+
+<h4 id="-src--views--provideviewvue">&gt; src / views / ProvideView.vue</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;provide-inject</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">import</span> <span class="nx">ProvideInject</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/components/ProvideInject.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">ProvideInject</span> <span class="p">},</span>
+  <span class="nx">provide</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">size</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+      <span class="na">str</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">sampleData</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">sampleData</span><span class="p">:</span> <span class="dl">"</span><span class="s2">AAA</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="️-부모-컴포넌트로부터-전달받고자-하는-데이터와-동일한-속성-이름으로-inject에-문자열-배열로-정의한다">✔️ 부모 컴포넌트로부터 전달받고자 하는 데이터와 동일한 속성 이름으로 <code class="language-plaintext highlighter-rouge">inject</code>에 문자열 배열로 정의한다.</h3>
+
+<h4 id="-componentsprovideinjectvue">&gt; components/ProvideInject.vue</h4>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;p&gt;</span>{{ size }}<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;p&gt;</span>{{ str }}<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</code></pre></div></div>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// &lt;script&gt;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">inject</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">size</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">str</span><span class="dl">"</span><span class="p">],</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>이렇게 <code class="language-plaintext highlighter-rouge">Provide / Inject</code>를 이용하면 컴포넌트 계층 구조가 복잡하더라도 <code class="language-plaintext highlighter-rouge">props</code> 없이 <code class="language-plaintext highlighter-rouge">편리하게</code> 자식 컴포넌트로 데이터를 한번에 전달할 수 있다.</p>
+
+<p>❗️ 하지만 이렇게 <code class="language-plaintext highlighter-rouge">inject</code>를 통해서 전달받는 자식 컴포넌트에서는 <code class="language-plaintext highlighter-rouge">props</code>를 쓸 때와 달리 어떤 부모 컴포넌트에서 이 데이터가 전달되는지 명확히 확인이 안된다는 단점이 있다. 그러므로 편리함만을 생각해서 무작정 쓰지 말고 필요할 상황에 적절하게 쓰는 것을 권장한다.</p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a><br />
+<a href="https://vuejs.org/guide/components/provide-inject.html#working-with-reactivity">https://vuejs.org/guide/components/provide-inject.html#working-with-reactivity</a></p>
+</blockquote>
+:ET

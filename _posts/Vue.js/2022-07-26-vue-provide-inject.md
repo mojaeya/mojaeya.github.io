@@ -29,7 +29,7 @@ comments: true
 
 ### ✔️ 부모 컴포넌트에서 자식 컴포넌트로 전달하고자 하는 데이터를 `provide`에 정의한다.
 
-#### > views/ProvideView.vue
+#### > src / views / ProvideView.vue
 
 ```html
 <template>
@@ -62,7 +62,7 @@ export default {
 
 ### ✔️ 부모 컴포넌트로부터 전달받고자 하는 데이터와 동일한 속성 이름으로 `inject`에 문자열 배열로 정의한다.
 
-#### > components/ProvideInject.vue
+#### > src / components / ProvideInject.vue
 
 ```html
 <template>

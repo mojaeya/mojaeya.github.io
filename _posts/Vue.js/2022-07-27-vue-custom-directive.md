@@ -61,7 +61,7 @@ export default {
 
 위에서 특정 컴포넌트 안에서만 사용하도록 커스텀 디렉티브를 등록했는데, 전역에서 사용할 수 있게 하는 방법도 알아보자.
 
-#### > main.js
+#### > src / main.js
 
 ```javascript
 const app = createApp(App)

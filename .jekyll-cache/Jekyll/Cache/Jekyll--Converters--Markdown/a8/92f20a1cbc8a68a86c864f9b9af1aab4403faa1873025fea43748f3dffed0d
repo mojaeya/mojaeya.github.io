@@ -1,0 +1,50 @@
+I"�<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">Plugin(플러그인)</code>은 특정 기능을 제공하는 코드이다. 그런데 우리는 이미 플러그인들을 설치해서 사용하고 있다.<br />
+<code class="language-plaintext highlighter-rouge">npm</code>으로 설치했던 패키지들도 <code class="language-plaintext highlighter-rouge">플러그인</code> 이기 때문이다. 플러그인은 모듈로, 때로는 패키지로 사용될 수 있다.</p>
+
+<p><strong><mark style="background-color: #dcffe4">Vue</mark></strong> 에서도 여러 컴포넌트에서 사용할 수 있는 공통기능에 해당하는 함수를 마치 <code class="language-plaintext highlighter-rouge">플러그인을 설치</code>하는 것처럼 사용할 수 있게끔 제공한다 해서 <code class="language-plaintext highlighter-rouge">Plugin</code> 이라고 얘기하고 있다.</p>
+
+<p>이번 포스팅에서는 다국어(i18n)을 처리해주는 플러그인을 제작해보자.</p>
+
+<hr />
+
+<h2 id="다국어i18n-처리-플러그인-생성">다국어(i18n) 처리 플러그인 생성</h2>
+
+<p>플러그인은 <code class="language-plaintext highlighter-rouge">install</code> 옵션에서 정의해서 사용할 수 있다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">app.config.globalProperties</code> - App 내의 모든 컴포넌트 인스턴스에서 접근할 수 있는 전역 속성을 추가 (전역변수 설정)</li>
+</ul>
+
+<h4 id="-src--plugins--i18njs">&gt; src / plugins / i18n.js</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/* eslint-disable */</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">install</span><span class="p">:</span> <span class="p">(</span><span class="nx">app</span><span class="p">,</span> <span class="nx">options</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">app</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">globalProperties</span><span class="p">.</span><span class="nx">$translate</span> <span class="o">=</span> <span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">params</span> <span class="o">=</span> <span class="p">{})</span> <span class="o">=&gt;</span>
+      <span class="c1">// en.hi =&gt; ['en','hi']</span>
+      <span class="nx">key</span>
+        <span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="dl">"</span><span class="s2">.</span><span class="dl">"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">o</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">if</span> <span class="p">(</span><span class="nx">o</span><span class="p">)</span> <span class="k">return</span> <span class="nx">o</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+        <span class="p">},</span> <span class="nx">options</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/{</span><span class="se">\w</span><span class="sr">+}/g</span><span class="p">,</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">params</span><span class="p">[</span><span class="nx">match</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]);</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET
