@@ -1,0 +1,160 @@
+I"R3<blockquote>
+  <p>Vue.js 3.x / Vue-CLI</p>
+</blockquote>
+
+<p>애플리케이션이 복잡해지면서 컴포넌트 수가 많아지면 컴포넌트 간의 데이터 전달이 어려워진다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Vuex</code>는 <strong><mark style="background-color: #dcffe4">Vue</mark></strong>에서 모든 컴포넌트가 접근 가능한 중앙 집중식 저장소(store)를 제공해주고 데이터 관리 및 상태 관리를 할 수 있도록 해주는 상태 관리 패턴 + 라이브러리다.</p>
+
+<p>즉, 데이터를 <code class="language-plaintext highlighter-rouge">store</code>에 저장하고, 프로젝트 전체에서 사용할 수 있도록 해주는것이 <code class="language-plaintext highlighter-rouge">Vuex</code>다.</p>
+
+<p>그리고 중앙 저장소에 저장된 데이터는 쉽게 바꿀 수 있는게 아니고, <code class="language-plaintext highlighter-rouge">특정 함수(mutations, actions)</code>를 통해서만 데이터 변경이 가능하고 변경 상태를 관리할 수 있다.</p>
+
+<hr />
+
+<h2 id="vuex-기본-구조">Vuex 기본 구조</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="nx">createStore</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nl">state</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nx">getters</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nx">mutations</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nx">actions</span><span class="p">:</span> <span class="p">{},</span>
+    <span class="nx">modules</span><span class="p">:</span> <span class="p">{},</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="state">State</h3>
+
+<p><code class="language-plaintext highlighter-rouge">state</code>는 프로젝트 전체에서 공통으로 사용할 변수를 정의하는 곳이다. 일반 Vue 컴포넌트 구조의 <code class="language-plaintext highlighter-rouge">data</code> 부분과 같은 역할을 한다고 보면 된다.</p>
+
+<hr />
+
+<h3 id="getters">Getters</h3>
+
+<p><code class="language-plaintext highlighter-rouge">getters</code>는 <code class="language-plaintext highlighter-rouge">store</code>를 위한 <code class="language-plaintext highlighter-rouge">computed</code>라고 생각하면 된다.</p>
+
+<p>예를 들어 쇼핑몰 웹사이트에서 장바구니에 물건을 추가하면 바로 장바구니 아이콘에 숫자가 증가하는 것을 볼 수 있다.</p>
+
+<p>이 경우 장바구니에 담긴 제품 데이터를 저장소의 <code class="language-plaintext highlighter-rouge">state</code>에 변수로 관리하고 있다면, 장바구니에 담긴 제품 수 등을 <code class="language-plaintext highlighter-rouge">getters</code>로 정의하여 쉽게 가져올 수 있는 것이다.</p>
+
+<hr />
+
+<h3 id="mutations">Mutations</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Vuex</code>는 <code class="language-plaintext highlighter-rouge">state</code>에 정의된 변수를 직접 변경하는 것을 허용하지 않는다. 반드시 <code class="language-plaintext highlighter-rouge">mutations</code>를 이용해서 변경을 해야 한다.
+<code class="language-plaintext highlighter-rouge">mutations</code>은 <code class="language-plaintext highlighter-rouge">동기(Sync)</code> 처리를 통해 <code class="language-plaintext highlighter-rouge">state</code>에 정의된 변수의 변경사항을 추적할 수 있게 해준다.</p>
+
+<hr />
+
+<h3 id="actions">Actions</h3>
+
+<p><code class="language-plaintext highlighter-rouge">mutations</code>와 매우 유사하며 <code class="language-plaintext highlighter-rouge">actions</code>에 정의된 함수에서는 결국은 <code class="language-plaintext highlighter-rouge">mutations</code>에 정의한 함수를 <code class="language-plaintext highlighter-rouge">커밋(commit)</code>시켜서 <code class="language-plaintext highlighter-rouge">state</code>를 변경한다.</p>
+
+<p><strong><mark style="background-color: #dcffe4">mutations가 있는데 왜 굳이 actions를 통해 mutations를 실행하는 번거로운 짓을 할까?</mark></strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">actions</code>에 정의된 함수 안에서는 여러 개의 mutation을 실행 시킬 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">mutations</code>와 달리 <code class="language-plaintext highlighter-rouge">비동기 처리</code>가 가능하다.</li>
+</ul>
+
+<p>즉, <code class="language-plaintext highlighter-rouge">actions</code>에 등록된 함수는 비동기 처리 후 <code class="language-plaintext highlighter-rouge">mutations</code>를 <code class="language-plaintext highlighter-rouge">커밋</code>할 수 있어서 <code class="language-plaintext highlighter-rouge">저장소(store)</code>에서 비동기 처리 로직을 관리할 수 있게 해주는 것이다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">actions 핸들러</code>는 기본적으로 <code class="language-plaintext highlighter-rouge">Store</code> 인스턴스의 동일한 메소드/프로퍼티 정보를 가지고 있는 <code class="language-plaintext highlighter-rouge">컨텍스트(context) 객체</code>를 받는다.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">commit</span><span class="p">,</span> <span class="nx">state</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">context</span><span class="p">;</span>
+<span class="nx">context</span><span class="p">.</span><span class="nx">commit</span><span class="p">,</span> <span class="nx">context</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="mutations-vs-actions">Mutations vs Actions</h2>
+
+<p>예를 들어 쇼핑몰 장바구니의 목록이 로그아웃하는 순간 사라지거나 혹은 브라우저 캐쉬에 남겨두어 보여지게 하던가 하는 등의
+서버의 데이터베이스에서 관리를 하지 않는 이런 성격의 <code class="language-plaintext highlighter-rouge">store</code>도 필요하다. 이런 경우엔 <code class="language-plaintext highlighter-rouge">mutations</code>만으로 충분하다.</p>
+
+<p>이렇게 어떤 데이터를 중앙 저장소에 관리하고 처리하느냐에 따라서 <code class="language-plaintext highlighter-rouge">mutations</code>만으로 충분한 것이 있고 <code class="language-plaintext highlighter-rouge">actions</code>를 써야 하는 경우가 있다.</p>
+
+<h4 id="호출-방법">호출 방법</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">methods</span><span class="p">:</span> <span class="p">{</span>
+  <span class="c1">// Mutations 를 이용할 때</span>
+  <span class="nx">addItem</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">commit</span><span class="p">(</span><span class="dl">'</span><span class="s1">todo/add</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="c1">// Actions 를 이용할 때</span>
+  <span class="nx">addItem</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="dl">'</span><span class="s1">todo/add</span><span class="dl">'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">},</span>
+
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="vuex-사용해보기">Vuex 사용해보기</h2>
+
+<h4 id="-todo-리스트를-만들어보자">🔗 Todo 리스트를 만들어보자.</h4>
+
+<h4 id="-src--mainjs">&gt; src / main.js</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./App.vue</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">router</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./router</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">store</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./store</span><span class="dl">"</span><span class="p">;</span>
+<span class="c1">// index.js 파일을 사용할 경우 import 문에서 해당 폴더만 작성까지만 파일경로를 작성해줘도 자동으로 index.js 파일을 import 하게 된다.</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">user</span><span class="p">(</span><span class="nx">store</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">router</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">mount</span><span class="p">(</span><span class="dl">"</span><span class="s2">#app</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">main.js</code>에 이렇게 등록이 되어있으면 <strong><mark style="background-color: #dcffe4">Vue 컴포넌트</mark></strong>에서 <code class="language-plaintext highlighter-rouge">this.$store</code>로 접근이 가능하다.</p>
+
+<hr />
+
+<h4 id="-src--store--indexjs">&gt; src / store / index.js</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createStore</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">vuex</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">todo</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./todo</span><span class="dl">"</span><span class="p">;</span>
+<span class="c1">// vuex에 저장되는 값들을 사용하는 웹브라우저의 localstorage에 저장</span>
+<span class="k">import</span> <span class="nx">persistedstate</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">vuex-persistedstate</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">createStore</span><span class="p">({</span>
+  <span class="na">modules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">todo</span><span class="p">:</span> <span class="nx">todo</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span><span class="nx">persistedstate</span><span class="p">({</span> <span class="na">paths</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">todo.todos</span><span class="dl">"</span><span class="p">]</span> <span class="p">})],</span> <span class="c1">// 화면이 새로고침돼도 영구히 데이터 보존</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="-src--store--todojs">&gt; src / store / todo.js</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="-src--views--todoviewvue">&gt; src / views / TodoView.vue</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div></div>
+
+<hr />
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://www.youtube.com/c/개발자의품격">개발자의품격</a><br />
+<a href="http://www.yes24.com/Product/Goods/101926719">Vue.js 프로젝트 투입 일주일 전</a></p>
+</blockquote>
+:ET

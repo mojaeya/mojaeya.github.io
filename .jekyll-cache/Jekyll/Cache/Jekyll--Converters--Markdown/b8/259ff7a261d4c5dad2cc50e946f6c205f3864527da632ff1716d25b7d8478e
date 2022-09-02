@@ -1,0 +1,30 @@
+I"�<pre><code class="language-cmd">$ node -v
+</code></pre>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm cache clean <span class="nt">-f</span>
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>npm <span class="nb">install</span> <span class="nt">-g</span> n
+</code></pre></div></div>
+
+<ul>
+  <li>n stable : 안정 버전</li>
+  <li>n latest : 최신 버전</li>
+  <li>n lts : lts 버전</li>
+  <li>n x.x.x : 특정 x.x.x 버전</li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>n stable
+</code></pre></div></div>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://jsikim1.tistory.com/158">https://jsikim1.tistory.com/158</a></p>
+</blockquote>
+:ET
