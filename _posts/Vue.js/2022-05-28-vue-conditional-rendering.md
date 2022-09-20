@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 ## 조건부 렌더링 Conditional Rendering
 

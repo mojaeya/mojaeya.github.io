@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 **<mark style='background-color: #dcffe4'>Vue</mark>**에서는 `v-model`, `v-show` 디렉티브 같은 기본 내장된 디렉티브 외에도 사용자가 직접 디렉티브를 정의해서 사용할 수 있다.
 

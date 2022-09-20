@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 #### **<mark style='background-color: #dcffe4'>Vue</mark>**의 가장 큰 장점 중 하나는 `컴포넌트를 재활용`하는 것이다. 즉, 다른 컴포넌트에 import해서 사용가능하다는 말이다.
 

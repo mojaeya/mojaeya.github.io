@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 ## Vue에서 부트스트랩 사용하기
 

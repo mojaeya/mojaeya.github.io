@@ -54,6 +54,7 @@ nav:
     - { MongoDB: "/blog/categories/#mongodb" }
     - { Algorithm: "/blog/categories/#algorithm" }
     - { AWS: "/blog/categories/#aws" }
+    - { Docker: "/blog/categories/#docker" }
     - { Git: "/blog/categories/#git" }
     - { etc: "/blog/categories/#etc" }
   # Search:

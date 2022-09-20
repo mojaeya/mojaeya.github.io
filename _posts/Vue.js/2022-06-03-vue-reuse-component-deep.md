@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 [이전 포스팅](https://mojaeya.github.io/vue.js/2022/06/03/vue-reuse-component-basic/)을 읽고 오시면 도움이 됩니다.
 

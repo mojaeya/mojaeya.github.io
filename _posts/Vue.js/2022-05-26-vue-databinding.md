@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 **<mark style='background-color: #dcffe4'>Vue</mark>**는 **Angular**와 마찬가지로 `양방향 데이터 바인딩`을 지원한다. 참고로 **React**는 `단방향 데이터 바인딩`만을 지원한다.  
  일단 `양방향 데이터 바인딩`을 알아보기 전에 `단방향 데이터 바인딩`를 먼저 보고 가자.

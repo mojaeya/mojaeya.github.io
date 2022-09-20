@@ -1,0 +1,23 @@
+I"k<blockquote>
+  <p>Vue.js 3.x / Vue-CLI 5</p>
+</blockquote>
+
+<p>vue-cli로 프로젝트를 생성해서 셋팅을 마치고 전에 연습하던 프로젝트의 package.json에서 dependencies에 있는 라이브러리 파일들을 그대로 쓸거기 떄문에 복사해서 옮겨줬다.</p>
+
+<p>복사한 라이브러리들을 새 프로젝트에서 설치하기 위해 <code class="language-plaintext highlighter-rouge">npm install</code>을 해줬다.</p>
+
+<p>원래 같았으면 <code class="language-plaintext highlighter-rouge">node_modules</code>가 생기면서 완료가 되어야 정상인데 이상한 오류가 발생했다.</p>
+
+<p><img width="579" alt="Screen Shot 2022-09-19 at 10 23 13 PM" src="https://user-images.githubusercontent.com/76654131/191167866-94b84303-c098-450d-961e-8feb215b77cb.png" /></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href=""></a></p>
+</blockquote>
+:ET

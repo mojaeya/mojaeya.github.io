@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 부모 컴포넌트에서 자식 컴포넌트로 데이터를 전달하는 경우 `props`를 사용하면 된다.
 

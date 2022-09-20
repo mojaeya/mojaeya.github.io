@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 웹페이지는 여러 다양한 화면으로 구성되어 있지만,  
 일반적으로 `상단(header)`에 로고와 메뉴, `가운데`에 컨텐츠 내용, `하단(footer)`에 사이트정보 등의 `고정적인 형태`로 화면이 반복되는 경우가 많다.

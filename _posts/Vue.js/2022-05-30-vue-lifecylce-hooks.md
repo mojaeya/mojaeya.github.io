@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 <p align='center'><img width="70%" alt="스크린샷 2022-06-24 오후 10 31 03" src="https://user-images.githubusercontent.com/76654131/175546221-8585d594-9488-4499-8ab2-7b9d976a4b74.png">
 </p>

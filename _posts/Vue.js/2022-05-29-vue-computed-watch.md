@@ -6,7 +6,7 @@ tags: [vue.js]
 comments: true
 ---
 
-> Vue.js 3.x / Vue-CLI
+> Vue.js 3.x / Vue-CLI 5
 
 `computed`와 `watch`는 **<mark style='background-color: #dcffe4'>Vue 인스턴스</mark>** 내의 정의된 데이터 값에 변경이 일어나는지를 검사하고, 변경될 때마다 정의된 함수가 실행된다. 하지만 데이터 값의 변경을 감시한다는 측면은 비슷하지만 사용되는 용도에 차이점 있으니 알아보자.
 
