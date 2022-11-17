@@ -76,6 +76,10 @@ comments: true
 
 ### # sticky
 
+- 기준이 부모요소
+- top과 left 같은 포지션을 지정해줘야 한다.
+- 스크롤링 될 때 고정이 된다.
+
 ```html
 <style>
   .sticky {

@@ -1,0 +1,81 @@
+I"<p>Github 회사 계정과 개인 계정을 한 컴퓨터 안에서 분리해서 사용해보자.</p>
+
+<h2 id="1-ssh-key-생성">1. SSH key 생성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// .ssh 폴더 생성 및 이동</span>
+<span class="nx">$</span> <span class="nx">mkdir</span> <span class="o">~</span><span class="sr">/.ss</span><span class="err">h
+</span>
+<span class="nx">$</span> <span class="nx">cd</span> <span class="o">~</span><span class="sr">/.ss</span><span class="err">h
+</span>
+<span class="c1">// 개인용 ssh key 생성</span>
+<span class="nx">ssh</span><span class="o">-</span><span class="nx">keygen</span> <span class="o">-</span><span class="nx">t</span> <span class="nx">rsa</span> <span class="o">-</span><span class="nx">C</span> <span class="err">“</span><span class="nx">깃허브메일</span><span class="err">”</span> <span class="o">-</span><span class="nx">f</span> <span class="nx">personal</span>
+<span class="c1">// 회사용 ssh key 생성</span>
+<span class="nx">ssh</span><span class="o">-</span><span class="nx">keygen</span> <span class="o">-</span><span class="nx">t</span> <span class="nx">rsa</span> <span class="o">-</span><span class="nx">C</span> <span class="err">“</span><span class="nx">깃허브메일</span><span class="err">”</span> <span class="o">-</span><span class="nx">f</span> <span class="nx">company</span>
+</code></pre></div></div>
+
+<p><img width="122" alt="스크린샷 2022-11-17 오전 8 53 24" src="https://user-images.githubusercontent.com/76654131/202320184-954d87de-1c66-457b-b32f-fabd8a1b5ebb.png" /></p>
+
+<ul>
+  <li>company -&gt; 개인키 파일</li>
+  <li>company.pub -&gt; 공개키 파일</li>
+</ul>
+
+<h2 id="2-config-파일-생성">2. config 파일 생성</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ~/.ssh 폴더에서</span>
+<span class="nx">$</span> <span class="nx">vim</span> <span class="nx">config</span>
+
+<span class="c1">// 아래와 같이 작성</span>
+<span class="nx">Host</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">-</span><span class="nx">personal</span> <span class="c1">// 개인 계정</span>
+	<span class="nx">HostName</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span>
+	<span class="nx">User</span> <span class="nx">git</span>
+	<span class="nx">IdentityFile</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="nx">personal</span>
+
+<span class="nx">Host</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span><span class="o">-</span><span class="nx">company</span> <span class="c1">// 회사 계정</span>
+	<span class="nx">HostName</span> <span class="nx">github</span><span class="p">.</span><span class="nx">com</span>
+	<span class="nx">User</span> <span class="nx">git</span>
+	<span class="nx">IdentityFile</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="nx">company</span>
+</code></pre></div></div>
+
+<h2 id="3-ssh-agent-등록">3. SSH Agent 등록</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">$</span> <span class="nx">ssh</span><span class="o">-</span><span class="nx">add</span> <span class="nx">personal</span> <span class="c1">// 개인 계정 등록</span>
+<span class="nx">$</span> <span class="nx">ssh</span><span class="o">-</span><span class="nx">add</span> <span class="nx">company</span> <span class="c1">// 회사 계정 등록</span>
+
+<span class="c1">// 등록 확인</span>
+<span class="nx">$</span> <span class="nx">ssh</span><span class="o">-</span><span class="nx">add</span> <span class="o">-</span><span class="nx">l</span>
+</code></pre></div></div>
+
+<h2 id="4-github-계정에-공개키pub-등록">4. Github 계정에 공개키(*.pub) 등록</h2>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 공개키 내용 그대로 전체 복사</span>
+<span class="nx">$</span> <span class="nx">cat</span> <span class="o">~</span><span class="sr">/.ssh/</span><span class="nx">company</span><span class="p">.</span><span class="nx">pub</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Github 프로필 &gt; Settings &gt; SSH and GPG keys &gt; New SSH key</li>
+  <li>Key에 복사한 ssh 공개키 붙여넣기</li>
+</ol>
+
+<h2 id="5-repository-clone-하는-방법">5. Repository Clone 하는 방법</h2>
+
+<ul>
+  <li>
+    <p>기존에 글로벌로 개인 계정을 등록해놨으면,<br />
+<code class="language-plaintext highlighter-rouge">SSH 을 누르고 주소 복사 * 기본 경로 git@github.com:[user]/[저장소]</code></p>
+  </li>
+  <li>
+    <p>회사 계정으로 할 경우, 기본 경로를 내가 지정해준 회사용 Host 명으로 바꿔서- ex) git@github.com-company:[user]/[저장소]
+<br />
+<br />
+<br /></p>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href=""></a></p>
+</blockquote>
+:ET

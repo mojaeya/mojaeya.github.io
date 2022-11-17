@@ -23,7 +23,7 @@ comments: true
 
 **<mark style='background-color: #dcffe4'>Vue CLI</mark>**로 프로젝트를 생성하면 src 폴더 안에 `components`, `views` 폴더가 있는데  
 `views` 폴더에 우리가 페이지라고 부르는 화면 하나 하나에 해당하는 **<mark style='background-color: #dcffe4'>Vue 컴포넌트</mark>** 파일을 생성하는거고,  
-`component` 폴더에는 **<mark style='background-color: #dcffe4'>다른 Vue 폴더</mark>** 에서 호출해서 공통으로 사용할 수 있는 **<mark style='background-color: #dcffe4'>Vue 컴포넌트</mark>**을 생성하고 관리하게 되는 것이다.
+`components` 폴더에는 **<mark style='background-color: #dcffe4'>다른 Vue 폴더</mark>** 에서 호출해서 공통으로 사용할 수 있는 **<mark style='background-color: #dcffe4'>Vue 컴포넌트</mark>**을 생성하고 관리하게 되는 것이다.
 
 결국 사실 **<mark style='background-color: #dcffe4'>Vue 입장</mark>**에서는 모든 vue 파일이 내부적으로는 모두 동일한 구조를 가진 컴포넌트이지만, 개발자가 물리적으로 이렇게 폴더를 구분해서 효율적으로 관리한다고 보면 된다.
 
