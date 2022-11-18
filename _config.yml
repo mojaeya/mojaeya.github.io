@@ -27,7 +27,7 @@ version: 1.0.0
 # About/contact
 author:
   name: mojaeya
-  description: mojaeya ( Hojae Kim )<br>"배움을 포기하는 순간 늙기 시작한다."
+  description: "과거의 지식으로 현재를 논하지 말자"
   gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
     #linkedin:  https://www.linkedin.com/in/lizhihao
