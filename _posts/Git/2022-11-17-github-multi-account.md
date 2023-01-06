@@ -6,6 +6,7 @@ tags: [git]
 comments: true
 ---
 
+<br>
 Github 회사 계정과 개인 계정을 한 컴퓨터 안에서 분리해서 사용해보자.
 
 ## 1. SSH key 생성
