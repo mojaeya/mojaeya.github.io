@@ -1,0 +1,33 @@
+I"�<h2 id="rm-파일-폴더-삭제"><code class="language-plaintext highlighter-rouge">rm</code> (파일, 폴더 삭제)</h2>
+
+<ul>
+  <li>rm - 파일 삭제</li>
+  <li>
+    <p>rm -f 파일 강제 삭제</p>
+  </li>
+  <li>rm -r 폴더 삭</li>
+  <li>rm -rf 폴더 강제 삭제</li>
+</ul>
+
+<h2 id="tar-묶음-압축"><code class="language-plaintext highlighter-rouge">tar</code> (묶음, 압축)</h2>
+
+<p>[tar 파일 묶는 방법]
+tar -cvf [묶은 후 파일명.tar] [묶을 파일1] [묶을 파일2] …..
+(ex)<br />
+ tar -cvf test.tar file1 file2</p>
+
+<p>[폴더 채로 파일 묶는 방법]
+tar -cvf [묶은 후 파일명.tar] [묶을 폴더명]
+(ex)<br />
+ tar -cvf test.tar folder1
+<br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href=""></a></p>
+</blockquote>
+:ET

@@ -1,0 +1,41 @@
+I"�<h2 id="rm-파일-폴더-삭제">rm (파일, 폴더 삭제)</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">rm</code> - 파일 삭제</li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">rm -f</code> - 파일 강제 삭제</p>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">rm -r</code> - 폴더 삭제</li>
+  <li><code class="language-plaintext highlighter-rouge">rm -rf</code> - 폴더 강제 삭제</li>
+</ul>
+
+<h2 id="tar-묶음-압축">tar (묶음, 압축)</h2>
+
+<h4 id="tar-파일-묶기">tar 파일 묶기</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">tar -cvf [묶은 후 파일명.tar] [묶을 파일1] [묶을 파일2] .....</code></li>
+</ul>
+
+<h4 id="폴더-채로-파일-묶기">폴더 채로 파일 묶기</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">tar -cvf [묶은 후 파일명.tar] [묶을 폴더명]</code></li>
+</ul>
+
+<h4 id="tar-파일-푸는-방법">tar 파일 푸는 방법</h4>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">tar -xvf [tar 파일명.tar]</code>
+<br />
+<br />
+<br /></li>
+</ul>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href=""></a></p>
+</blockquote>
+:ET
