@@ -70,9 +70,12 @@ rm /Users/Shared/keymap
 sudo rm /Library/LaunchAgents/keymap.plist
 ```
 
-   <br>
-   <br>
-   <br>
+## iterm + lsd 꾸미기
+
+[https://gracefullight.dev/2019/05/27/install-lsd-on-mac/](https://gracefullight.dev/2019/05/27/install-lsd-on-mac/)
+<br>
+<br>
+<br>
 
 > **Reference**  
 > 본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.  
