@@ -1,0 +1,20 @@
+I"<h2 id="마우스-감도">마우스 감도</h2>
+
+<p>내가 쓰는 마우스 감도</p>
+
+<p>defaults write .GlobalPreferences com.apple.mouse.scaling 5</p>
+
+<p>초기화</p>
+
+<p>defaults read .GlobalPreferences com.apple.mouse.scaling
+<br />
+<br />
+<br /></p>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href=""></a></p>
+</blockquote>
+:ET

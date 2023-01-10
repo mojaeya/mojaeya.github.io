@@ -1,0 +1,51 @@
+I"�
+<h2 id="마우스-감도">마우스 감도</h2>
+
+<h4 id="내가-쓰는-마우스-감도">내가 쓰는 마우스 감도</h4>
+
+<p><code class="language-plaintext highlighter-rouge">defaults write .GlobalPreferences com.apple.mouse.scaling 5</code></p>
+
+<h4 id="초기화">초기화</h4>
+
+<p><code class="language-plaintext highlighter-rouge">defaults read .GlobalPreferences com.apple.mouse.scaling</code></p>
+
+<h2 id="dock-자동숨김-애니메이션-속도-조절">Dock 자동숨김 애니메이션 속도 조절</h2>
+
+<h4 id="dock-자동숨김--dock-나타나기-시작할-때-딜레이-타임-조절--독이-나타나는-애니매이션-시간-조절">Dock 자동숨김 &amp;&amp; Dock 나타나기 시작할 때 딜레이 타임 조절 &amp;&amp; 독이 나타나는 애니매이션 시간 조절</h4>
+
+<p><code class="language-plaintext highlighter-rouge">defaults write com.apple.dock autohide -bool true &amp;&amp; defaults write com.apple.dock autohide-delay -float 0 &amp;&amp; defaults write com.apple.dock autohide-time-modifier -float 0 &amp;&amp; killall Dock </code></p>
+
+<h4 id="초기화-1">초기화</h4>
+
+<p><code class="language-plaintext highlighter-rouge">defaults delete com.apple.dock autohide &amp;&amp; defaults delete com.apple.dock autohide-delay &amp;&amp; defaults delete com.apple.dock autohide-time-modifier &amp;&amp; killall Dock</code></p>
+
+<h2 id="오른쪽-커맨드키-한영키로-전환하기-앱-설치-x">오른쪽 커맨드키 한영키로 전환하기 (앱 설치 X)</h2>
+
+<ol>
+  <li>
+    <p>hidutil 로 키매핑 매크로를 만듭니다. (글상자 오른쪽 상단 복사를 누르세요)</p>
+  </li>
+  <li>
+    <p>keymap.plist 를 만들어 1번을 로그인때마다 실행하여 줍니다</p>
+  </li>
+  <li>
+    <p>매번 실행될수 있도록 2의 위치를 변경하여 줍니다. 관리자 비밀번호가 필요합니다</p>
+  </li>
+  <li>
+    <p>정상적으로 작동하는지 확인하여 주세요</p>
+
+    <p><br />
+<br />
+<br /></p>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>Reference</strong><br />
+본 포스팅은 아래 사이트를 참조 및 인용하여 개인공부 용도로 작성되었습니다.<br />
+잘못된 내용 피드백 주시면 반영하겠습니다. 감사합니다.<br />
+<a href="https://vislog.tistory.com/entry/독Dock-자동숨김-애니메이션-조절제거하기">https://vislog.tistory.com/entry/독Dock-자동숨김-애니메이션-조절제거하기</a><br />
+<a href="https://www.youtube.com/watch?v=q-SOb9JHc3k">https://www.youtube.com/watch?v=q-SOb9JHc3k</a><br />
+<a href="https://www.notion.so/ee35e655235d41ecb259ff2f27ccb962">https://www.notion.so/ee35e655235d41ecb259ff2f27ccb962</a></p>
+</blockquote>
+:ET
